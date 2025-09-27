@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace DiplomGames
 {
     [RequireComponent(typeof(Button))]
-    public class AnimsButton : MonoBehaviour
+    public class AnimsButtonSize : MonoBehaviour
     {
         [Header("При наведении на кнопку")]
         [SerializeField] private float AddSizeOnHover = 0.15f;
@@ -22,6 +22,8 @@ namespace DiplomGames
         private Button button;
         private Transform btnTransform;
         private Tween anims;
+        private Vector3 sizeOnHover;
+        private Vector3 sizeOnClick;
 
         private void Awake()
         {
@@ -29,14 +31,16 @@ namespace DiplomGames
             btnTransform = transform;
 
             baseSize = btnTransform.localScale;
+
+            sizeOnHover = new Vector3(baseSize.x + AddSizeOnHover, baseSize.y + AddSizeOnHover, baseSize.z);
+            sizeOnClick = new Vector3(baseSize.x + AddSizeOnClick, baseSize.y + AddSizeOnClick, baseSize.z);
         }
 
         public void OnEnter()
         {
             KillAnims();
-
-            var newSize = new Vector3(baseSize.x + AddSizeOnHover, baseSize.y + AddSizeOnHover, baseSize.z);
-            btnTransform.DOScale(newSize, durationAnimsOnHover).SetEase(easeScheduleHover);
+  
+            btnTransform.DOScale(sizeOnHover, durationAnimsOnHover).SetEase(easeScheduleHover);
         }
 
         public void OnExit()
@@ -50,15 +54,14 @@ namespace DiplomGames
         {
             KillAnims();
 
-            var newSize = new Vector3(baseSize.x + AddSizeOnClick, baseSize.y + AddSizeOnClick, baseSize.z);
-            btnTransform.DOScale(newSize, durationAnimsOnHover).SetEase(easeScheduleHover);
+            btnTransform.DOScale(sizeOnClick, durationAnimsOnHover).SetEase(easeScheduleHover);
         }
 
         public void OnUp()
         {
             KillAnims();
 
-            btnTransform.DOScale(baseSize, durationAnimsOnHover).SetEase(easeScheduleHover);
+            btnTransform.DOScale(sizeOnHover, durationAnimsOnHover).SetEase(easeScheduleHover);
         }
 
 
