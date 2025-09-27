@@ -1,2 +1,0 @@
-# POFromPsychologist
-Игра для психолога
