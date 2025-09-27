@@ -1,7 +1,7 @@
 # 🎮Игра для разития детей
 Разработчик: WeiTers Studio.
 
-**[Скачать актуальную версию](https://github.com/Ji4r/POFromPsychologist/edit/main/README.md)**
+**[Скачать актуальную версию]([https://github.com/Ji4r/POFromPsychologist/edit/main/README.md](https://github.com/Ji4r/POFromPsychologist/releases/tag/Alpha))**
 
 ## Об этой игре:
 Игра создана для развития детей  
