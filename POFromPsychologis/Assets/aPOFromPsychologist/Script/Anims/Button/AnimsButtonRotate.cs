@@ -3,23 +3,21 @@ using UnityEngine;
 
 namespace DiplomGames
 {
-    public class AnimsButtonRotate : MonoBehaviour
+    public class AnimsButtonRotate : MonoBehaviour, IAnimsButton
     {
         [Header("При наведении на кнопку")]
         [SerializeField] private float AddRotateOnHover = 180;
         [SerializeField] private float durationAnimsOnHover = 0.4f;
         [SerializeField] private Ease easeScheduleHover = Ease.OutCubic;
+        [SerializeField] private Transform spriteTransform;
 
         private Quaternion baseRotate;
-        private Transform btnTransform;
         private Tween anims;
         private Quaternion rotateOnHover;
 
         private void Awake()
         {
-            btnTransform = transform;
-
-            baseRotate = btnTransform.localRotation;
+            baseRotate = spriteTransform.localRotation;
 
             rotateOnHover = Quaternion.Euler(baseRotate.x, baseRotate.y, baseRotate.z + AddRotateOnHover);
         }
@@ -28,14 +26,14 @@ namespace DiplomGames
         {
             KillAnims();
 
-            btnTransform.DOLocalRotateQuaternion(rotateOnHover, durationAnimsOnHover).SetEase(easeScheduleHover);
+            spriteTransform.DOLocalRotateQuaternion(rotateOnHover, durationAnimsOnHover).SetEase(easeScheduleHover);
         }
 
         public void OnExit()
         {
             KillAnims();
 
-            btnTransform.DOLocalRotateQuaternion(baseRotate, durationAnimsOnHover).SetEase(easeScheduleHover);
+            spriteTransform.DOLocalRotateQuaternion(baseRotate, durationAnimsOnHover).SetEase(easeScheduleHover);
         }
 
 
@@ -48,6 +46,14 @@ namespace DiplomGames
         private void OnDisable()
         {
             KillAnims();
+        }
+
+        public void OnDown()
+        {  
+        }
+
+        public void OnUp()
+        {
         }
     }
 }

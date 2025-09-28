@@ -6,40 +6,43 @@ namespace DiplomGames
     [RequireComponent(typeof(AnimsButtonSize))]
     public class HandlerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler, IPointerDownHandler
     {
-        [SerializeField] private bool isUsedRotate = false;
-        [SerializeField] private AnimsButtonRotate animsRoatte;
-        private AnimsButtonSize buttonAnims;
+        private IAnimsButton[] buttonAnims;
 
         private void Start()
         {
-            buttonAnims = GetComponent<AnimsButtonSize>();
+            buttonAnims = GetComponents<IAnimsButton>();
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            buttonAnims.OnDown();
+            foreach (var anim in buttonAnims)
+            {
+                anim.OnDown();
+            }
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            buttonAnims.OnUp();
+            foreach (var anim in buttonAnims)
+            {
+                anim.OnUp();
+            }
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            buttonAnims.OnExit();
-
-
-            if (isUsedRotate)
-                animsRoatte.OnExit();
+            foreach (var anim in buttonAnims)
+            {
+                anim.OnExit();
+            }
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            buttonAnims.OnEnter();
-
-            if (isUsedRotate)
-                animsRoatte.OnEnter();
+            foreach (var anim in buttonAnims)
+            {
+                anim.OnEnter();
+            }
         }
     }
 }

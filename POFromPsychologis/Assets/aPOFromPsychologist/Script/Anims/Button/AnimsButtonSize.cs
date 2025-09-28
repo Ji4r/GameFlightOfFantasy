@@ -1,12 +1,11 @@
 using DG.Tweening;
-using System.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace DiplomGames
 {
     [RequireComponent(typeof(Button))]
-    public class AnimsButtonSize : MonoBehaviour
+    public class AnimsButtonSize : MonoBehaviour, IAnimsButton
     {
         [Header("При наведении на кнопку")]
         [SerializeField] private float AddSizeOnHover = 0.15f;

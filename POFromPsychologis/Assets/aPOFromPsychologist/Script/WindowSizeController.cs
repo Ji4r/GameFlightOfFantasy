@@ -26,14 +26,13 @@ public class WindowSizeController : MonoBehaviour
         lastWidth = Screen.width;
         lastHeight = Screen.height;
 
-        // Применяем ограничения при старте
         ApplySizeConstraints();
     }
 
     void Update()
     {
-        // Проверяем изменение размера каждые 5 кадров (оптимизация)
-        if (Time.frameCount % 5 == 0 &&
+        // Проверяем изменение размера каждые 20 кадров (оптимизация)
+        if (Time.frameCount % 20 == 0 &&
             (Screen.width != lastWidth || Screen.height != lastHeight))
         {
             ApplySizeConstraints();
@@ -54,7 +53,6 @@ public class WindowSizeController : MonoBehaviour
             int newHeight = Mathf.Clamp(currentHeight, minHeight, maxHeight);
 
             Screen.SetResolution(newWidth, newHeight, FullScreenMode.Windowed);
-            Debug.Log($"Window size constrained to: {newWidth}x{newHeight}");
         }
     }
 }
