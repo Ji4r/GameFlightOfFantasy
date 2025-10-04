@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,23 +46,20 @@ namespace DiplomGames
                item.button.interactable = false;
             }
 
-            HidePanel(MenuItems, currentBtn);
-
             foreach (SettingMenuItem item in MenuItems)
-            {
-                if (item != currentBtn)
-                    item.button.interactable = true;
-            }
-        }
-
-        private void HidePanel(SettingMenuItem[] menuItems, SettingMenuItem currentBtn)
-        {
-            foreach (SettingMenuItem item in menuItems)
             {
                 if (currentBtn != item)
                 {
                     item.gameObjectItem.SetActive(false);
                 }
+            }
+
+            currentBtn.gameObjectItem.SetActive(true);
+
+            foreach (SettingMenuItem item in MenuItems)
+            {
+                if (item != currentBtn)
+                    item.button.interactable = true;
             }
         }
     }

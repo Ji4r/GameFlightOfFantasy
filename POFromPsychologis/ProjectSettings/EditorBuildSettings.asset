@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/aPOFromPsychologist/Scene/MiniGameSound.unity
+    path: Assets/aPOFromPsychologist/Scene/MainMenu.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/aPOFromPsychologist/Scene/MircoGame/MiniGameSound.unity
     guid: dbf20c8322467374ea66e8492687514a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

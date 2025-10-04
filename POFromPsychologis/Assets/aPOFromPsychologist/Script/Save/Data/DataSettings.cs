@@ -4,6 +4,7 @@ namespace DiplomGames
 {
     public class DataSettings
     {
-        public FullScreenMode Displaymode;
+        public FullScreenMode DisplayMode;
+        public Resolution resolutionDisplay;
     }
 }
