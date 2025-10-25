@@ -3,84 +3,97 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SoundPayerButton : MonoBehaviour, IPointerClickHandler
+namespace DiplomGames
 {
-    [SerializeField] private AudioClip clip;
-    [SerializeField] private AudioSource soundPlayer;
-    [SerializeField] private Image progressBar;
-    [SerializeField] private Image pictureIconPlay;
-    [SerializeField] private Sprite picturePlay;
-    [SerializeField] private Sprite pictureStop;
-
-    private bool isPlay;
-    private float audioDuration;
-    private Coroutine coroutineBar;
-
-    private void Start()
+    public class SoundPayerButton : MonoBehaviour, IPointerClickHandler
     {
-        pictureIconPlay.sprite = picturePlay;
-        isPlay = false;
-        audioDuration = clip.length;
-    }
+        public AudioClip clip;
+        [SerializeField] private AudioSource soundPlayer;
+        [SerializeField] private Image progressBar;
+        [SerializeField] private Image pictureIconPlay;
+        [SerializeField] private Sprite picturePlay;
+        [SerializeField] private Sprite pictureStop;
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        isPlay = !isPlay;
+        private bool isPlay;
+        private float audioDuration;
+        private Coroutine coroutineBar;
 
-        if (soundPlayer.clip == clip)
+        private void Start()
         {
-            if (isPlay)
+            pictureIconPlay.sprite = picturePlay;
+            isPlay = false;
+            audioDuration = clip != null ? clip.length : 1f;
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            isPlay = !isPlay;
+
+            if (soundPlayer.clip == clip)
             {
-                Debug.Log("Блок 2 if");
-                pictureIconPlay.sprite = pictureStop;
-                soundPlayer.Play();
-                coroutineBar = StartCoroutine(UpdateProgressBar());             
+                if (isPlay)
+                {
+                    pictureIconPlay.sprite = pictureStop;
+                    soundPlayer.Play();
+                    coroutineBar = StartCoroutine(UpdateProgressBar());
+                }
+                else
+                {
+                    soundPlayer.Stop();
+                    pictureIconPlay.sprite = picturePlay;
+                    if (coroutineBar != null)
+                        StopCoroutine(coroutineBar);
+
+                    progressBar.fillAmount = 0;
+                }
             }
             else
             {
-                Debug.Log("Блок 2 Else");
-                soundPlayer.Stop();
-                pictureIconPlay.sprite = picturePlay;
-                if (coroutineBar != null)
-                    StopCoroutine(coroutineBar);
-
+                soundPlayer.clip = clip;
+                soundPlayer.Play();
+                pictureIconPlay.sprite = pictureStop;
                 progressBar.fillAmount = 0;
+                coroutineBar = StartCoroutine(UpdateProgressBar());
             }
         }
-        else
+
+        public AudioClip GetClip()
         {
-            Debug.Log("Блок Else");
-            soundPlayer.clip = clip;
-            soundPlayer.Play();
-            pictureIconPlay.sprite = pictureStop;
+            return clip;
+        }
+
+        public void UpdateData(float clipLength = 0)
+        {
+            pictureIconPlay.sprite = picturePlay;
+            isPlay = false;
             progressBar.fillAmount = 0;
-            coroutineBar = StartCoroutine(UpdateProgressBar());
+
+            if (clip != null)
+            {
+                audioDuration = clipLength > 0 ? clipLength : clip.length;
+            }
         }
-    }
 
-    public AudioClip GetClip()
-    {
-        return clip;
-    }
-
-    private IEnumerator UpdateProgressBar()
-    {
-        while (soundPlayer.time < audioDuration)
+        private IEnumerator UpdateProgressBar()
         {
-            if (soundPlayer.clip == clip && isPlay)
+            while (soundPlayer.time < audioDuration)
             {
-                yield return new WaitForEndOfFrame();
-                progressBar.fillAmount = (float)soundPlayer.time / audioDuration;
+                if (soundPlayer.clip == clip && isPlay)
+                {
+                    yield return new WaitForEndOfFrame();
+                    progressBar.fillAmount = soundPlayer.time / audioDuration;
+                }
+                else
+                {
+                    progressBar.fillAmount = 0;
+                    isPlay = false;
+                    break;
+                }
             }
-            else 
-            {
-                progressBar.fillAmount = 0;
-                isPlay = false;
-                break;
-            }
-        }
 
-        progressBar.fillAmount = 0;
-        pictureIconPlay.sprite = picturePlay;
+            progressBar.fillAmount = 0;
+            pictureIconPlay.sprite = picturePlay;
+        }
     }
 }
+

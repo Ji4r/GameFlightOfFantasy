@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 namespace DiplomGames
 {
-    [RequireComponent(typeof(Button))]
     public class AnimsButtonSize : MonoBehaviour, IAnimsButton
     {
         [Header("При наведении на кнопку")]

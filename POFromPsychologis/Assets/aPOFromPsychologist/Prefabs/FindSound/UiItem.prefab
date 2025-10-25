@@ -105,6 +105,8 @@ GameObject:
   - component: {fileID: 1777667067890701714}
   - component: {fileID: 8545172345321996051}
   - component: {fileID: 1103937210826246390}
+  - component: {fileID: 8748516339701955586}
+  - component: {fileID: 329112795491640004}
   m_Layer: 5
   m_Name: UiItem
   m_TagString: Untagged
@@ -130,7 +132,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.09851074, y: -346.35077}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -1483.6229, y: -988.5712}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5825950431520297608
@@ -240,6 +242,36 @@ MonoBehaviour:
   pictureIconPlay: {fileID: 2370906870730396918}
   picturePlay: {fileID: -8577061524128264982, guid: 66d2e3be6861d2e45b11a8d20c4c4e2e, type: 3}
   pictureStop: {fileID: -8766181795459145666, guid: e0a30c8151ba2684aad0da6900a35719, type: 3}
+--- !u!114 &8748516339701955586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367698533929379569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AddSizeOnHover: 0.15
+  durationAnimsOnHover: 0.2
+  easeScheduleHover: 9
+  AddSizeOnClick: 0.25
+  durationAnimsOnClick: 0.2
+  easeScheduleClick: 9
+--- !u!114 &329112795491640004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367698533929379569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 856adac804e25014ba814f33d7e2328d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1950611139311125033
 GameObject:
   m_ObjectHideFlags: 0
