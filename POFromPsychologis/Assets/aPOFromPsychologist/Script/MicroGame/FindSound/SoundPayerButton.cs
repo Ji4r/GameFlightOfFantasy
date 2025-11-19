@@ -94,6 +94,12 @@ namespace DiplomGames
             progressBar.fillAmount = 0;
             pictureIconPlay.sprite = picturePlay;
         }
+
+
+        public void StopPlay()
+        {
+            soundPlayer.Stop();
+        }
     }
 }
 

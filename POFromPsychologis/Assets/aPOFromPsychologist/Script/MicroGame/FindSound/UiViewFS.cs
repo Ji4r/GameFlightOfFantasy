@@ -9,7 +9,6 @@ namespace DiplomGames
         [SerializeField] private TextMeshProUGUI tmp;
         [SerializeField] private Image imageSprite;
 
-
         public void ShowOtvetSound(bool onRight)
         {
             if (onRight)

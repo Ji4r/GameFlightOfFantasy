@@ -4,8 +4,10 @@ namespace DiplomGames
 {
     public enum ListSound
     {
-        buttonPointer,
+        buttonClick,
         buttonEnter,
+        answerSuccesful,
+        answerNotSuccesful
     }
 
     public class SoundList : MonoBehaviour
@@ -17,7 +19,10 @@ namespace DiplomGames
         private void Awake()
         {
             if (instance == null)
+            {
                 instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
             else
                 Destroy(this);
         }

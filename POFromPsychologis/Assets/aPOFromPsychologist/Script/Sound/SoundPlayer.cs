@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace DiplomGames
 {
+    [RequireComponent(typeof(AudioSource))]
     public class SoundPlayer : MonoBehaviour
     {
         public static SoundPlayer instance { get; private set; }
@@ -12,7 +13,10 @@ namespace DiplomGames
         private void Awake()
         {
             if (instance == null)
+            {
                 instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
             else
                 Destroy(this);
 

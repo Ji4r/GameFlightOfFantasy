@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace DiplomGames
 {
-    public class FSGameController : MonoBehaviour
+    public class FSGameController : GameController
     {
         [SerializeField] private SlotManager slotManager;
-        [SerializeField] private CheckerSlot checkerSlot; 
+        [SerializeField] private FSCheckerSlot checkerSlot; 
         [SerializeField] private UiViewFS uiViewFS;
 
         public Action StartNextGame;
@@ -15,12 +15,12 @@ namespace DiplomGames
 
         private void OnEnable()
         {
-            StartNextGame += NextGame;
+            StartNextGame += NextRaund;
         }
 
         private void OnDisable()
         {
-            StartNextGame -= NextGame;
+            StartNextGame -= NextRaund;
         }
 
         private void Start()
@@ -30,7 +30,7 @@ namespace DiplomGames
             checkerSlot.UpdateRightSound(currentGame.TheRightSound);
         }
 
-        private void NextGame()
+        protected override void NextRaund()
         {
             currentGame = slotManager.NextGame();
             uiViewFS.UpdateSpriteProp(currentGame.Sprite);

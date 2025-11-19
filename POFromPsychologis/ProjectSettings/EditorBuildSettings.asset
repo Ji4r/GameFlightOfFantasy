@@ -9,8 +9,23 @@ EditorBuildSettings:
     path: Assets/aPOFromPsychologist/Scene/MainMenu.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/aPOFromPsychologist/Scene/MircoGame/MiniGameSound.unity
+    path: Assets/aPOFromPsychologist/Scene/MircoGame/FindSound.unity
     guid: dbf20c8322467374ea66e8492687514a
+  - enabled: 1
+    path: Assets/aPOFromPsychologist/Scene/MircoGame/FindShadow.unity
+    guid: 4e20084aebc7a0944a60e352a3ed9bf2
+  - enabled: 1
+    path: Assets/aPOFromPsychologist/Scene/MircoGame/Memory.unity
+    guid: 66e739c7b54d583479706ae69b7d4b20
+  - enabled: 1
+    path: Assets/aPOFromPsychologist/Scene/MircoGame/Memory2.unity
+    guid: 49839771594342243b8cb917ba1c7896
+  - enabled: 1
+    path: Assets/aPOFromPsychologist/Scene/MircoGame/SimonSays.unity
+    guid: cde6426e7c0122743bcc51dc652c76d4
+  - enabled: 1
+    path: Assets/aPOFromPsychologist/Scene/MircoGame/Sudoku.unity
+    guid: 8dcd5d07cc32199428d3d60afa5579ed
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
