@@ -6,26 +6,26 @@ namespace DiplomGames
 { 
     public class UiViewFS : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI tmp;
+        [SerializeField] private TextMeshProUGUI answerText;
         [SerializeField] private Image imageSprite;
 
-        public void ShowOtvetSound(bool onRight)
+        public void ShowAnswerSound(bool onRight)
         {
             if (onRight)
             {
-                tmp.color = Color.green;
-                tmp.text = "Правильно!";
+                answerText.color = Color.green;
+                answerText.text = "Правильно!";
             }
             else
             {
-                tmp.color = Color.red;
-                tmp.text = "Ошибка";
+                answerText.color = Color.red;
+                answerText.text = "Ошибка";
             }
         }
 
         public void ClearShowOtvet()
         {
-            tmp.text = string.Empty;
+            answerText.text = string.Empty;
         }
 
         public void UpdateSpriteProp(Sprite sprite)

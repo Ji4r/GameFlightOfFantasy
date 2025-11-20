@@ -18,7 +18,7 @@ namespace DiplomGames
             if (objectTrans.TryGetComponent<SoundPayerButton>(out var sound))
             {
                 bool isRightAnswer = sound.GetClip() == theRightSound ? true : false;
-                uiViewFS.ShowOtvetSound(isRightAnswer);
+                uiViewFS.ShowAnswerSound(isRightAnswer);
 
                 if (isRightAnswer)
                 {

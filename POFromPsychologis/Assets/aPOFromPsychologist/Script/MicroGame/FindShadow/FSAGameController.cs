@@ -5,29 +5,29 @@ namespace DiplomGames
 {
     public class FSAGameController : GameController
     {
-        [SerializeField] private SlotManager slotManager;
-        [SerializeField] private FSCheckerSlot checkerSlot;
-        [SerializeField] private UiViewFS uiViewFS;
+        [SerializeField] private FSASlotManager slotManager;
+        [SerializeField] private CheckerSlot checkerSlot;
+        [SerializeField] private FSAUiView uiView;
 
         public Action StartNextGame;
 
-        private FSSoundList currentGame;
+        private Sprite currentGame;
 
         private void OnEnable()
         {
-            StartNextGame += NextRaund;
+            StartNextGame += NextRound;
         }
 
         private void OnDisable()
         {
-            StartNextGame -= NextRaund;
+            StartNextGame -= NextRound;
         }
 
         protected override void StartGame()
         {
             currentGame = slotManager.StartGame();
-            uiViewFS.UpdateSpriteProp(currentGame.Sprite);
-            checkerSlot.UpdateRightSound(currentGame.TheRightSound);
+            uiView.UpdateSpriteProp(currentGame);
+           // checkerSlot.UpdateRightQuestion(currentGame);
         }
 
         protected override void EndGame()
@@ -35,11 +35,11 @@ namespace DiplomGames
             
         }
 
-        protected override void NextRaund()
+        protected override void NextRound()
         {
-            currentGame = slotManager.NextGame();
-            uiViewFS.UpdateSpriteProp(currentGame.Sprite);
-            checkerSlot.UpdateRightSound(currentGame.TheRightSound);
+            //currentGame = slotManager.NextGame();
+            //uiView.UpdateSpriteProp(currentGame.Sprite);
+            //checkerSlot.UpdateRightSound(currentGame.TheRightSound);
         }
     }
 }

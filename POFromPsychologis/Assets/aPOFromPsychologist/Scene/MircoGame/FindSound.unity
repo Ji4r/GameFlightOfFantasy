@@ -3795,6 +3795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotContainer: {fileID: 1178682772}
   controller: {fileID: 1091695633}
+  countChildren: 2
 --- !u!1 &845400350
 GameObject:
   m_ObjectHideFlags: 0
@@ -4380,7 +4381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0efcd490d0656b442ac910f09491258b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tmp: {fileID: 2039125163}
+  answerText: {fileID: 0}
   imageSprite: {fileID: 532347998}
 --- !u!114 &1091695633
 MonoBehaviour:

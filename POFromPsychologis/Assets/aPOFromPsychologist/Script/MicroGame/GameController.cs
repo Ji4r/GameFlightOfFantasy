@@ -6,7 +6,7 @@ namespace DiplomGames
     {
         protected virtual void StartGame() { }
 
-        protected virtual void NextRaund() { }
+        protected virtual void NextRound() { }
 
         protected virtual void EndGame() { }
 

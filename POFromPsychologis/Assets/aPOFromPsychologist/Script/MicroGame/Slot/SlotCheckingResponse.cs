@@ -3,16 +3,18 @@ using UnityEngine.EventSystems;
 
 namespace DiplomGames
 {
-    public class SlotCheckingResponseSound : Slot
+    public class SlotCheckingResponse : Slot
     {
         [SerializeField] private SlotContainer slotContainer;
         [SerializeField] private CheckerSlot controller;
+        [SerializeField] private byte countChildren = 2;
+
 
         public override void OnDrop(PointerEventData eventData)
         {
             if (eventData.pointerDrag != null)
             {
-                if (transform.childCount >= 2)
+                if (transform.childCount >= countChildren)
                 {
                     slotContainer.MoveSlot(slotContainer.GetFreeSlot(), transform.GetChild(1).transform);
                 }

@@ -15,12 +15,12 @@ namespace DiplomGames
 
         private void OnEnable()
         {
-            StartNextGame += NextRaund;
+            StartNextGame += NextRound;
         }
 
         private void OnDisable()
         {
-            StartNextGame -= NextRaund;
+            StartNextGame -= NextRound;
         }
 
         private void Start()
@@ -30,7 +30,7 @@ namespace DiplomGames
             checkerSlot.UpdateRightSound(currentGame.TheRightSound);
         }
 
-        protected override void NextRaund()
+        protected override void NextRound()
         {
             currentGame = slotManager.NextGame();
             uiViewFS.UpdateSpriteProp(currentGame.Sprite);
