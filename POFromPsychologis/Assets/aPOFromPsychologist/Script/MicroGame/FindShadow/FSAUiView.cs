@@ -1,11 +1,13 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace DiplomGames
 {
     public class FSAUiView : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI answerText;
+        [SerializeField] private Image mainCard;
 
         public void ShowAnswerText(bool onRight)
         {
@@ -28,7 +30,7 @@ namespace DiplomGames
 
         public void UpdateSpriteProp(Sprite newSprite)
         {
-
+            mainCard.sprite = newSprite;
         }
     }
 }

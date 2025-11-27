@@ -18,55 +18,65 @@ namespace DiplomGames
         [SerializeField] private Transform mainSlot;
         [SerializeField] private Transform[] slots;
 
-        public Sprite StartGame()
-        {
+        private FSAnimatedCards anims;
 
+        private void Awake()
+        {
+            anims = new(pointStartCard, durationAnims);
+        }
+
+        public (Sprite, Transform) StartGame()
+        {
             return GeneratedNewLevel();
         }
 
-        public Sprite NextGame() 
+        public (Sprite, Transform) NextGame() 
         {
+            anims.CardMoveOnStartPosition(cards, slots, () =>
+            {
+                anims.CardMoveToSlot(cards, slots);
+                uiView.ClearAnswer();
+            });
             return GeneratedNewLevel();
         }
 
-        private Sprite GeneratedNewLevel()
+        private (Sprite, Transform) GeneratedNewLevel()
         {
             var theRightSprite = shuffleSprite.GetRandomSprite();
             var listSprites = shuffleSprite.GetRandomSprites(3, theRightSprite);
-             //FillingSlotsWithSounds(listSprites);
-            return theRightSprite;
+            var transformRight = FillingSlotsWithSprite(listSprites, theRightSprite);
+            return (theRightSprite, transformRight);
         }
 
-        //private void FillingSlotsWithSounds(List<Sprite> soundList)
-        //{
-        //    int rightSoundIndex = Random.Range(0, cards.Length);
-        //    var rightSoundCard = cards[rightSoundIndex];
+        private Transform FillingSlotsWithSprite(List<Sprite> spriteList, Sprite theRightSprite)
+        {
+            int rightSoundIndex = Random.Range(0, cards.Length);
+            var rightSpriteCard = cards[rightSoundIndex];
 
-        //    if (rightSoundCard.TryGetComponent<Image>(out var soundPlayer))
-        //    {
-        //        soundPlayer.sprite = soundList.TheRightSound;
-        //        soundPlayer.UpdateData();
-        //    }
+            if (rightSpriteCard.TryGetComponent<Image>(out var imageSlot))
+            {
+                imageSlot.sprite = theRightSprite;
+            }
 
-        //    int otherSoundIndex = 0;
-        //    for (int i = 0; i < cards.Length; i++)
-        //    {
-        //        if (i == rightSoundIndex) continue;
+            int otherSoundIndex = 0;
+            for (int i = 0; i < cards.Length; i++)
+            {
+                if (i == rightSoundIndex) continue; 
 
-        //        var otherCard = cards[i];
-        //        if (otherCard.TryGetComponent<SoundPayerButton>(out var otherSoundPlayer))
-        //        {
-        //            otherSoundPlayer.clip = soundList.OtherSound[otherSoundIndex];
-        //            Debug.Log("Длина звука " + soundList.OtherSound[otherSoundIndex].length);
-        //            otherSoundPlayer.UpdateData(soundList.OtherSound[otherSoundIndex].length);
-        //            otherSoundIndex++;
-        //        }
-        //    }
-        //}
+                var otherCard = cards[i];
+                if (otherCard.TryGetComponent<Image>(out var otherSprite))
+                {
+                    otherSprite.sprite = spriteList[otherSoundIndex];
+                    otherSoundIndex++;
+                }
+            }
+
+            return rightSpriteCard;
+        }
 
         private void OnDisable()
         {
-           // anims.Dispose();
+           anims.Dispose();
         }
     }
 }

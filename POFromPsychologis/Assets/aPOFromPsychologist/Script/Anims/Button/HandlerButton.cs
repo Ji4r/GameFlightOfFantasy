@@ -17,7 +17,7 @@ namespace DiplomGames
         {
             foreach (var anim in buttonAnims)
             {
-                SoundPlayer.instance.PlaySound(ListSound.buttonClick);
+                //SoundPlayer.instance.PlaySound(ListSound.buttonClick);
                 anim.OnDown();
             }
         }
@@ -43,7 +43,7 @@ namespace DiplomGames
             foreach (var anim in buttonAnims)
             {
                 anim.OnEnter();
-                SoundPlayer.instance.PlaySound(ListSound.buttonEnter);
+                //SoundPlayer.instance.PlaySound(ListSound.buttonEnter);
             }
         }
     }

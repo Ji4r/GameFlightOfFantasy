@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: WeiTers studio
-  productName: GameFromPsychologist
+  productName: GameFromMiniPeka
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -293,7 +293,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: e0e1fa00a04f870439d9af72de047367, type: 3}
+      m_Icon: {fileID: 2800000, guid: 4b5fc9c8b34aa9e44895b3df652eb65f, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -644,7 +644,7 @@ PlayerSettings:
   ps4IncludedModules: []
   ps4attribVROutputEnabled: 0
   monoEnv: 
-  splashScreenBackgroundSourceLandscape: {fileID: 7096949306141819620, guid: 058e0dad6df3eea4881c70143abcce9a, type: 3}
+  splashScreenBackgroundSourceLandscape: {fileID: 1993111121073883553, guid: 8194179d0812015458dccbbf524ad6a2, type: 3}
   splashScreenBackgroundSourcePortrait: {fileID: 0}
   blurSplashScreenBackground: 0
   spritePackerPolicy: 

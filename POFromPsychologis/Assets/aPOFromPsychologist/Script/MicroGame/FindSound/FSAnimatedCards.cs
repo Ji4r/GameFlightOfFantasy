@@ -74,7 +74,7 @@ namespace DiplomGames
         {
             if (cards == null || slots == null)
             {
-                Debug.LogWarning("Какой то из массивов не создан! НЕ возможно передвинуть карты в слоты");
+                Debug.LogWarning("Какой то из массивов не создан! Не возможно передвинуть карты в слоты");
                 return false;
             }
 

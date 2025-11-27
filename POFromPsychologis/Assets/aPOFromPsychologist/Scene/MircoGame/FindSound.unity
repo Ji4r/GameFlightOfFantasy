@@ -3148,10 +3148,10 @@ RectTransform:
   - {fileID: 1652095004}
   m_Father: {fileID: 731774381}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 843, y: 188}
-  m_SizeDelta: {x: 198.88, y: 199.55}
+  m_AnchorMin: {x: 0.88600004, y: 0.64125353}
+  m_AnchorMax: {x: 0.99166673, y: 0.96949774}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -3.119995, y: -2.449997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &682677016
 MonoBehaviour:
@@ -4189,13 +4189,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1091695626}
-  - component: {fileID: 1091695627}
   - component: {fileID: 1091695628}
   - component: {fileID: 1091695631}
   - component: {fileID: 1091695630}
   - component: {fileID: 1091695629}
   - component: {fileID: 1091695633}
   - component: {fileID: 1091695632}
+  - component: {fileID: 1091695634}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -4218,22 +4218,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1091695627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1091695624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e0713451f5a64a458a9c13bb236643e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minWidth: 660
-  minHeight: 360
-  maxWidth: 3840
-  maxHeight: 2160
 --- !u!114 &1091695628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4381,7 +4365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0efcd490d0656b442ac910f09491258b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  answerText: {fileID: 0}
+  answerText: {fileID: 2039125163}
   imageSprite: {fileID: 532347998}
 --- !u!114 &1091695633
 MonoBehaviour:
@@ -4397,6 +4381,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiViewFS: {fileID: 1091695632}
   gameController: {fileID: 1091695629}
+--- !u!114 &1091695634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091695624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 112ab20c0b78cad4eacdb579510c642f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotManager: {fileID: 1091695631}
+  checkerSlot: {fileID: 1091695633}
+  uiViewFS: {fileID: 1091695632}
 --- !u!1 &1101878688
 GameObject:
   m_ObjectHideFlags: 0
