@@ -114,5 +114,44 @@ namespace DiplomGames
 
             throw new Exception($"Ошибка в di {key}");
         }
+
+        public object Resolve(Type type, string tag = null)
+        {
+            var key = (tag, type);
+
+            if (resolutions.Contains(key))
+            {
+                throw new Exception($"Циклическая зависимость для {key}");
+            }
+
+            resolutions.Add(key);
+
+            try
+            {
+                if (registations.TryGetValue(key, out var registation))
+                {
+                    if (registation.IsSengleton)
+                    {
+                        if (registation.Instance == null && registation.Factory != null)
+                        {
+                            registation.Instance = registation.Factory(this);
+                        }
+                        return registation.Instance;
+                    }
+                    return registation.Factory(this);
+                }
+
+                if (parentContainer != null)
+                {
+                    return parentContainer.Resolve(type, tag);
+                }
+            }
+            finally
+            {
+                resolutions.Remove(key);
+            }
+
+            throw new Exception($"Зависимость не найдена: {key}");
+        }
     }
 }
