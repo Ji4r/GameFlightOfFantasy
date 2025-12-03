@@ -25,9 +25,13 @@ namespace DiplomGames
 
         [SerializeField] private List<Color> listColor;
         [SerializeField] private STColorValidator colorValidator;
+        [Inject] private LoadScreenManager loadScreenManager;
+        [SerializeField] private SwitchScene switchScene;
+        [SerializeField] private GameObject gameObjectScreenload;
 
         public Action RestartGameEvent;
         public Action NextGameEvent;
+
 
         private int whatCreateColor = 0;
         private Range rangeDifficulties = new();
@@ -130,9 +134,13 @@ namespace DiplomGames
             simonWheel.NextSimon(rangeDifficulties);
         }
 
-        protected override void EndGame()
+        public void EndGame()
         {
-
+            gameObjectScreenload.SetActive(true);
+            loadScreenManager.ShowLoadScreen(() => 
+            {
+                switchScene.SwitchSceneById(0);
+            });
         }
 
 

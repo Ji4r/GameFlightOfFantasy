@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DiplomGames
 {
-    public class DIContainer : MonoBehaviour
+    public class DIContainer
     {
         private readonly DIContainer parentContainer;
         private readonly Dictionary<(string, Type), DIRegistation> registations = new();

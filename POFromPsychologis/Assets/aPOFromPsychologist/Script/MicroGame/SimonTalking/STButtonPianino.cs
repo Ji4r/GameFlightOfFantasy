@@ -8,17 +8,14 @@ namespace DiplomGames
     {
         private Image imageColor;
         private Button btn;
-        private STSimonWheel simonWheel;
         private Color myColor;
 
-        private static STColorValidator colorValidator;
+        [Inject] private static STColorValidator colorValidator;
 
         private void Awake()
         {
             if (colorValidator == null)
-            {
-                colorValidator = GameObject.FindAnyObjectByType<STColorValidator>();
-            }
+                colorValidator = FindFirstObjectByType<STColorValidator>();
 
             imageColor = GetComponent<Image>();
             btn = GetComponent<Button>();            
@@ -54,11 +51,6 @@ namespace DiplomGames
         public void OnClickPianoButton()
         {
             colorValidator.AddItemInListInput(ref myColor);
-        }
-
-        public void Initialized(STSimonWheel simonWheel)
-        {
-            this.simonWheel = simonWheel;
         }
     }
 }

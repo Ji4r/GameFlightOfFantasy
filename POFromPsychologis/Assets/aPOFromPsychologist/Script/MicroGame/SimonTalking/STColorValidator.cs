@@ -6,19 +6,13 @@ namespace DiplomGames
 {
     public class STColorValidator : MonoBehaviour
     {
-        [SerializeField, Inject] private STHistoryColor historyColor;
+        [Inject] private STHistoryColor historyColor;
         
         public Action AnErrorWasMade;
         public Action EverythingIsCorrect;
 
         private List<Color> originalListOfColors;
         private List<Color> listFromInput = new();
-        [Inject] private STUiView sTUiView;
-        private void Initialize()
-        {
-            Debug.Log($"HistoryColor: {historyColor != null}");
-            Debug.Log($"sTUiView: {sTUiView != null} Ô‡‡‡");
-        }
 
         public void NewSubsequnce(List<Color> newSubsequnce)
         {
