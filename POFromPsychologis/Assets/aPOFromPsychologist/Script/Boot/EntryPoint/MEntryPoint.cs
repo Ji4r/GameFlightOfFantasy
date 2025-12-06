@@ -6,7 +6,6 @@ namespace DiplomGames
     {
         public static MEntryPoint Instance;
 
-        private DIContainer container;
         private LoadScreenManager manager;
 
         private void Awake()
@@ -45,13 +44,34 @@ namespace DiplomGames
             {
                 entryPoint.Initialized(container);
             }
-
+       
             Destroy(this.gameObject);
         }
+
+        public override void InjectDependencies()
+        {
+            base.InjectDependencies();
+        }
+
+        public override void InjectDependenciesInto(object target)
+        {
+            base.InjectDependenciesInto(target);
+        }
+
+        public override void InitializeSystem()
+        {
+            base.InitializeSystem();
+        }
+
 
         public override EntryPoint[] SearchEntryPoint()
         {
             return base.SearchEntryPoint();
+        }
+
+        protected override void RegisterDependencies()
+        {
+            
         }
     }
 }

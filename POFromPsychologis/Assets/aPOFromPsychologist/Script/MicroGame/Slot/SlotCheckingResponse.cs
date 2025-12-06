@@ -3,14 +3,12 @@ using UnityEngine.EventSystems;
 
 namespace DiplomGames
 {
-    public class SlotCheckingResponse : Slot
+    public class SlotCheckingResponse : MonoBehaviour, IDropHandler
     {
         [SerializeField] private SlotContainer slotContainer;
         [SerializeField] private CheckerSlot controller;
         [SerializeField] private byte countChildren = 2;
-
-
-        public override void OnDrop(PointerEventData eventData)
+        public void OnDrop(PointerEventData eventData)
         {
             if (eventData.pointerDrag != null)
             {

@@ -1163,7 +1163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &206781954
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1429,12 +1429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.25
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.25
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &234920051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1594,12 +1589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.2
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.2
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &276385613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2974,12 +2964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.2
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.2
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &676054466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3132,12 +3117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.25
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.25
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &682677018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5023,12 +5003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.25
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.25
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &1242794042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5389,12 +5364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.2
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.2
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &1400071674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6264,12 +6234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.25
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.25
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &1843618650
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1343,12 +1343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.25
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.25
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &234920051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1895,12 +1890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.2
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.2
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &276385613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2261,7 +2251,6 @@ Transform:
   - {fileID: 1042963447}
   - {fileID: 1670774438}
   - {fileID: 1526478914}
-  - {fileID: 1796962416}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &366799362
@@ -2541,12 +2530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.2
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.2
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &382012091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3113,7 +3097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 4cc2d723921c9fd48abf0b15818507ec, type: 2}
   m_Color: {r: 1, g: 0, b: 0.8693409, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -3681,12 +3665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.2
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.2
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &676054466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3839,12 +3818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.25
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.25
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &682677018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4483,12 +4457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.2
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.2
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &784474107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5367,12 +5336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.2
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.2
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &995175518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6356,12 +6320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.25
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.25
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &1242794042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7208,12 +7167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.2
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.2
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &1400071674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7927,6 +7881,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f382c7992ba47148b4fc07987aae939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonDiffecalty1_4: {fileID: 382012091}
+  buttonDiffecalty2_6: {fileID: 1655185405}
+  buttonDiffecalty7: {fileID: 2101980159}
+  button4Color: {fileID: 1986099447}
+  button6Color: {fileID: 784474109}
+  button8Color: {fileID: 1754796223}
   windowRestratGame: {fileID: 1569603155}
   txtIsWin: {fileID: 985275784}
   buttonRestart: {fileID: 995175520}
@@ -8811,12 +8771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.2
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.2
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &1655185405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8910,6 +8865,7 @@ GameObject:
   - component: {fileID: 1670774438}
   - component: {fileID: 1670774439}
   - component: {fileID: 1670774440}
+  - component: {fileID: 1670774441}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -8944,21 +8900,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2305db7672d4788489fe061ac605c783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button1_4: {fileID: 382012091}
-  button2_6: {fileID: 1655185405}
-  button7: {fileID: 2101980159}
-  button4: {fileID: 1986099447}
-  button6: {fileID: 784474109}
-  button8: {fileID: 1754796223}
-  prefabColor: {fileID: 4400743919578987592, guid: 077f0e24c5deaf54d8e0a64abce8f80e, type: 3}
+  gameFactory: {fileID: 1670774441}
   slotColors: {fileID: 696533236}
   menuStart: {fileID: 29344514}
-  simonWheel: {fileID: 1042963449}
   parentButtonColor: {fileID: 696533236}
-  listColor: []
-  colorValidator: {fileID: 1042963451}
-  switchScene: {fileID: 1670774440}
-  gameObjectScreenload: {fileID: 0}
 --- !u!114 &1670774440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8971,6 +8916,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9657492606c982b4188d42d816eff99d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1670774441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670774436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5deb3c5142490a545bcfd2b0a3fc8e2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabColor: {fileID: 4400743919578987592, guid: 077f0e24c5deaf54d8e0a64abce8f80e, type: 3}
 --- !u!1 &1712604722
 GameObject:
   m_ObjectHideFlags: 0
@@ -9111,12 +9069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.2
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.2
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &1754796221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9374,12 +9327,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796962415}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.4827492, y: -0.28089747, z: -2.5241845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 345075550}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1796962417
 MonoBehaviour:
@@ -9587,12 +9540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.25
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.25
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &1843618650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9856,12 +9804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.2
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.2
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!222 &1909594729
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10318,12 +10261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.2
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.2
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &1986099445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10489,9 +10427,9 @@ RectTransform:
   - {fileID: 382012088}
   - {fileID: 1655185402}
   - {fileID: 2101980156}
+  - {fileID: 1986099442}
   - {fileID: 784474104}
   - {fileID: 1754796218}
-  - {fileID: 1986099442}
   m_Father: {fileID: 29344515}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -10835,12 +10773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.2
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.2
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &2101980159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10931,3 +10864,4 @@ SceneRoots:
   - {fileID: 609612197}
   - {fileID: 1101878691}
   - {fileID: 345075550}
+  - {fileID: 1796962416}

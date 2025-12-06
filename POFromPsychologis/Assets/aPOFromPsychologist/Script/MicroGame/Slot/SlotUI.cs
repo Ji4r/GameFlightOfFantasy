@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SlotUI : Slot
+public class SlotUI : MonoBehaviour, IDropHandler
 {
     [SerializeField] private byte howManyObjectsCanBeStored = 1;
 
-    public override void OnDrop(PointerEventData eventData)
+    public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null)
         {

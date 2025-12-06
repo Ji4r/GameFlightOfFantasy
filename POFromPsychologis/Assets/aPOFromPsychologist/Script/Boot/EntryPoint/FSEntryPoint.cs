@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DiplomGames
@@ -6,7 +7,6 @@ namespace DiplomGames
     {
         public static FSEntryPoint Instance;
 
-        private DIContainer container;
         private LoadScreenManager manager;
 
         private void Awake()
@@ -52,6 +52,26 @@ namespace DiplomGames
         public override EntryPoint[] SearchEntryPoint()
         {
             return base.SearchEntryPoint();
+        }
+
+        public override void InjectDependencies()
+        {
+            base.InjectDependencies();
+        }
+
+        public override void InjectDependenciesInto(object target)
+        {
+            base.InjectDependenciesInto(target);
+        }
+
+        public override void InitializeSystem()
+        {
+            base.InitializeSystem();
+        }
+
+        protected override void RegisterDependencies()
+        {
+            
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine.AddressableAssets;
 
 namespace DiplomGames
 {
-    public class EntryPointBoot : MonoBehaviour
+    public class EntryPointBoot : InjectDependence
     {
         public static EntryPointBoot Instance;
 
@@ -57,11 +57,20 @@ namespace DiplomGames
             screenManager.UpdateTextProcess("Загрузка меню");
             await SwitchScene.SwitchSceneByIdAsyncStatic(indexLoadScene);
 
-            var newGameObject = new GameObject();
-            var entryPoint = newGameObject.FindGameObjectByInterface<EntryPoint>();
-            entryPoint?.Initialized(container);          
+            //var newGameObject = new GameObject();
+            var entryPoint = GameObject.FindFirstObjectByType<EntryPoint>();
+            //var entryPoint = newGameObject.FindGameObjectByInterface<IEntryPoint>();
+            entryPoint?.Initialized(container);
 
+            screenManager.UpdateTextProcess(string.Empty);
             Destroy(this.gameObject);
         }
+
+        protected override void RegisterDependencies()
+        {
+
+        }
+
+
     }
 }

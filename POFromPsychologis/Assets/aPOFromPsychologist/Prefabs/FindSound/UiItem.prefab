@@ -254,12 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddSizeOnHover: 0.15
-  durationAnimsOnHover: 0.2
-  easeScheduleHover: 9
-  AddSizeOnClick: 0.25
-  durationAnimsOnClick: 0.2
-  easeScheduleClick: 9
+  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
 --- !u!114 &329112795491640004
 MonoBehaviour:
   m_ObjectHideFlags: 0

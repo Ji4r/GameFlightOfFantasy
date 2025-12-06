@@ -6,7 +6,6 @@ namespace DiplomGames
     {
         public static FSAEntryPoint Instance;
 
-        private DIContainer container;
         private LoadScreenManager manager;
 
         private void Awake()
@@ -49,9 +48,30 @@ namespace DiplomGames
             Destroy(this.gameObject);
         }
 
+
+        public override void InjectDependencies()
+        {
+            base.InjectDependencies();
+        }
+
+        public override void InjectDependenciesInto(object target)
+        {
+            base.InjectDependenciesInto(target);
+        }
+
+        public override void InitializeSystem()
+        {
+            base.InitializeSystem();
+        }
+
         public override EntryPoint[] SearchEntryPoint()
         {
             return base.SearchEntryPoint();
+        }
+
+        protected override void RegisterDependencies()
+        {
+          
         }
     }
 }

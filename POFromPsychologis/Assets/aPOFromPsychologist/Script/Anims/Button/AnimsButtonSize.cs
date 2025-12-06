@@ -6,18 +6,9 @@ namespace DiplomGames
 {
     public class AnimsButtonSize : MonoBehaviour, IAnimsButton
     {
-        [Header("При наведении на кнопку")]
-        [SerializeField] private float AddSizeOnHover = 0.15f;
-        [SerializeField] private float durationAnimsOnHover = 0.2f;
-        [SerializeField] private Ease easeScheduleHover = Ease.OutCubic;
-
-        [Header("При нажатии на кнопку")]
-        [SerializeField] private float AddSizeOnClick = 0.25f;
-        [SerializeField] private float durationAnimsOnClick = 0.2f;
-        [SerializeField] private Ease easeScheduleClick = Ease.OutCubic;
+        [SerializeField] private ScriptableButtonAnims presetAnims;
 
         private Vector3 baseSize;
-        private Button button;
         private Transform btnTransform;
         private Tween anims;
         private Vector3 sizeOnHover;
@@ -25,41 +16,40 @@ namespace DiplomGames
 
         private void Awake()
         {
-            button = GetComponent<Button>();
             btnTransform = transform;
 
             baseSize = btnTransform.localScale;
 
-            sizeOnHover = new Vector3(baseSize.x + AddSizeOnHover, baseSize.y + AddSizeOnHover, baseSize.z);
-            sizeOnClick = new Vector3(baseSize.x + AddSizeOnClick, baseSize.y + AddSizeOnClick, baseSize.z);
+            sizeOnHover = new Vector3(baseSize.x + presetAnims.AddSizeOnHover, baseSize.y + presetAnims.AddSizeOnHover, baseSize.z);
+            sizeOnClick = new Vector3(baseSize.x + presetAnims.AddSizeOnClick, baseSize.y + presetAnims.AddSizeOnHover, baseSize.z);
         }
 
         public void OnEnter()
         {
             KillAnims();
   
-            btnTransform.DOScale(sizeOnHover, durationAnimsOnHover).SetEase(easeScheduleHover);
+            btnTransform.DOScale(sizeOnHover, presetAnims.durationAnimsOnHover).SetEase(presetAnims.easeScheduleHover);
         }
 
         public void OnExit()
         {
             KillAnims();
 
-            btnTransform.DOScale(baseSize, durationAnimsOnHover).SetEase(easeScheduleHover);
+            btnTransform.DOScale(baseSize, presetAnims.durationAnimsOnHover).SetEase(presetAnims.easeScheduleHover);
         }
 
         public void OnDown()
         {
             KillAnims();
 
-            btnTransform.DOScale(sizeOnClick, durationAnimsOnHover).SetEase(easeScheduleHover);
+            btnTransform.DOScale(sizeOnClick, presetAnims.durationAnimsOnHover).SetEase(presetAnims.easeScheduleHover);
         }
 
         public void OnUp()
         {
             KillAnims();
 
-            btnTransform.DOScale(sizeOnHover, durationAnimsOnHover).SetEase(easeScheduleHover);
+            btnTransform.DOScale(sizeOnHover, presetAnims.durationAnimsOnHover).SetEase(presetAnims.easeScheduleHover);
         }
 
 

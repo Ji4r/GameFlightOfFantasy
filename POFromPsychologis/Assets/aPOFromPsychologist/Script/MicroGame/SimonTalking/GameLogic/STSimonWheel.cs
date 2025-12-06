@@ -86,5 +86,10 @@ namespace DiplomGames
                 listImage[i].color = originalColors[i];
             }
         }
+
+        public void Initialized(DIContainer parentContainer = null)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
