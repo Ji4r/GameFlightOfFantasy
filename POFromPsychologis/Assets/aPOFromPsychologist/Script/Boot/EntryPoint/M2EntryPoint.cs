@@ -6,6 +6,9 @@ namespace DiplomGames
     {
         public static M2EntryPoint Instance;
 
+        [SerializeField] private M2Resources resources;
+        [SerializeField] private M2GameManager gameManager;
+
         private LoadScreenManager manager;
 
         private void Awake()
@@ -30,6 +33,7 @@ namespace DiplomGames
                 return;
             }
 
+            StartInjectDependencies();
             manager.HideLoadScreenAndShowAnims();
         }
 
@@ -71,7 +75,7 @@ namespace DiplomGames
 
         protected override void RegisterDependencies()
         {
-
+            container.RegisterInstance<M2Resources>(resources);
         }
     }
 }

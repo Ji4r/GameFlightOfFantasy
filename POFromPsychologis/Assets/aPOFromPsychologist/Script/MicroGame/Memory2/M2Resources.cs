@@ -1,9 +1,11 @@
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace DiplomGames
 {
     public class M2Resources : MonoBehaviour
     {
-        [SerializeField] private Sprite[] listSprite;
+        public Sprite[] listSprite;
+        public List<M2DragAndDrop> listPropDragAndDrop;
     }
 }
