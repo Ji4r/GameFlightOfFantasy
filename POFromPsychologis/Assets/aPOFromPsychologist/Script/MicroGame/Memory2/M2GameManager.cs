@@ -1,6 +1,4 @@
-using DG.Tweening;
 using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +8,7 @@ namespace DiplomGames
     {
         public static M2GameManager instance;
 
+        [SerializeField] private ScriptableMover presetMoverAnim;
         [SerializeField] private Button startGame5;
         [SerializeField] private Button startGame10;
         [SerializeField] private Button startMove;
@@ -63,12 +62,21 @@ namespace DiplomGames
         protected override void NextRound()
         {
             fabricSlots.Initialized(sizeField);
-            ganerator = new M2Generator();
             var listSprite = ganerator.Generate(resources.listSprite, sizeField);
             initializedSlot.Initialized(fabricSlots.GameFieldTransform, listSprite);
 
+            foreach (var item in fabricSlots.GameM2SlotsChecker)
+            {
+                item.ResetState();
+            }
 
-            panelStart.SetActive(false);
+            foreach (var slot in initializedSlot.M2ImageSlots) // Включаем обратно Blocks Raycast у Canvas Group
+            {
+                if (slot.TryGetComponent<M2DragAndDrop>(out var dragSystem))
+                {
+                    dragSystem.SetRaycast(true);
+                }
+            }
 
             foreach (var slot in resources.listPropDragAndDrop)
             {
@@ -78,7 +86,7 @@ namespace DiplomGames
 
         private void StartMoveAnimToSlot()
         {
-            var anim = new M2AnimMoveToSlot(0.5f, Ease.InOutBack);
+            var anim = new MoveToSlotAnims(presetMoverAnim);
 
             if (fabricSlots == null)
             {

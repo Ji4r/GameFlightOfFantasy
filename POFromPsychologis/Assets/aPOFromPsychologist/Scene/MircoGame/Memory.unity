@@ -1432,7 +1432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
+  presetAnims: {fileID: 11400000, guid: 4ea81c3efe589054daf902cd97e5b730, type: 2}
 --- !u!114 &234920051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1729,7 +1729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
+  presetAnims: {fileID: 11400000, guid: 4ea81c3efe589054daf902cd97e5b730, type: 2}
 --- !u!114 &276385613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3408,7 +3408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
+  presetAnims: {fileID: 11400000, guid: 4ea81c3efe589054daf902cd97e5b730, type: 2}
 --- !u!114 &676054466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3561,7 +3561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
+  presetAnims: {fileID: 11400000, guid: 4ea81c3efe589054daf902cd97e5b730, type: 2}
 --- !u!114 &682677018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5538,7 +5538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
+  presetAnims: {fileID: 11400000, guid: 4ea81c3efe589054daf902cd97e5b730, type: 2}
 --- !u!114 &1242794042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6209,7 +6209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
+  presetAnims: {fileID: 11400000, guid: 4ea81c3efe589054daf902cd97e5b730, type: 2}
 --- !u!114 &1400071674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6765,7 +6765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
+  presetAnims: {fileID: 11400000, guid: 4ea81c3efe589054daf902cd97e5b730, type: 2}
 --- !u!114 &1591403241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7989,7 +7989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
+  presetAnims: {fileID: 11400000, guid: 4ea81c3efe589054daf902cd97e5b730, type: 2}
 --- !u!114 &1843618650
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 namespace DiplomGames
@@ -9,8 +8,6 @@ namespace DiplomGames
         [Inject] private M2Resources m2Resources;
 
         private List<M2ImageSlot> m2ImageSlots;
-
-
         public List<M2ImageSlot> M2ImageSlots { get { return m2ImageSlots; }}
 
 

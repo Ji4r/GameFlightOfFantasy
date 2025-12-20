@@ -7,6 +7,7 @@ namespace DiplomGames
     {
         private Image imageSlot;
         private Transform startSlot;
+        private M2SlotChecker slot;
 
         public Image ImageSlot
         {
@@ -21,11 +22,20 @@ namespace DiplomGames
 
         public void Initialized()
         {
-            if (startSlot == null && transform.parent.TryGetComponent<M2SlotChecker>(out var slot))
+            if (slot == null)
+            {
+                if (transform.parent.TryGetComponent<M2SlotChecker>(out var slot))
+                {
+                    this.slot = slot;
+                }
+            }
+
+            if (startSlot == null)
             {
                 startSlot = slot.transform;
-                slot.Initialize(transform);
             }
+
+            slot.Initialize(transform);
         }
     }
 }

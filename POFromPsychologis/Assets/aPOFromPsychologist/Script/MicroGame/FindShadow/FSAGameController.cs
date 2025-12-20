@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using System.Threading.Tasks;
 
 namespace DiplomGames
 {
@@ -41,9 +42,9 @@ namespace DiplomGames
             
         }
 
-        protected override void NextRound()
+        protected override async void NextRound()
         {
-            currentGame = slotManager.NextGame();
+            currentGame = await slotManager.NextGame();
             uiView.UpdateSpriteProp(currentGame.Item1);
             checkerSlot.UpdateRightQuestion(currentGame.Item2);
         }

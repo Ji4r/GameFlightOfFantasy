@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
+  presetAnims: {fileID: 11400000, guid: 4ea81c3efe589054daf902cd97e5b730, type: 2}
 --- !u!114 &682677018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1792,7 +1792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
+  presetAnims: {fileID: 11400000, guid: 4ea81c3efe589054daf902cd97e5b730, type: 2}
 --- !u!114 &1837576410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1940,7 +1940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
+  presetAnims: {fileID: 11400000, guid: 4ea81c3efe589054daf902cd97e5b730, type: 2}
 --- !u!114 &1843618650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2226,6 +2226,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f76aa360869b7b94e8e7d606c0a3f5ec, type: 3}
   - {fileID: 21300000, guid: f76aa360869b7b94e8e7d606c0a3f5ec, type: 3}
   - {fileID: 21300000, guid: f76aa360869b7b94e8e7d606c0a3f5ec, type: 3}
+  listPropDragAndDrop: []
 --- !u!114 &2120558496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2238,6 +2239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33a7663ca9db1b40ae0ec51d5ac917b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  presetMoverAnim: {fileID: 11400000, guid: c79850006477d3741946b96cf85f23df, type: 2}
   startGame5: {fileID: 1536002661}
   startGame10: {fileID: 2081489073}
   startMove: {fileID: 1837576411}

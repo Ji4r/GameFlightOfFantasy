@@ -306,6 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6254a3a5c589f1a4eae92eed9343d47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActiveSystem: 0
 --- !u!114 &62355938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1163,7 +1164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &206781954
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1429,7 +1430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
+  presetAnims: {fileID: 11400000, guid: 4ea81c3efe589054daf902cd97e5b730, type: 2}
 --- !u!114 &234920051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1589,7 +1590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
+  presetAnims: {fileID: 11400000, guid: 4ea81c3efe589054daf902cd97e5b730, type: 2}
 --- !u!114 &276385613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2964,7 +2965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
+  presetAnims: {fileID: 11400000, guid: 4ea81c3efe589054daf902cd97e5b730, type: 2}
 --- !u!114 &676054466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3117,7 +3118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
+  presetAnims: {fileID: 11400000, guid: 4ea81c3efe589054daf902cd97e5b730, type: 2}
 --- !u!114 &682677018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3547,6 +3548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6254a3a5c589f1a4eae92eed9343d47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActiveSystem: 0
 --- !u!114 &800280924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3969,6 +3971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6254a3a5c589f1a4eae92eed9343d47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActiveSystem: 0
 --- !u!114 &909267378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4395,6 +4398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiView: {fileID: 1091695631}
   gameController: {fileID: 1091695632}
+  slotManager: {fileID: 1969068941}
   theRightAnswer: {fileID: 62355936}
 --- !u!114 &1091695631
 MonoBehaviour:
@@ -5003,7 +5007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
+  presetAnims: {fileID: 11400000, guid: 4ea81c3efe589054daf902cd97e5b730, type: 2}
 --- !u!114 &1242794042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5364,7 +5368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
+  presetAnims: {fileID: 11400000, guid: 4ea81c3efe589054daf902cd97e5b730, type: 2}
 --- !u!114 &1400071674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6234,7 +6238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94dc18232d77a1459f5912b15e5120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetAnims: {fileID: 11400000, guid: 72a41454e930c3f44a1332a998c32af0, type: 2}
+  presetAnims: {fileID: 11400000, guid: 4ea81c3efe589054daf902cd97e5b730, type: 2}
 --- !u!114 &1843618650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6538,6 +6542,7 @@ MonoBehaviour:
   shuffleSprite: {fileID: 1969068942}
   uiView: {fileID: 1091695631}
   durationAnims: 0.7
+  shakeAnims: {fileID: 11400000, guid: 2dee3bed24e03e24eac12ad129b3fa9e, type: 2}
   pointStartCard: {fileID: 845400351}
   cards:
   - {fileID: 909267376}

@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace DiplomGames
@@ -6,6 +7,7 @@ namespace DiplomGames
     {
         [SerializeField] private FSAUiView uiView;
         [SerializeField] private FSAGameController gameController;
+        [SerializeField] private FSASlotManager slotManager;
         [SerializeField] private Transform theRightAnswer;
 
         public void UpdateRightQuestion(Transform newRight)
@@ -13,7 +15,7 @@ namespace DiplomGames
            theRightAnswer = newRight;
         }
 
-        public override void CheckRightAnswer(Transform objectTrans)
+        public override async void CheckRightAnswer(Transform objectTrans)
         {
             bool isRightAnswer = objectTrans == theRightAnswer ? true : false;
             uiView.ShowAnswerText(isRightAnswer);
@@ -26,6 +28,7 @@ namespace DiplomGames
             else
             {
                 SoundPlayer.instance.PlaySound(ListSound.answerNotSuccesful);
+                await slotManager.StartShake(objectTrans);
             }
         }
     }

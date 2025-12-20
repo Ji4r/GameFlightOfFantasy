@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
@@ -13,8 +13,11 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
     private Vector3 startPosition;
 
+    public bool isActiveSystem;
+
     private void Awake()
     {
+        isActiveSystem = true;
         rectTransform = GetComponent<RectTransform>();
         image = GetComponent<Image>();
         canvas = GetComponentInParent<Canvas>();
@@ -37,6 +40,11 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     public void OnEndDrag(PointerEventData eventData)
     {
         rectTransform.DOLocalMove(startPosition, 0.3f);
-        canvasGroup.blocksRaycasts = true;
+        SetRaycast(true);
+    }
+
+    public void SetRaycast(bool value)
+    {
+        canvasGroup.blocksRaycasts = value;
     }
 }

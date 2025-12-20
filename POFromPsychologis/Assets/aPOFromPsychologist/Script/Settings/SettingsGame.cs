@@ -33,45 +33,45 @@ namespace DiplomGames
 
         private void Awake()
         {
-            InitializedDisplayMode();
-            InitializedResolution();
+            //InitializedDisplayMode();
+            //InitializedResolution();
         }
 
         private void ChangeDisplayMode(int id)
         {
-            switch (id)
-            { 
-                case 0:
-                    SwitchDisplayMode(FullScreenMode.Windowed);
-                    break;
-                case 1:
-                    SwitchDisplayMode(FullScreenMode.FullScreenWindow);
-                    break;
-                case 2:
-                    SwitchDisplayMode(FullScreenMode.MaximizedWindow);
-                    break;
-            }
+            //switch (id)
+            //{ 
+            //    case 0:
+            //        SwitchDisplayMode(FullScreenMode.Windowed);
+            //        break;
+            //    case 1:
+            //        SwitchDisplayMode(FullScreenMode.FullScreenWindow);
+            //        break;
+            //    case 2:
+            //        SwitchDisplayMode(FullScreenMode.MaximizedWindow);
+            //        break;
+            //}
         }
 
         private void SwitchDisplayMode(FullScreenMode fullScreen)
         {
-            Screen.fullScreenMode = fullScreen;
-            curentScreenMode = fullScreen;
-            if (fullScreen == FullScreenMode.Windowed)
-            {
-                panelSizeWindow.SetActive(true);
-            }
-            else
-            {
-                panelSizeWindow.SetActive(false);
-            }
+            //Screen.fullScreenMode = fullScreen;
+            //curentScreenMode = fullScreen;
+            //if (fullScreen == FullScreenMode.Windowed)
+            //{
+            //    panelSizeWindow.SetActive(true);
+            //}
+            //else
+            //{
+            //    panelSizeWindow.SetActive(false);
+            //}
         }
 
         private void SetResolution(int resolutionIndex)
         {
-            Resolution resol = resolution[resolutionIndex];
-            currentResolutionScreen = resol;
-            Screen.SetResolution(resol.width, resol.height, false);
+            //Resolution resol = resolution[resolutionIndex];
+            //currentResolutionScreen = resol;
+            //Screen.SetResolution(resol.width, resol.height, false);
         }
 
         private void InitializedDisplayMode()

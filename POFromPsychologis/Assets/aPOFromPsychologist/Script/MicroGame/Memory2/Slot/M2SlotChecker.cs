@@ -59,5 +59,10 @@ namespace DiplomGames
             rightSprite = imageComponent.sprite;
             isReplied = false;
         }
+
+        public void ResetState()
+        {
+            isReplied = false;
+        }
     }
 }

@@ -1,4 +1,5 @@
-using System.Collections.Generic;
+п»їusing System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace DiplomGames
@@ -8,35 +9,42 @@ namespace DiplomGames
         [SerializeField] private FillSoundsCard sounds;
         [SerializeField] private UiViewFS uiViewFS;
         [SerializeField] private float durationAnims = 0.7f;
+        [SerializeField] ScriptableShake shakeAnims;
 
-        [Header("Настройки карточки")]
+        [Header("РќР°СЃС‚СЂРѕР№РєРё РєР°СЂС‚РѕС‡РєРё")]
         [SerializeField] private Transform pointStartCard;
         [SerializeField] private Transform[] cards;
 
-        [Header("Настройки слотов")]
+        [Header("РќР°СЃС‚СЂРѕР№РєРё СЃР»РѕС‚РѕРІ")]
         [SerializeField] private Transform mainSlot;
         [SerializeField] private Transform[] slots;
 
+        private ShakeAnims shakeAnim;
         private FSAnimatedCards anims;
 
         private void Awake()
         {
             anims = new(pointStartCard, durationAnims);
+            shakeAnim = new ShakeAnims(shakeAnims);
         }
 
-        public FSSoundList StartGame()
+        public async Task<FSSoundList> StartGame()
         {
-            anims.CardMoveToSlot(cards, slots);
-            return SelectTheRemainingSounds(sounds.GetRandomClipOnQueue());
+            var a = SelectTheRemainingSounds(sounds.GetRandomClipOnQueue());
+            SetActiveDragCardMove(false);
+            anims.CardsMoveToSlot(cards, slots);
+            SetActiveDragCardMove(true);
+            return a;
         }
 
-        public FSSoundList NextGame()
+        public async Task<FSSoundList> NextGame()
         {
-            anims.CardMoveOnStartPosition(cards, slots, () => 
-            {
-                anims.CardMoveToSlot(cards, slots);
-                uiViewFS.ClearShowOtvet();
-            });
+            SetActiveDragCardMove(false);
+            await anims.CardMoveOnStartPosition(cards, slots);
+            await anims.CardsMoveToSlot(cards, slots);
+            uiViewFS.ClearShowOtvet();
+            SetActiveDragCardMove(true);
+
             return SelectTheRemainingSounds(sounds.GetRandomClipOnQueue());
         }
 
@@ -70,9 +78,47 @@ namespace DiplomGames
                 if (otherCard.TryGetComponent<SoundPayerButton>(out var otherSoundPlayer))
                 {
                     otherSoundPlayer.clip = soundList.OtherSound[otherSoundIndex];
-                    Debug.Log("Длина звука " + soundList.OtherSound[otherSoundIndex].length);
                     otherSoundPlayer.UpdateData(soundList.OtherSound[otherSoundIndex].length);
                     otherSoundIndex++;
+                }
+            }
+        }
+
+        public Transform GetFreeSlot()
+        {
+            for (int i = 0; i < slots.Length; i++)
+            {
+                if (slots[i].childCount < 1)
+                {
+                    return slots[i];
+                }
+            }
+            throw new System.Exception("Error РІСЃРµ СЃР»РѕС‚С‹ РїРѕР»РЅС‹Рµ");
+        }
+
+        public async Task StartShake(Transform objectTrans)
+        {
+            SetActiveDragCardMove(false);
+            await shakeAnim.StartShake(objectTrans);
+            await anims.CardMoveToSlot(objectTrans, GetFreeSlot());
+            SetActiveDragCardMove(true);
+
+        }
+
+        private void SetActiveDragCardMove(bool isEnabled)
+        {
+            foreach (var card in cards)
+            {
+                if (card.TryGetComponent<DragAndDrop>(out var drag))
+                {
+                    drag.enabled = isEnabled;
+                    drag.SetRaycast(true);
+                }
+                if (card.TryGetComponent<HandlerButton>(out var handler))
+                {
+                    if (!isEnabled)
+                        handler.Reset();
+                    handler.enabled = isEnabled;
                 }
             }
         }

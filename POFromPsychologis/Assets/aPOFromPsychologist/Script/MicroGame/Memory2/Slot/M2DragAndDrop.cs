@@ -11,19 +11,16 @@ namespace DiplomGames
         private RectTransform parent;
         private RectTransform rectTransform;
         private Canvas canvas;
-        private Image image;
         private CanvasGroup canvasGroup;
 
         private Vector3 startPosition;
-        private Transform originalParent; // Сохраняем оригинального родителя
-        private int originalSiblingIndex; // Сохраняем оригинальный индекс среди дочерних объектов
+        private Transform originalParent; 
 
         private void Awake()
         {
             parent = GameObject.FindGameObjectWithTag("ParentForSlot").GetComponent<RectTransform>();
 
             rectTransform = GetComponent<RectTransform>();
-            image = GetComponent<Image>();
             canvas = GetComponentInParent<Canvas>();
             canvasGroup = GetComponentInParent<CanvasGroup>();
             startPosition = rectTransform.localPosition;
@@ -33,9 +30,7 @@ namespace DiplomGames
         {
             originalParent = transform.parent;
             startPosition = rectTransform.localPosition;
-            originalSiblingIndex = transform.GetSiblingIndex();
 
-            // Меняем родителя на Game (ParentForSlot)
             transform.SetParent(parent);
             transform.SetAsLastSibling();
 
@@ -73,7 +68,12 @@ namespace DiplomGames
         {
             rectTransform.SetParent(originalParent);
             rectTransform.DOLocalMove(startPosition, 0.3f);
-            canvasGroup.blocksRaycasts = true;
+            SetRaycast(true);
+        }
+
+        public void SetRaycast(bool isActive)
+        {
+            canvasGroup.blocksRaycasts = isActive;
         }
     }
 }

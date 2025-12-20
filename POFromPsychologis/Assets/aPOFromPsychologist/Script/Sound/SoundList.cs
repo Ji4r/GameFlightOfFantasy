@@ -7,7 +7,8 @@ namespace DiplomGames
         buttonClick,
         buttonEnter,
         answerSuccesful,
-        answerNotSuccesful
+        answerNotSuccesful,
+        Firecracker
     }
 
     public class SoundList : MonoBehaviour

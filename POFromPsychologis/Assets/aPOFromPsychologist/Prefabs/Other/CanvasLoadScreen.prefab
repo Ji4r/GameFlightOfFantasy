@@ -329,6 +329,7 @@ MonoBehaviour:
   loadScreen: {fileID: 3478588620215147914}
   image: {fileID: 466392966116519432}
   textProcess: {fileID: 7708109817070087565}
+  textLoad: {fileID: 1995335362434509202}
 --- !u!1 &5495103827718846934
 GameObject:
   m_ObjectHideFlags: 0

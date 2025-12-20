@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace DiplomGames
@@ -23,16 +24,16 @@ namespace DiplomGames
             StartNextGame -= NextRound;
         }
 
-        private void Start()
+        private async void Start()
         {
-            currentGame = slotManager.StartGame();
+            currentGame = await slotManager.StartGame();
             uiViewFS.UpdateSpriteProp(currentGame.Sprite);
             checkerSlot.UpdateRightSound(currentGame.TheRightSound);
         }
 
-        protected override void NextRound()
+        protected override async void NextRound()
         {
-            currentGame = slotManager.NextGame();
+            currentGame = await slotManager.NextGame();
             uiViewFS.UpdateSpriteProp(currentGame.Sprite);
             checkerSlot.UpdateRightSound(currentGame.TheRightSound);
         }

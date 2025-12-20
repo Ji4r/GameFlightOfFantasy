@@ -8,7 +8,7 @@ namespace DiplomGames
     {
         private IAnimsButton[] buttonAnims;
 
-        private void Start()
+        private void Awake()
         {
             buttonAnims = GetComponents<IAnimsButton>();
         }
@@ -17,9 +17,9 @@ namespace DiplomGames
         {
             foreach (var anim in buttonAnims)
             {
-                //SoundPlayer.instance.PlaySound(ListSound.buttonClick);
                 anim.OnDown();
             }
+            SoundPlayer.instance.PlaySound(ListSound.buttonClick);
         }
 
         public void OnPointerUp(PointerEventData eventData)
@@ -43,8 +43,13 @@ namespace DiplomGames
             foreach (var anim in buttonAnims)
             {
                 anim.OnEnter();
-                //SoundPlayer.instance.PlaySound(ListSound.buttonEnter);
             }
+            SoundPlayer.instance.PlaySound(ListSound.buttonEnter);
+        }
+
+        public void Reset()
+        {
+            OnPointerExit(null);
         }
     }
 }

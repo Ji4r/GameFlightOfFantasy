@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace DiplomGames
@@ -20,53 +21,87 @@ namespace DiplomGames
             tweens = new List<Tween>();
         }
 
-        public void CardMoveToSlot(Transform[] cards, Transform[] slots)
+        public async Task CardMoveToSlot(Transform objectCard, Transform slots)
+        {
+            KillAllAnims();
+
+            objectCard.SetParent(slots);
+            objectCard.position = objectCard.position;
+
+            Tween tween = objectCard.DOLocalMove(Vector3.zero, durationAnims);
+            tweens.Add(tween);
+
+            await tween.AsyncWaitForCompletion();
+        }
+
+        public async Task CardsMoveToSlot(Transform[] cards, Transform[] slots)
         {
             if (!ArrayIsValidate(cards, slots)) return;
 
             KillAllAnims();
 
+            var tasks = new List<Task>();
+
             for (int i = 0; i < cards.Length; i++)
             {
                 var card = cards[i];
-                int currentIndex = i;
+                var targetSlot = slots[i];
 
-                var targetSlot = slots[currentIndex];
                 Vector3 worldPos = card.position;
                 card.SetParent(targetSlot);
                 card.position = worldPos;
-                Tween tween = card.DOLocalMove(Vector3.zero, durationAnims);
-                tweens.Add(tween);
+
+                var task = card.DOLocalMove(Vector3.zero, durationAnims)
+                    .AsyncWaitForCompletion();
+                tasks.Add(task);
             }
+
+            await Task.WhenAll(tasks);
         }
 
-        public void CardMoveOnStartPosition(Transform[] cards, Transform[] slots, Action callback = null)
+        public async Task CardMoveOnStartPosition(Transform[] cards, Transform[] slots)
         {
             if (!ArrayIsValidate(cards, slots)) return;
 
             KillAllAnims();
 
-            bool[] allAinmsReady = new bool[cards.Length];
-            int completedAnimations = 0;
+            var tasks = new List<Task>();
 
             for (int i = 0; i < cards.Length; i++)
             {
                 var card = cards[i];
-                int currentIndex = i;
 
                 Vector3 currentWorldPos = card.position;
                 card.SetParent(pointStartCard);
                 card.position = currentWorldPos;
 
-                Tween tween = card.DOLocalMove(Vector3.zero, durationAnims).OnComplete(() => {
-                    allAinmsReady[currentIndex] = true;
-                    completedAnimations++;
-
-                    if (completedAnimations == cards.Length)
-                        callback?.Invoke();
-                });
-                tweens.Add(tween);
+                var task = card.DOLocalMove(Vector3.zero, durationAnims)
+                    .AsyncWaitForCompletion();
+                tasks.Add(task);
             }
+
+            await Task.WhenAll(tasks);
+            //bool[] allAinmsReady = new bool[cards.Length];
+            //int completedAnimations = 0;
+
+            //for (int i = 0; i < cards.Length; i++)
+            //{
+            //    var card = cards[i];
+            //    int currentIndex = i;
+
+            //    Vector3 currentWorldPos = card.position;
+            //    card.SetParent(pointStartCard);
+            //    card.position = currentWorldPos;
+
+            //    Tween tween = card.DOLocalMove(Vector3.zero, durationAnims).OnComplete(() => {
+            //        allAinmsReady[currentIndex] = true;
+            //        completedAnimations++;
+
+            //        if (completedAnimations == cards.Length)
+            //            callback?.Invoke();
+            //    });
+            //    tweens.Add(tween);
+            //}
         }
 
 

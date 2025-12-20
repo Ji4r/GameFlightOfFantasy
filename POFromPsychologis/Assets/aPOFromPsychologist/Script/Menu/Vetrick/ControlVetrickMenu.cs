@@ -1,7 +1,9 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
+using System.Linq;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace DiplomGames
 {
@@ -16,6 +18,8 @@ namespace DiplomGames
         private string currentPhrase;
         private Coroutine dialogue;
 
+        private Queue<string> listOfPhrases;
+
         private void OnEnable()
         {
             btn.onClick.AddListener(ClickOnVetrick);
@@ -28,6 +32,7 @@ namespace DiplomGames
 
         private void Start()
         {
+            GenerateListPhrase();
             dialogue = StartCoroutine(StartADialogue(welcomePhrase));
         }
 
@@ -40,9 +45,11 @@ namespace DiplomGames
                 textVetrick.text = currentPhrase;
                 dialogue = null;
                 return;
-            }
+            } // Увидить полный текст при двойном нажатии
+            if (listOfPhrases == null || listOfPhrases.Count == 0)
+                GenerateListPhrase();
 
-            dialogue = StartCoroutine(StartADialogue(vetrikasPhrases[Random.Range(0, vetrikasPhrases.Length)]));
+            dialogue = StartCoroutine(StartADialogue(listOfPhrases.Dequeue()));
         }
 
         private IEnumerator StartADialogue(string phrase)
@@ -62,6 +69,21 @@ namespace DiplomGames
         private void ClearText()
         {
             textVetrick.text = string.Empty;
+        }
+
+        private void GenerateListPhrase()
+        {
+            if (listOfPhrases == null)
+                listOfPhrases = new();
+
+            listOfPhrases.Clear();
+            var random = new System.Random();
+            var shuffledList = vetrikasPhrases.OrderBy(x => random.Next()).ToList();
+
+            foreach (var shuffled in shuffledList)
+            {
+                listOfPhrases.Enqueue(shuffled);
+            }
         }
     }
 }

@@ -80,7 +80,6 @@ namespace DiplomGames
             return obj;
         }
 
-
         private void FillField()
         {
             if (gameM2SlotsChecker == null)
