@@ -6,19 +6,14 @@ namespace DiplomGames
 {
     public class STGameController : GameController
     {
-        [SerializeField] private GameObjectFactory gameFactory;
-        [SerializeField] private Transform slotColors;
-        [SerializeField] private GameObject menuStart;
-        [SerializeField] private Transform parentButtonColor;
-
-        [Inject] private STSimonWheel simonWheel; 
+        [Inject] private STSimonWheel simonWheel;
+        [Inject] private STBuilderGame builderGame;
 
         public Action RestartGameEvent;
         public Action NextGameEvent;
         public Action<STGameSettingsManager> StartGameEvent;
 
-        private STGameSettingsManager gameManager;
-        private List<Color> listColor;
+        private STGameSettingsManager gameSettings;
 
 
         private void OnEnable()
@@ -37,55 +32,22 @@ namespace DiplomGames
 
         private void StartGame(STGameSettingsManager gameSettings)
         {
-            this.gameManager = gameSettings;
-            var listButtonColor = new List<STButtonPianino>();
+            this.gameSettings = gameSettings;
+            GameObject Wheel = builderGame.GetWheel();
+            List<STButtonPianino> listButtonColor = builderGame.GetButtonColor();
 
-            if (gameSettings.WhatCreateColor <= 0)
-            {
-                Debug.LogError("Ошибка старта игры нельзя создать 0 цветов");
-                return;
-            }
-
-            for (int i = 0; i < gameSettings.WhatCreateColor; i++)
-            {
-                GameObject colorBtn = gameFactory.CreateColorButton(slotColors);
-            }
-
-
-            for (int i = 0; i < parentButtonColor.childCount; i++)
-            {
-                if (parentButtonColor.GetChild(i).TryGetComponent<STButtonPianino>(out var btnColor))
-                {
-                    listButtonColor.Add(btnColor);
-                }
-            }
-
-            listColor = simonWheel.GetAllColorWheel();
-
-            if (listButtonColor.Count != listColor.Count)
-            {
-                Debug.LogError("Колличество кнопок и цветов не соответствует друг другу");
-                return;
-            }
-
-            for (int i = 0; i < listColor.Count; i++)
-            {
-                listButtonColor[i].SetColor(listColor[i]);
-            }
-
-            menuStart.SetActive(false);
-            simonWheel.StartSimon(gameSettings.RangeDifficulties);
+            simonWheel.StartSimon(gameSettings.difficultiesPreset.RangeDifficulties);
         }
 
         protected override void NextRound()
         {
-            if (gameManager.WhatCreateColor == 0)
+            if (gameSettings.gamePreset.WhatCreateColor == 0)
             {
                 Debug.LogError("Ошибка старта игры нельзя создать 0 цветов");
                 return;
             }
 
-            simonWheel.NextSimon(gameManager.RangeDifficulties);
+            simonWheel.NextSimon(gameSettings.difficultiesPreset.RangeDifficulties);
         }
 
         protected override void RestartGame()
@@ -94,6 +56,7 @@ namespace DiplomGames
         }
     }
 
+    [System.Serializable]
     public struct Range
     {
         public int minValue;

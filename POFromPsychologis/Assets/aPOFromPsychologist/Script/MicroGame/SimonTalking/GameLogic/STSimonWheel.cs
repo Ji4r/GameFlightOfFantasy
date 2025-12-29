@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,7 +7,9 @@ namespace DiplomGames
 {
     public class STSimonWheel : MonoBehaviour
     {
-        [SerializeField] private Transform parentColorSimon; // Родитель всех цветов
+        [HideInInspector] public Transform parentColorSimon; // Родитель всех цветов
+
+        [SerializeField] private STPresetColorAnimsWheel presetColorAnimsWheel;
         [SerializeField] private float darkenFactor = 0.5f;
 
         [Inject] private STColorValidator colorValidator;
@@ -14,6 +17,13 @@ namespace DiplomGames
         private STGenerateColorSubsequnce colorSubsequnce;
         private List<Image> listImage = new();
         private List<Color> originalColors = new();
+        private List<Color> darkenedColor = new();
+        private STAnimsColorWheel animsColorWheel;
+
+        private void Start()
+        {
+            animsColorWheel = new STAnimsColorWheel(presetColorAnimsWheel);
+        }
 
         public List<Color> GetAllColorWheel() 
         {
@@ -44,13 +54,19 @@ namespace DiplomGames
             }
         }
 
-        public void StartSimon(Range range)
+        public async Task StartSimon(Range range)
         {
             var listColor = GetAllColorWheel();
             colorSubsequnce = new();
             var sebsequnceColor = colorSubsequnce.GenerateSubsequnceColor(listColor, range);
             colorValidator.NewSubsequnce(sebsequnceColor);
             DarkenColorSimon();
+
+            for (int i = 0; i < sebsequnceColor.Count; i++)
+            {
+                await animsColorWheel.WaitInterval();
+                await animsColorWheel.StartFullAnims(listImage[i], originalColors[i], darkenedColor[i]);
+            }
         }
 
         public void NextSimon(Range range)
@@ -76,6 +92,7 @@ namespace DiplomGames
                 Color darkenedColor = originalColor * darkenFactor;
                 darkenedColor.a = originalColor.a;
                 image.color = darkenedColor;
+                this.darkenedColor.Add(darkenedColor);
             }
         }
 
