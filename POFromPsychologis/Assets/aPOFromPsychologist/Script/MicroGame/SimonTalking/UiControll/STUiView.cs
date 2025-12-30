@@ -11,14 +11,16 @@ namespace DiplomGames
         [SerializeField] private TextMeshProUGUI txtIsWin;
 
         [Header("Ссылки на кнопки")]
-        [SerializeField] private Button buttonRestart;
-        [SerializeField] private Button buttonNext;
-        [SerializeField] private Button startGame;
+        [SerializeField] private Button buttonReplay;
+        [SerializeField] private Button buttonNextRoundOnWindow;
+        [SerializeField] private Button buttonStartGame;
+        [SerializeField] private Button buttonPlaySequence;
 
         [Inject] private STBuilderGame builderGame;
         [Inject] private STColorValidator colorValidator;
         [Inject] private STGameController gameController;
         [Inject] private STGameSettingsManager gameSettingsManager;
+        [Inject] private STHistoryColor historyColor;
 
         private bool isInitialized;
 
@@ -31,22 +33,24 @@ namespace DiplomGames
 
         private void SubscribeToEvents()
         {
-            buttonRestart.onClick.AddListener(OnRestartClick);
-            buttonNext.onClick.AddListener(OnNextClick);
+            buttonReplay.onClick.AddListener(OnRestartClick);
+            buttonNextRoundOnWindow.onClick.AddListener(OnNextClick);
             colorValidator.AnErrorWasMade += ShowWindowRestartGame;
             colorValidator.EverythingIsCorrect += EverythingIsCorrect;
-            startGame.onClick.AddListener(StartGame);
+            buttonStartGame.onClick.AddListener(StartGame);
+            buttonPlaySequence.onClick.AddListener(NextRound);
         }
 
         private void OnDisable()
         {
             if (!isInitialized) return;
 
-            buttonRestart.onClick.RemoveListener(OnRestartClick);
-            buttonNext.onClick.RemoveListener(OnNextClick);
+            buttonReplay.onClick.RemoveListener(OnRestartClick);
+            buttonNextRoundOnWindow.onClick.RemoveListener(OnNextClick);
             colorValidator.AnErrorWasMade -= ShowWindowRestartGame;
             colorValidator.EverythingIsCorrect -= EverythingIsCorrect;
-            startGame.onClick.RemoveListener(StartGame);
+            buttonStartGame.onClick.RemoveListener(StartGame);
+            buttonPlaySequence.onClick.RemoveListener(NextRound);
         }
 
         public void InitRangeDifficulties(STDifficultiesPreset difficultiesPreset)
@@ -75,12 +79,15 @@ namespace DiplomGames
         private void OnRestartClick()
         {
             gameController.RestartGameEvent?.Invoke();
+            historyColor.ClearHistory();
             windowRestratGame.SetActive(false);
         }
 
         private void OnNextClick()
         {
-            gameController.NextGameEvent?.Invoke();
+            historyColor.ClearHistory();
+            gameController.SetActivePianino(false);
+            buttonPlaySequence.interactable = true;
             windowRestratGame.SetActive(false);
         }
 
@@ -92,8 +99,10 @@ namespace DiplomGames
         private void EverythingIsCorrect()
         {
             Debug.Log("You Won");
-            gameController.NextGameEvent?.Invoke();
+            buttonPlaySequence.interactable = true;
             windowRestratGame.SetActive(false);
+            historyColor.ClearHistory();
+            gameController.SetActivePianino(false);
         }
 
         private void InitializedGame()
@@ -103,7 +112,15 @@ namespace DiplomGames
 
         private void StartGame()
         {
+            buttonPlaySequence.interactable = false;
+            buttonStartGame.gameObject.SetActive(false);
             gameController.StartGameEvent?.Invoke(gameSettingsManager);
+        }
+
+        private void NextRound()
+        {
+            buttonPlaySequence.interactable = false;
+            gameController.NextGameEvent?.Invoke();
         }
     }
 }

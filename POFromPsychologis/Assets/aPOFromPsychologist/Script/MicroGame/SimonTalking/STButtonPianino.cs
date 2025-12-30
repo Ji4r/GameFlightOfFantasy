@@ -52,5 +52,10 @@ namespace DiplomGames
         {
             colorValidator.AddItemInListInput(ref myColor);
         }
+
+        public void SetInteractible(bool isActive)
+        {
+            btn.interactable = isActive;
+        }
     }
 }

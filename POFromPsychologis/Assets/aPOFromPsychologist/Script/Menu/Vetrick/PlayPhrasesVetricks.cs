@@ -56,10 +56,17 @@ namespace DiplomGames
         private IEnumerator StartADialogue(PhrseAndClip phrase)
         {
             ClearText();
+            float delayBetweenCharacters;
 
-            float delayBetweenCharacters = phrase.audioClip.length / phrase.vetrikasPhrases.Length;
+            if (phrase.audioClip != null)
+            {
+                delayBetweenCharacters = phrase.audioClip.length / phrase.vetrikasPhrases.Length;
+                SoundPlayer.instance.PlayWithStop(phrase.audioClip);
+            }
+            else
+                delayBetweenCharacters = 0.10f;
+
             currentPhrase = phrase;
-            SoundPlayer.instance.PlayWithStop(phrase.audioClip);
             foreach (var symbol in phrase.vetrikasPhrases) 
             {
                 textVetrick.text += symbol;

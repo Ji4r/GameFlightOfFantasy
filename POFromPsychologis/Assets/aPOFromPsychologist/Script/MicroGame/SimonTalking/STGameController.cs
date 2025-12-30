@@ -1,5 +1,7 @@
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace DiplomGames
@@ -30,16 +32,18 @@ namespace DiplomGames
             StartGameEvent -= StartGame;
         }
 
-        private void StartGame(STGameSettingsManager gameSettings)
+        private async void StartGame(STGameSettingsManager gameSettings)
         {
             this.gameSettings = gameSettings;
             GameObject Wheel = builderGame.GetWheel();
             List<STButtonPianino> listButtonColor = builderGame.GetButtonColor();
 
-            simonWheel.StartSimon(gameSettings.difficultiesPreset.RangeDifficulties);
+            SetActivePianino(false);
+            await simonWheel.StartSimon(gameSettings.difficultiesPreset.RangeDifficulties);
+            SetActivePianino(true);
         }
 
-        protected override void NextRound()
+        protected override async void NextRound()
         {
             if (gameSettings.gamePreset.WhatCreateColor == 0)
             {
@@ -47,12 +51,22 @@ namespace DiplomGames
                 return;
             }
 
-            simonWheel.NextSimon(gameSettings.difficultiesPreset.RangeDifficulties);
+            SetActivePianino(false);
+            await simonWheel.NextSimon(gameSettings.difficultiesPreset.RangeDifficulties);
+            SetActivePianino(true);
         }
 
         protected override void RestartGame()
         {
 
+        }
+
+        public void SetActivePianino(bool isActive)
+        {
+            foreach (var btn in builderGame.GetButtonColor())
+            {
+                btn.SetInteractible(isActive);
+            }
         }
     }
 

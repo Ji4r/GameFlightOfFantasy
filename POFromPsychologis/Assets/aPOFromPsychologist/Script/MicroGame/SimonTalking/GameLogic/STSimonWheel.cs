@@ -15,14 +15,17 @@ namespace DiplomGames
         [Inject] private STColorValidator colorValidator;
 
         private STGenerateColorSubsequnce colorSubsequnce;
-        private List<Image> listImage = new();
-        private List<Color> originalColors = new();
-        private List<Color> darkenedColor = new();
+        private List<ImageColor> listImage = new();
         private STAnimsColorWheel animsColorWheel;
 
         private void Start()
         {
             animsColorWheel = new STAnimsColorWheel(presetColorAnimsWheel);
+        }
+
+        private void OnDisable()
+        {
+            animsColorWheel.Dispose();
         }
 
         public List<Color> GetAllColorWheel() 
@@ -34,7 +37,7 @@ namespace DiplomGames
 
             foreach (var image in listImage) 
             {
-                allColor.Add(image.color);
+                allColor.Add(image.ImageSource.color);
             }
 
             return allColor;
@@ -48,8 +51,7 @@ namespace DiplomGames
             {
                 if (t.TryGetComponent<Image>(out var image))
                 {
-                    listImage.Add(image);
-                    originalColors.Add(image.color);
+                    listImage.Add(new ImageColor(image, image.color));
                 }
             }
         }
@@ -62,20 +64,49 @@ namespace DiplomGames
             colorValidator.NewSubsequnce(sebsequnceColor);
             DarkenColorSimon();
 
-            for (int i = 0; i < sebsequnceColor.Count; i++)
+
+            List<ImageColor> sebsequnceImage = new List<ImageColor>();
+
+            foreach (var color in sebsequnceColor) 
+            {
+                for (int i = 0; i < listImage.Count; i++)
+                {
+                    if (color == listImage[i].originalColors)
+                        sebsequnceImage.Add(listImage[i]);
+                }
+            }
+
+            for (int i = 0; i < sebsequnceImage.Count; i++)
             {
                 await animsColorWheel.WaitInterval();
-                await animsColorWheel.StartFullAnims(listImage[i], originalColors[i], darkenedColor[i]);
+                await animsColorWheel.StartFullAnims(sebsequnceImage[i].ImageSource, sebsequnceImage[i].originalColors, sebsequnceImage[i].darkenedColor);
             }
         }
 
-        public void NextSimon(Range range)
+        public async Task NextSimon(Range range)
         {
             RestoreColorSimon();
             var listColor = GetAllColorWheel();
             var sebsequnceColor = colorSubsequnce.GenerateSubsequnceColor(listColor, range);
             colorValidator.NewSubsequnce(sebsequnceColor);
             DarkenColorSimon();
+
+            List<ImageColor> sebsequnceImage = new List<ImageColor>();
+
+            foreach (var color in sebsequnceColor)
+            {
+                for (int i = 0; i < listImage.Count; i++)
+                {
+                    if (color == listImage[i].originalColors)
+                        sebsequnceImage.Add(listImage[i]);
+                }
+            }
+
+            for (int i = 0; i < sebsequnceImage.Count; i++)
+            {
+                await animsColorWheel.WaitInterval();
+                await animsColorWheel.StartFullAnims(sebsequnceImage[i].ImageSource, sebsequnceImage[i].originalColors, sebsequnceImage[i].darkenedColor);
+            }
         }
 
         public void ReplaySimon()
@@ -88,11 +119,11 @@ namespace DiplomGames
         {
             foreach (var image in listImage)
             {
-                Color originalColor = image.color;
+                Color originalColor = image.ImageSource.color;
                 Color darkenedColor = originalColor * darkenFactor;
                 darkenedColor.a = originalColor.a;
-                image.color = darkenedColor;
-                this.darkenedColor.Add(darkenedColor);
+                image.ImageSource.color = darkenedColor;
+                image.darkenedColor = darkenedColor;
             }
         }
 
@@ -100,7 +131,7 @@ namespace DiplomGames
         {
             for (int i = 0; i < listImage.Count; i++)
             {
-                listImage[i].color = originalColors[i];
+                listImage[i].ImageSource.color = listImage[i].originalColors;
             }
         }
 
@@ -108,5 +139,26 @@ namespace DiplomGames
         {
             throw new System.NotImplementedException();
         }
+    }
+
+    public class ImageColor
+    {
+        public Image ImageSource;
+        public Color originalColors;
+        public Color darkenedColor;
+
+        public ImageColor(Image image, Color color)
+        {
+            ImageSource = image;
+            originalColors = color;
+        }
+
+        public ImageColor(ImageColor imageColor)
+        {
+            ImageSource = imageColor.ImageSource;
+            originalColors = imageColor.originalColors;
+        }
+
+        public ImageColor() {}
     }
 }

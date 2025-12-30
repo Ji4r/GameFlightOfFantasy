@@ -28,8 +28,12 @@ namespace DiplomGames
         private void Start()
         {
             originalScale = panel.localScale;
-            gameObjectBackground = backgroundImage.gameObject;
-            backgroundImage.color = new Color(backgroundImage.color.r, backgroundImage.color.g, backgroundImage.color.b, 0);
+            if (backgroundImage != null)
+            {
+                gameObjectBackground = backgroundImage.gameObject;
+                backgroundImage.color = new Color(backgroundImage.color.r, backgroundImage.color.g, backgroundImage.color.b, 0);
+            }
+
             gameObjectPanel = panel.gameObject;
         }
 
@@ -37,9 +41,13 @@ namespace DiplomGames
         {
             KillAnims();
 
-            animsOpacity = backgroundImage.DOFade(0f, durationAnimsOnFade).SetEase(easeScheduleOpacity).OnComplete(() => {
-                gameObjectBackground.SetActive(false);
-            });
+            if (backgroundImage != null)
+            {
+                animsOpacity = backgroundImage.DOFade(0f, durationAnimsOnFade).SetEase(easeScheduleOpacity).OnComplete(() =>
+                {
+                    gameObjectBackground.SetActive(false);
+                });
+            }
             animsPanel = panel.DOScale(Vector3.zero, durationAnimsOnPanel).SetEase(easeSchedulePanel).OnComplete(() => {
                 gameObjectPanel.SetActive(false);
             });
@@ -52,7 +60,9 @@ namespace DiplomGames
             panel.localScale = Vector3.zero;
             gameObjectPanel.SetActive(true);
             gameObjectBackground.SetActive(true);
-            animsOpacity = backgroundImage.DOFade(setOpacity, durationAnimsOnFade).SetEase(easeScheduleOpacity);
+            if (backgroundImage != null)
+                animsOpacity = backgroundImage.DOFade(setOpacity, durationAnimsOnFade).SetEase(easeScheduleOpacity);
+
             animsPanel = panel.DOScale(originalScale, durationAnimsOnPanel).SetEase(easeSchedulePanel);
         }
 

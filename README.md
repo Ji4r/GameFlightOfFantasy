@@ -5,7 +5,7 @@
 > • **Программист:** WeiTers  
 > • **UI/UX Дизайнер:** Kaka4a  
 
-**[Скачать актуальную версию](https://github.com/Ji4r/GameFlightOfFantasy/releases/tag/Alpha0.3)**
+**[Скачать актуальную версию](https://github.com/Ji4r/GameFlightOfFantasy/releases/tag/1Beta)**
 
 ---
 
