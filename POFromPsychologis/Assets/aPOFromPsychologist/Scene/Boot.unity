@@ -328,6 +328,12 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
+  gameObjectMusicManager:
+    m_AssetGUID: 7a09d7b9daf602d499dd0072481fdb93
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 1
 --- !u!1 &1787207029
 GameObject:
   m_ObjectHideFlags: 0

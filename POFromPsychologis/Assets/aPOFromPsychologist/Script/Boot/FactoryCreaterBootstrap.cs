@@ -7,6 +7,7 @@ namespace DiplomGames
     public class FactoryCreaterBootstrap : MonoBehaviour
     {
         [SerializeField] private AssetReferenceGameObject gameObjectSoundManager;
+        [SerializeField] private AssetReferenceGameObject gameObjectMusicManager;
         private GlobalDI globalDi;
 
         public async Task InstantiateAsync()
@@ -19,6 +20,9 @@ namespace DiplomGames
 
             var prefabAssetSound = await gameObjectSoundManager.InstantiateAsync(Vector3.zero, Quaternion.identity, null).Task;
             DontDestroyOnLoad(prefabAssetSound);
+
+            var prefabAssetMusic = await gameObjectMusicManager.InstantiateAsync(Vector3.zero, Quaternion.identity).Task;
+            DontDestroyOnLoad(prefabAssetMusic);
 
             await Task.Yield();
         }

@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: 6e4f762fb7346d64cbf0ccbf92c348dc
   m_SerializeEntries:
+  - m_GUID: 7a09d7b9daf602d499dd0072481fdb93
+    m_Address: MusicManager
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 872aadaff1841424aa294ad64503eaa5
     m_Address: LoadScreen
     m_ReadOnly: 0
