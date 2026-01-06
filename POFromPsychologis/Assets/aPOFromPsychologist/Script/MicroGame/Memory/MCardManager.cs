@@ -76,21 +76,31 @@ namespace DiplomGames
             openCards.Clear();
         }
 
-        public void Initialized()
+        public void Initialized(List<MCardProperties> listCard)
         {
             if (parentCard == null)
                 Debug.LogError("parentCard = null");
 
             cards.Clear();
-            Transform card;
 
-            for (int i = 0; i < parentCard.childCount; i++)
+            cards.AddRange(listCard);
+        }
+
+        public void ShowAllCardAndTurnOffInteractible()
+        {
+            foreach (var card in cards)
             {
-                card = parentCard.GetChild(i);
-                if (card.TryGetComponent<MCardProperties>(out var cardProp))
-                {
-                    cards.Add(cardProp);
-                }
+                card.ShowFacialSide();
+                card.BtnCard.interactable = false;
+            }
+        }
+
+        public void HideAllCardAndTurnOnInteractible()
+        {
+            foreach (var card in cards)
+            {
+                card.HideFacialSide();
+                card.BtnCard.interactable = true;
             }
         }
     }

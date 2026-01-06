@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 335bc69d685e286489040462eca09821, type: 3}
+  m_Name: BaseConfig
+  m_EditorClassIdentifier: 
+  data:
+    MusicVolume: 0.5
+    SoundVolume: 0.8
+    VoiceVetrickVolume: 1
+    DisplayVetrik: 1
+    ScreenMode: 2
+    ResolutionScreen:
+      ResolutionIndex: 3
+      Width: 1024
+      Height: 768

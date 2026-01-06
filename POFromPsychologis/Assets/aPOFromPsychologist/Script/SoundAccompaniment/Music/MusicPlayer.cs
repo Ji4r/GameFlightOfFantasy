@@ -1,3 +1,4 @@
+using DG.Tweening.Core;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -7,6 +8,8 @@ namespace DiplomGames
     [RequireComponent(typeof(AudioSource))]
     public class MusicPlayer : MonoBehaviour
     {
+        public static MusicPlayer instance;
+
         [SerializeField, Tooltip("создовать новую очередь? после её окончания")] 
         private bool isGenerateShuffleList = true;
         [SerializeField] private float delayBetweenTracks = 0.1f;
@@ -14,12 +17,18 @@ namespace DiplomGames
 
         public event Action SwitchedMusic;
 
+        private float volumeMusic;
         private bool isPaused = false;
         private AudioSource source;
         private Coroutine coroutinePlayMusic;
 
         private void Start()
         {
+            if (instance == null)
+                instance = this;
+            else
+                Destroy(this.gameObject);
+
             source = GetComponent<AudioSource>();
             source.clip = null;
 
@@ -38,10 +47,6 @@ namespace DiplomGames
                 Debug.LogError("musicPlaylist равен null.");
                 return;
             }
-
-            // Проверяем что пришло из di и из этого следует запускаем ли мы музыку или нет
-            //ChangeValueMusic(из Di)  Из di буду брать громкость музыки из сохранения
-            coroutinePlayMusic = StartCoroutine(StartLoopPlaylist());
         }
 
         private IEnumerator StartLoopPlaylist()
@@ -111,7 +116,27 @@ namespace DiplomGames
                 return;
             }
 
-            source.volume = volume;
+            volumeMusic = volume;
+            source.volume = volumeMusic;
+
+            if (!source.isPlaying && volume > 0)
+                StartPlay();
+        }
+
+        /// <summary>
+        /// В зависимости от громкости меняет состояние, если громкость = 0 то 
+        /// он не запустит музыку или наооброт остоновит её.
+        /// Если больше 0 то запустит музыку
+        /// </summary>
+        public void StartPlay()
+        {
+            if (volumeMusic == 0)
+            {
+                Pause();
+                return;
+            }
+            else
+                coroutinePlayMusic = StartCoroutine(StartLoopPlaylist());
         }
     }
 }

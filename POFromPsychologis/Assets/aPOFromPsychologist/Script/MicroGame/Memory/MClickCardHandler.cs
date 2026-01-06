@@ -18,6 +18,9 @@ namespace DiplomGames
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            if (mCardProperties.BtnCard.interactable == false)
+                return;
+
             if (mCardProperties.IsShow || mCardProperties.IsFind) 
             { 
                 return; 

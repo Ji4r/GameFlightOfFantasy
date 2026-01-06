@@ -53,24 +53,36 @@ namespace DiplomGames
 
             DIContainer container = factory.GetGlobalDi();
             container.RegisterInstance<LoadScreenManager>(screenManager);
+            InitializeGame(container);
 
             screenManager.UpdateTextProcess("Загрузка меню");
             await SwitchScene.SwitchSceneByIdAsyncStatic(indexLoadScene);
 
-            //var newGameObject = new GameObject();
             var entryPoint = GameObject.FindFirstObjectByType<EntryPoint>();
-            //var entryPoint = newGameObject.FindGameObjectByInterface<IEntryPoint>();
+
             entryPoint?.Initialized(container);
 
             screenManager.UpdateTextProcess(string.Empty);
             Destroy(this.gameObject);
         }
 
+        private async void InitializeGame(DIContainer container)
+        {
+            DataSettings dataSettings = container.Resolve<SaveDataSettings>().Load();
+            container.RegisterInstance<DataSettings>(dataSettings);
+
+            if (!container.Resolve<DataSettings>(out var data))
+                return;
+
+            MusicPlayer.instance?.ChangeValueMusic(data.MusicVolume);
+            MusicPlayer.instance?.StartPlay();
+            SoundPlayer.instance?.SetVolumeSong(data.SoundVolume);
+            // Ещё для ветрика нужно но пока нету)
+        }
+
         protected override void RegisterDependencies()
         {
 
         }
-
-
     }
 }

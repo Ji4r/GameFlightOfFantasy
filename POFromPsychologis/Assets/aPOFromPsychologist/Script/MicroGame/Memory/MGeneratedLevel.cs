@@ -15,6 +15,8 @@ namespace DiplomGames
             DeleteChildren();
             var queueCard = CreateShufflePair(PairSelection(size));
             var countQueue =  queueCard.Count;
+            List<MCardProperties> listCard = new();
+
             for (int i = 0; i < countQueue; i++)
             {
                 int uniqId = queueCard.Peek().Item2;
@@ -25,10 +27,11 @@ namespace DiplomGames
                 {
                     cardProp.SetSpriteOnBackSide(sprite);
                     cardProp.SetUniqueId(uniqId);
+                    listCard.Add(cardProp);
                 }
             }
 
-            MCardManager.Instance.Initialized();
+            MCardManager.Instance.Initialized(listCard);
         }
 
         private void DeleteChildren()

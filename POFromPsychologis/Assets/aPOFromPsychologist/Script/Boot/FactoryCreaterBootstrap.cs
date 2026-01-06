@@ -27,6 +27,7 @@ namespace DiplomGames
             await Task.Yield();
         }
 
+
         public DIContainer GetGlobalDi()
         {
             return globalDi.GetDIContainer();

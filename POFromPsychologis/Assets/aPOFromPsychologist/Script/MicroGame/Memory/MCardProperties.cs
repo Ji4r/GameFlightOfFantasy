@@ -14,15 +14,21 @@ namespace DiplomGames
         [SerializeField, Tooltip("Сторона которая видна при открытии")] private Transform backCardTransform;
         [SerializeField] private Image imageBackSideCard;
 
+        private Button btnCard;
+
+        public Button BtnCard => btnCard;
         public bool IsShow { get; private set; }
         public bool IsFind { get; private set; }
         public int UniqueId { get; private set; } = -1;
 
+       
         private MCardAnims mCardAnims;
 
-        private void Start()
+
+        private void Awake()
         {
             mCardAnims = new MCardAnims(durationAnimsFlip);
+            btnCard = GetComponent<Button>();
         }
 
         public void SetSpriteOnBackSide(Sprite newSprite)

@@ -5,7 +5,6 @@ namespace DiplomGames
 {
     public class MainEntry
     {
-
         private static MainEntry instance;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -19,6 +18,7 @@ namespace DiplomGames
         {
 #if UNITY_EDITOR
             SceneManager.LoadScene(0);
+            Debug.ClearDeveloperConsole();
 #endif
         }
 

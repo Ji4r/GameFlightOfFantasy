@@ -6,17 +6,19 @@ namespace DiplomGames
 {
     public class MGameController : GameController
     {
+        [SerializeField] private Button btnHideAllCard;
         [SerializeField] private Button button4;
         [SerializeField] private Button button6;
         [SerializeField] private Button button8;
         [SerializeField] private Button btnRestart;
+        [SerializeField] private Button btnExitMenu;
         [SerializeField] private GameObject panelWindow;
         [SerializeField] private GameObject panelEndGame;
         [SerializeField] private GameObject panelPlayingFields;
         [SerializeField] private MGeneratedLevel generatedLevel;
 
         public Action EndGameAction;
-
+        [Inject] private EntryPoint entryPoint;
         private int fieldGame;
 
         void Start()
@@ -30,6 +32,8 @@ namespace DiplomGames
             button4.onClick.AddListener(() => { StartGenerate(8); });
             button6.onClick.AddListener(() => { StartGenerate(12); });
             button8.onClick.AddListener(() => { StartGenerate(16); });
+            btnExitMenu.onClick.AddListener(() => { entryPoint.LoadScene(1); });
+            btnHideAllCard.onClick.AddListener(MCardManager.Instance.HideAllCardAndTurnOnInteractible);
             EndGameAction += EndGame;
         }
 
@@ -39,6 +43,8 @@ namespace DiplomGames
             button4.onClick.RemoveListener(() => { StartGenerate(8); });
             button6.onClick.RemoveListener(() => { StartGenerate(12); });
             button8.onClick.RemoveListener(() => { StartGenerate(16); });
+            btnExitMenu.onClick.RemoveListener(() => { entryPoint.LoadScene(1); });
+            btnHideAllCard.onClick.RemoveListener(MCardManager.Instance.HideAllCardAndTurnOnInteractible);
             EndGameAction -= EndGame;
         }
 
@@ -46,6 +52,7 @@ namespace DiplomGames
         {
             panelWindow.SetActive(false);
             generatedLevel.GenerateLevel(size);
+            MCardManager.Instance.ShowAllCardAndTurnOffInteractible();
         }
 
         protected override void EndGame()
@@ -56,7 +63,7 @@ namespace DiplomGames
 
         protected override void RestartGame()
         {
-            SwitchScene.RestartScene();
+            entryPoint.ReloadSceneClearInstance(SwitchScene.GetActiveSceneIndex());
         }
     }
 }

@@ -18,8 +18,14 @@ namespace DiplomGames
 
         public async Task StartFullAnims(Image uiElement, Color baseColor, Color endColor)
         {
+            if (!IsImageValid(uiElement))
+                return;
+
             await ShowColor(uiElement, baseColor);
             await WaitInterval((int)(preset.ColorDisplayDuration * 1000));
+
+            if (!IsImageValid(uiElement))
+                return;
             await HideColor(uiElement, endColor);
         }
 
@@ -39,6 +45,16 @@ namespace DiplomGames
         {
             int baseInterval = (int)(preset.IntervalBetweenColors * 1000);
             await Task.Delay(interval <= 0 ? baseInterval : interval);
+        }
+
+        private bool IsImageValid(Image image)
+        {
+            if (image == null || image.Equals(null) || image.gameObject == null || !image.gameObject.activeInHierarchy)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public void Dispose()

@@ -49,7 +49,12 @@ MonoBehaviour:
   delayBetweenTracks: 0.1
   musicPlaylist:
     Playlist:
-    - {fileID: 8300000, guid: 52e393453cffa8942836dc29e5267cd4, type: 3}
+    - {fileID: 8300000, guid: 36cfbfb2b0a4f8e438d11d39ada5533f, type: 3}
+    - {fileID: 8300000, guid: a4e0e3f85e55d0e4c9b84a1dd3878c5a, type: 3}
+    - {fileID: 8300000, guid: cbf468aea34bd0849835705b5147db60, type: 3}
+    - {fileID: 8300000, guid: 8d1fe28e29f12e24fa243581a4cf4c1f, type: 3}
+    - {fileID: 8300000, guid: 6fd0406b48eda13499291a008815d8c6, type: 3}
+    - {fileID: 8300000, guid: 41f15a81fe6efcc4091924ff7eaeee8a, type: 3}
 --- !u!82 &8199915625929438156
 AudioSource:
   m_ObjectHideFlags: 0

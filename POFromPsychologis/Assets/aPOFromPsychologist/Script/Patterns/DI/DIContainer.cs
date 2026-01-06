@@ -115,6 +115,50 @@ namespace DiplomGames
             throw new Exception($"Ошибка в di {key}");
         }
 
+        public bool Resolve<T>(out T value, string tag = null)
+        {
+            var key = (tag, typeof(T));
+
+            if (resolutions.Contains(key))
+            {
+                throw new Exception($"Кто то уже пытаеться взять данный объект {key}");
+            }
+
+            resolutions.Add(key);
+
+            try
+            {
+                if (registations.TryGetValue(key, out var registation))
+                {
+                    if (registation.IsSengleton)
+                    {
+                        if (registation.Instance == null && registation.Factory != null)
+                        {
+                            registation.Instance = registation.Factory(this);
+                        }
+
+                        value = (T)registation.Instance;
+                        return (T)registation.Instance != null ? true : false;
+                    }
+
+                    value = (T)registation.Instance;
+                    return (T)registation.Instance != null ? true : false;
+                }
+
+                if (parentContainer != null)
+                {
+                    value = (T)registation.Instance;
+                    return (T)registation.Instance != null ? true : false;
+                }
+            }
+            finally
+            {
+                resolutions.Remove(key);
+            }
+
+            throw new Exception($"Ошибка в di {key}");
+        }
+
         public object Resolve(Type type, string tag = null)
         {
             var key = (tag, type);

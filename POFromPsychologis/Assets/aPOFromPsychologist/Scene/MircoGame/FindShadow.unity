@@ -1780,9 +1780,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbdb922555bae94dbcd21bcf5801dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayMode: {fileID: 192820259}
-  panelSizeWindow: {fileID: 890981082}
-  resolutionDropdown: {fileID: 385881084}
 --- !u!1 &342755940
 GameObject:
   m_ObjectHideFlags: 0

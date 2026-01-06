@@ -5,6 +5,8 @@ namespace DiplomGames
     public class GlobalDI : MonoBehaviour
     {
         private DIContainer container;
+        private DataSettings dataSetings;
+        private SaveSystem saveSystem;
 
         private void Awake()
         {
@@ -22,8 +24,12 @@ namespace DiplomGames
                 return;
 
             this.container = new DIContainer();
+            
+            saveSystem = new SaveSystem();
 
-            // тут дальше будет инициализация служб сохрания и т.д
+            container.RegisterInstance<ISaveSystems>(saveSystem);
+            container.RegisterInstance<SaveDataSettings>(new SaveDataSettings("Perfomanse.fof", container.Resolve<ISaveSystems>()));
+            // тут дальше будет инициализация службы сохрания и т.д
         }
     }
 }

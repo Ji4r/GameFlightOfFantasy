@@ -16,6 +16,11 @@ namespace DiplomGames
            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
+        public static int GetActiveSceneIndex()
+        {
+           return SceneManager.GetActiveScene().buildIndex;
+        }
+
         public static async Task SwitchSceneByIdAsyncStatic(int id)
         {
             await SceneManager.LoadSceneAsync(id);

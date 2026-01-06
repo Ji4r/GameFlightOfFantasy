@@ -71,5 +71,10 @@ namespace DiplomGames
             Debug.LogError($"{sound} Ошибка такого звука нет");
             return null;
         }
+
+        public void SetVolumeSong(float volume)
+        {
+            ValueSong = volume;
+        }
     }
 }
