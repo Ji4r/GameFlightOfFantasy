@@ -2,10 +2,11 @@ using UnityEngine;
 using DG.Tweening;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System;
 
 namespace DiplomGames
 {
-    public class ShakeAnims
+    public class ShakeAnims : IDisposable
     {
         private ScriptableShake presetAnims;
         private List<Tween> tweens;
@@ -16,6 +17,17 @@ namespace DiplomGames
             tweens = new List<Tween>();
         }
 
+        public void Dispose()
+        {
+            if (tweens != null) 
+            {
+                foreach (var t in tweens)
+                {
+                    t.Kill();
+                }
+            }
+            tweens.Clear();
+        }
 
         public async Task StartShake(Transform objectForShake)
         {

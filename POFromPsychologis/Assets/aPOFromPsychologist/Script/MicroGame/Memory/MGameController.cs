@@ -33,7 +33,7 @@ namespace DiplomGames
             button6.onClick.AddListener(() => { StartGenerate(12); });
             button8.onClick.AddListener(() => { StartGenerate(16); });
             btnExitMenu.onClick.AddListener(() => { entryPoint.LoadScene(1); });
-            btnHideAllCard.onClick.AddListener(MCardManager.Instance.HideAllCardAndTurnOnInteractible);
+            btnHideAllCard.onClick.AddListener(HideAllCard);
             EndGameAction += EndGame;
         }
 
@@ -44,7 +44,7 @@ namespace DiplomGames
             button6.onClick.RemoveListener(() => { StartGenerate(12); });
             button8.onClick.RemoveListener(() => { StartGenerate(16); });
             btnExitMenu.onClick.RemoveListener(() => { entryPoint.LoadScene(1); });
-            btnHideAllCard.onClick.RemoveListener(MCardManager.Instance.HideAllCardAndTurnOnInteractible);
+            btnHideAllCard.onClick.RemoveListener(HideAllCard);
             EndGameAction -= EndGame;
         }
 
@@ -64,6 +64,12 @@ namespace DiplomGames
         protected override void RestartGame()
         {
             entryPoint.ReloadSceneClearInstance(SwitchScene.GetActiveSceneIndex());
+        }
+
+        private void HideAllCard()
+        {
+            MCardManager.Instance.HideAllCardAndTurnOnInteractible();
+            btnHideAllCard.interactable = false;
         }
     }
 }

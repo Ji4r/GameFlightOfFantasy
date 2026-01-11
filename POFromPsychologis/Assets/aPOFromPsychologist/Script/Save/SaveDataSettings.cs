@@ -29,7 +29,9 @@ namespace DiplomGames
             {
                 var data = settingsHandle.Result.Data;
                 data.Clone(out baseSettings);
-            }       
+            }  
+            
+            Addressables.Release(settingsHandle);
         }
 
         public void Save(DataSettings data, Action<bool> callback = null) 

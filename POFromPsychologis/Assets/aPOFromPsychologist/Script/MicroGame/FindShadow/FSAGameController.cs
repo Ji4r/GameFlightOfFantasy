@@ -44,8 +44,11 @@ namespace DiplomGames
 
         protected override async void NextRound()
         {
-            currentGame = await slotManager.NextGame();
+            await slotManager.NextGame();
+            await slotManager.SetScaleToZero();
+            currentGame = slotManager.GeneratedNewLevel();
             uiView.UpdateSpriteProp(currentGame.Item1);
+            await slotManager.SetScaleToBase();
             checkerSlot.UpdateRightQuestion(currentGame.Item2);
         }
     }

@@ -2,10 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using System;
 
 namespace DiplomGames
 {
-    public class AnimsTooltip 
+    public class AnimsTooltip : IDisposable
     {
         private float durationAnims;
         private float alpha;
@@ -95,6 +96,11 @@ namespace DiplomGames
             {
                 animText.Kill();
             }
+        }
+
+        public void Dispose()
+        {
+            KillAnims();
         }
     }
 }

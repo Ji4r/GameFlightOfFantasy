@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.EventSystems;
 
 namespace DiplomGames
@@ -13,7 +14,7 @@ namespace DiplomGames
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            Invoke(nameof(ShowTooltip), howLongDoesItTakeToShowHint);
+            StartCoroutine(ShowTooltip());
         }
 
         public void OnPointerExit(PointerEventData eventData)
@@ -21,8 +22,9 @@ namespace DiplomGames
             tooltipVisual.HideTooltip();
         }
 
-        private void ShowTooltip()
+        private IEnumerator ShowTooltip()
         {
+            yield return new WaitForSeconds(howLongDoesItTakeToShowHint);
             tooltipVisual.ShowTooltip(textTooltip);
         }
     }

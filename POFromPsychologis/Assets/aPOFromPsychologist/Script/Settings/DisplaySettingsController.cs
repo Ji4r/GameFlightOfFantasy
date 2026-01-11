@@ -87,7 +87,7 @@ namespace DiplomGames
 
         public List<string> InitializedDisplayMode()
         {
-            keyDisplayMode = new Dictionary<FullScreenMode, string>{
+            keyDisplayMode = new Dictionary<FullScreenMode, string>(3){
                 {FullScreenMode.Windowed, "Оконный"},
                 {FullScreenMode.FullScreenWindow, "Безрамочный полноэкранный"},
                 {FullScreenMode.MaximizedWindow, "Полный экран"},

@@ -57,6 +57,7 @@ namespace DiplomGames
             {
                 if (parentButtonColor.GetChild(i).TryGetComponent<STButtonPianino>(out var btnColor))
                 {
+                    btnColor.SetInteractible(false);
                     listButtonColor.Add(btnColor);
                 }
             }

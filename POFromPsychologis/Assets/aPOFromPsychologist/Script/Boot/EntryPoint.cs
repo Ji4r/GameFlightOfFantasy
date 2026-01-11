@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace DiplomGames
@@ -62,7 +64,7 @@ namespace DiplomGames
 
         public virtual void ReloadSceneClearInstance(int indexScene)
         {
-            LoadScene(indexScene);
+           LoadScene(indexScene);
         }
 
         public virtual EntryPoint[] SearchEntryPoint(GameObject ignoreObject)

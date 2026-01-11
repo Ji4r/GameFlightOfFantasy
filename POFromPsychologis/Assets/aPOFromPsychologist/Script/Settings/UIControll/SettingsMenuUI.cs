@@ -43,11 +43,8 @@ namespace DiplomGames
             audioSettings = settingsGame.AudioSettingsController;
             displaySettings = settingsGame.DisplaySettingsController;
             ValueChangedMusic(dataSettings.MusicVolume);
-            UpdateSliderValue(sliderMusic, dataSettings.MusicVolume);
             ValueChangedSound(dataSettings.SoundVolume);
-            UpdateSliderValue(sliderSound, dataSettings.SoundVolume);
             ValueChangedVetrickVoice(dataSettings.VoiceVetrickVolume);
-            UpdateSliderValue(sliderVetrickVoice, dataSettings.VoiceVetrickVolume);
 
             sliderMusic.onValueChanged.AddListener(ValueChangedMusic);
             sliderSound.onValueChanged.AddListener(ValueChangedSound);
@@ -83,20 +80,35 @@ namespace DiplomGames
 
         private void ValueChangedMusic(float volume)
         {
+            Debug.Log(" иньпинь т€уу");
             audioSettings.SetVolumeMusic(volume);
             volumeProcentMusic.text = $"{Mathf.RoundToInt(volume * 100)}%";
+            UpdateSliderValue(sliderMusic, volume);
+        }
+
+        public void ValueChangedMusicNoSaving(float volume)
+        {
+            sliderMusic.onValueChanged.RemoveListener(ValueChangedMusic);
+
+            audioSettings.SetVolumeMusicNoSaving(volume);
+            volumeProcentMusic.text = $"{Mathf.RoundToInt(volume * 100)}%";
+            UpdateSliderValue(sliderMusic, volume);
+
+            sliderMusic.onValueChanged.AddListener(ValueChangedMusic);
         }
 
         private void ValueChangedSound(float volume)
         {
             audioSettings.SetVolumeSound(volume);
             volumeProcentSound.text = $"{Mathf.RoundToInt(volume * 100)}%";
+            UpdateSliderValue(sliderSound, volume);
         }
 
         private void ValueChangedVetrickVoice(float volume)
         {
             audioSettings.SetVolumeVetrickVoice(volume);
             volumeProcentVetrickVoice.text = $"{Mathf.RoundToInt(volume * 100)}%";
+            UpdateSliderValue(sliderVetrickVoice, dataSettings.VoiceVetrickVolume);
         }
 
         private void UpdateSliderValue(Slider slider, float value)

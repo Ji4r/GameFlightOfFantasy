@@ -48,5 +48,10 @@ namespace DiplomGames
             originalListOfColors?.Clear();
             listFromInput?.Clear();
         }
+
+        public void CleatInputList()
+        {
+            listFromInput?.Clear();
+        }
     }
 }

@@ -66,7 +66,7 @@ namespace DiplomGames
             Destroy(this.gameObject);
         }
 
-        private async void InitializeGame(DIContainer container)
+        private void InitializeGame(DIContainer container)
         {
             DataSettings dataSettings = container.Resolve<SaveDataSettings>().Load();
             container.RegisterInstance<DataSettings>(dataSettings);

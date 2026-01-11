@@ -10,7 +10,8 @@ namespace DiplomGames
         [SerializeField] private FSAShuffleSprite shuffleSprite;
         [SerializeField] private FSAUiView uiView;
         [SerializeField] private float durationAnims = 0.7f;
-        [SerializeField] ScriptableShake shakeAnims = null;
+        [SerializeField] ScriptableShake shakeAnims;
+        [SerializeField] ScriptableScaler scalerPreset;
 
         [Header("Настройки карточки")]
         [SerializeField] private Transform pointStartCard;
@@ -22,11 +23,20 @@ namespace DiplomGames
 
         private FSAnimatedCards anims;
         private ShakeAnims shakeAnim;
+        private AnimsScale animsScale;
+        private Vector3[] baseScaleCards;
 
         private void Awake()
         {
             anims = new(pointStartCard, durationAnims);
             shakeAnim = new ShakeAnims(shakeAnims);
+            animsScale = new AnimsScale(scalerPreset);
+            baseScaleCards = new Vector3[cards.Length];
+
+            for (int i = 0; i < cards.Length; i++) 
+            {
+                baseScaleCards[i] = cards[i].localScale;
+            }
         }
 
         public (Sprite, Transform) StartGame()
@@ -34,7 +44,7 @@ namespace DiplomGames
             return GeneratedNewLevel();
         }
 
-        public async Task<(Sprite, Transform)> NextGame() 
+        public async Task NextGame() 
         {
             SetActiveDragCardMove(false);
             await anims.CardMoveOnStartPosition(cards, slots);
@@ -42,10 +52,10 @@ namespace DiplomGames
             SetActiveDragCardMove(true);
             uiView.ClearAnswer();
 
-            return GeneratedNewLevel();
+            //return GeneratedNewLevel();
         }
 
-        private (Sprite, Transform) GeneratedNewLevel()
+        public (Sprite, Transform) GeneratedNewLevel()
         {
             var theRightSprite = shuffleSprite.GetRandomSprite();
             var listSprites = shuffleSprite.GetRandomSprites(3, theRightSprite);
@@ -115,6 +125,30 @@ namespace DiplomGames
                 }
             }
             throw new System.Exception("Error все слоты полные");
+        }
+
+        public async Task SetScaleToZero()
+        {
+            Task[] tasks = new Task[cards.Length];
+
+            for (int i = 0; i < cards.Length; i++)
+            {
+                tasks[i] = animsScale.SetScale(cards[i], Vector3.zero);
+            }
+
+            await Task.WhenAll(tasks);
+        }
+
+        public async Task SetScaleToBase()
+        {
+            Task[] tasks = new Task[cards.Length];
+
+            for (int i = 0; i < cards.Length; i++)
+            {
+                tasks[i] = animsScale.SetScale(cards[i], baseScaleCards[i]);
+            }
+
+            await Task.WhenAll(tasks);
         }
 
         private void OnDisable()

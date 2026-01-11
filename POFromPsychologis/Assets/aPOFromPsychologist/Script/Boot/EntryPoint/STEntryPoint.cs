@@ -12,9 +12,12 @@ namespace DiplomGames
         [SerializeField] private STHistoryColor historyColor;
         [SerializeField] private STSimonWheel simonWheel;
         [SerializeField] private STUiView uiView;
+        [SerializeField] private VetrickControll vetrickControll;
 
         protected override void RegisterDependencies()
         {
+            container.RegisterInstance<EntryPoint>(this);
+            container.RegisterInstance<VetrickControll>(vetrickControll);
             container.RegisterInstance<STColorValidator>(colorValidator);
             container.RegisterInstance<STHistoryColor>(historyColor);
             container.RegisterInstance<STSimonWheel>(simonWheel);

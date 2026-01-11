@@ -21,6 +21,11 @@ namespace DiplomGames
             MusicPlayer.instance?.ChangeValueMusic(volume);
         }
 
+        public void SetVolumeMusicNoSaving(float volume)
+        {
+            MusicPlayer.instance?.ChangeValueMusic(volume);
+        }
+
         public void SetVolumeSound(float volume)
         {
             dataSettings.SoundVolume = volume;

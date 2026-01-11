@@ -56,9 +56,17 @@ namespace DiplomGames
             SetActivePianino(true);
         }
 
-        protected override void RestartGame()
+        protected override async void RestartGame()
         {
+            if (gameSettings.gamePreset.WhatCreateColor == 0)
+            {
+                Debug.LogError("Ошибка старта игры нельзя создать 0 цветов");
+                return;
+            }
 
+            SetActivePianino(false);
+            await simonWheel.ReplaySimon();
+            SetActivePianino(true);
         }
 
         public void SetActivePianino(bool isActive)

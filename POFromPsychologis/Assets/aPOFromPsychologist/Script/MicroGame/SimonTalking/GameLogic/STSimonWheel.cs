@@ -14,6 +14,7 @@ namespace DiplomGames
 
         [Inject] private STColorValidator colorValidator;
 
+        private List<Color> currentColorSequnce = new();
         private STGenerateColorSubsequnce colorSubsequnce;
         private List<ImageColor> listImage = new();
         private STAnimsColorWheel animsColorWheel;
@@ -60,14 +61,15 @@ namespace DiplomGames
         {
             var listColor = GetAllColorWheel();
             colorSubsequnce = new();
-            var sebsequnceColor = colorSubsequnce.GenerateSubsequnceColor(listColor, range);
-            colorValidator.NewSubsequnce(sebsequnceColor);
+            currentColorSequnce.Clear();
+            currentColorSequnce = colorSubsequnce.GenerateSubsequnceColor(listColor, range);
+            colorValidator.NewSubsequnce(currentColorSequnce);
             DarkenColorSimon();
 
 
             List<ImageColor> sebsequnceImage = new List<ImageColor>();
 
-            foreach (var color in sebsequnceColor) 
+            foreach (var color in currentColorSequnce) 
             {
                 for (int i = 0; i < listImage.Count; i++)
                 {
@@ -87,13 +89,14 @@ namespace DiplomGames
         {
             RestoreColorSimon();
             var listColor = GetAllColorWheel();
-            var sebsequnceColor = colorSubsequnce.GenerateSubsequnceColor(listColor, range);
-            colorValidator.NewSubsequnce(sebsequnceColor);
+            currentColorSequnce.Clear();
+            currentColorSequnce = colorSubsequnce.GenerateSubsequnceColor(listColor, range);
+            colorValidator.NewSubsequnce(currentColorSequnce);
             DarkenColorSimon();
 
             List<ImageColor> sebsequnceImage = new List<ImageColor>();
 
-            foreach (var color in sebsequnceColor)
+            foreach (var color in currentColorSequnce)
             {
                 for (int i = 0; i < listImage.Count; i++)
                 {
@@ -109,10 +112,28 @@ namespace DiplomGames
             }
         }
 
-        public void ReplaySimon()
+        public async Task ReplaySimon()
         {
-            //colorValidator.Clea
-            // —тирание истории и запуск повторно анимаций
+            RestoreColorSimon();
+            //colorValidator.NewSubsequnce(currentColorSequnce);
+            DarkenColorSimon();
+
+            List<ImageColor> sebsequnceImage = new List<ImageColor>();
+
+            foreach (var color in currentColorSequnce)
+            {
+                for (int i = 0; i < listImage.Count; i++)
+                {
+                    if (color == listImage[i].originalColors)
+                        sebsequnceImage.Add(listImage[i]);
+                }
+            }
+
+            for (int i = 0; i < sebsequnceImage.Count; i++)
+            {
+                await animsColorWheel.WaitInterval();
+                await animsColorWheel.StartFullAnims(sebsequnceImage[i].ImageSource, sebsequnceImage[i].originalColors, sebsequnceImage[i].darkenedColor);
+            }
         }
 
         private void DarkenColorSimon()

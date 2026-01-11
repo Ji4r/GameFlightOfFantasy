@@ -17,7 +17,7 @@ MonoBehaviour:
     SoundVolume: 0.8
     VoiceVetrickVolume: 1
     DisplayVetrik: 1
-    ScreenMode: 2
+    ScreenMode: 1
     ResolutionScreen:
       ResolutionIndex: 3
       Width: 1024

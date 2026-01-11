@@ -80,7 +80,9 @@ namespace DiplomGames
         {
             gameController.RestartGameEvent?.Invoke();
             historyColor.ClearHistory();
+            colorValidator.CleatInputList();
             windowRestratGame.SetActive(false);
+            gameController.RestartGameEvent?.Invoke();
         }
 
         private void OnNextClick()
@@ -98,7 +100,6 @@ namespace DiplomGames
 
         private void EverythingIsCorrect()
         {
-            Debug.Log("You Won");
             buttonPlaySequence.interactable = true;
             windowRestratGame.SetActive(false);
             historyColor.ClearHistory();
