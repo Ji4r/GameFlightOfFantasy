@@ -2,8 +2,9 @@
 
 > **Издатель:** ColdLabs Studio  
 > **Разработчики:**  
-> • **Программист:** WeiTers  
-> • **UI/UX Дизайнер:** Kaka4a  
+> • **Программист:** @WeiTersCL
+> • **UI/UX Дизайнер:** @DOMAHNIY52
+> • **SFX UI:** JDSherbert 
 
 **[Скачать актуальную версию](https://github.com/Ji4r/GameFlightOfFantasy/releases/tag/1.1_ob)**
 
