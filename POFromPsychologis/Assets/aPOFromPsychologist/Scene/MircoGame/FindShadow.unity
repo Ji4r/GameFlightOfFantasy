@@ -324,6 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vetrickControll: {fileID: 1970281506}
+  playPhrasesVetricksOnCall: {fileID: 1970281508}
 --- !u!4 &144501057
 Transform:
   m_ObjectHideFlags: 0
@@ -1176,6 +1177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da970f3c92377144b2a4dad97017d2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  durationAnims: 0.2
   slotContainer: {fileID: 1178682772}
   controller: {fileID: 1091695629}
   countChildren: 2
@@ -1871,7 +1873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shuffleSprite: {fileID: 1969068942}
   uiView: {fileID: 1091695631}
-  durationAnims: 0.6
+  durationAnims: 0.8
   shakeAnims: {fileID: 11400000, guid: 2dee3bed24e03e24eac12ad129b3fa9e, type: 2}
   scalerPreset: {fileID: 11400000, guid: 58fd37544daf35342a838db2686a368d, type: 2}
   pointStartCard: {fileID: 845400351}
@@ -2050,6 +2052,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8074205333896021314, guid: 9dac3bda85ecbf846898847e5e68925f, type: 3}
   m_PrefabInstance: {fileID: 1970281505}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1970281508 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3177557751718817836, guid: 9dac3bda85ecbf846898847e5e68925f, type: 3}
+  m_PrefabInstance: {fileID: 1970281505}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed63f39137f5c3b418e487eae4a652c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1996457877
 GameObject:
   m_ObjectHideFlags: 0

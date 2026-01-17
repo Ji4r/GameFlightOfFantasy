@@ -35,7 +35,7 @@ namespace DiplomGames
         public void SetVolumeVetrickVoice(float volume)
         {
             dataSettings.VoiceVetrickVolume = volume;
-            //Пока не создал обработчик звука для озвучки ветрика
+            SoundVetrickVoice.instance.SetVolumeSong(volume);
         }
     }
 }

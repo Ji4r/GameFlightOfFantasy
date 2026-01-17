@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -48,9 +49,9 @@ namespace DiplomGames
             }
         }
 
-        public void OnClickPianoButton()
+        public async void OnClickPianoButton()
         {
-            colorValidator.AddItemInListInput(ref myColor);
+            await colorValidator.AddItemInListInput(myColor);
         }
 
         public void SetInteractible(bool isActive)

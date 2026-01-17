@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 73cef1d5af7d5b64bb4ca5e5271e1521
+    m_Address: VetrickVoiceManager
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7a09d7b9daf602d499dd0072481fdb93
     m_Address: MusicManager
     m_ReadOnly: 0

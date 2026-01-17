@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
+using System.Threading.Tasks;
 
 namespace DiplomGames
 {
     public class SlotCheckingResponse : MonoBehaviour, IDropHandler
     {
+        [SerializeField] private float durationAnims = 0.2f;
         [SerializeField] private SlotContainer slotContainer;
         [SerializeField] private CheckerSlot controller;
         [SerializeField] private byte countChildren = 2;
-        public void OnDrop(PointerEventData eventData)
+        public async void OnDrop(PointerEventData eventData)
         {
             if (eventData.pointerDrag != null)
             {
@@ -19,7 +22,8 @@ namespace DiplomGames
 
                 var otherItemTransform = eventData.pointerDrag.transform;
                 otherItemTransform.SetParent(transform);
-                otherItemTransform.localPosition = Vector3.zero;
+                await otherItemTransform.DOLocalMove(Vector3.zero, durationAnims).AsyncWaitForCompletion();
+                //otherItemTransform.localPosition = Vector3.zero;
                 controller.CheckRightAnswer(otherItemTransform);
             }
         }

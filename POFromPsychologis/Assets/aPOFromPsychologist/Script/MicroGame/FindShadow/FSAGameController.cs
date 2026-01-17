@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System;
-using System.Threading.Tasks;
 
 namespace DiplomGames
 {
@@ -9,6 +8,7 @@ namespace DiplomGames
         [SerializeField] private FSASlotManager slotManager;
         [SerializeField] private FSAChecketSlot checkerSlot;
         [SerializeField] private FSAUiView uiView;
+        [Inject] private PlayPhrasesVetricksOnCall playPhrasesVetricksOnCall;
 
         public Action StartNextGame;
 
@@ -44,6 +44,7 @@ namespace DiplomGames
 
         protected override async void NextRound()
         {
+            playPhrasesVetricksOnCall.PlayPhraseAndHideVetrick();
             await slotManager.NextGame();
             await slotManager.SetScaleToZero();
             currentGame = slotManager.GeneratedNewLevel();

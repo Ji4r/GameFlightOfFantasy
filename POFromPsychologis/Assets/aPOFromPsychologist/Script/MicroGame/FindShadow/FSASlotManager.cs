@@ -47,12 +47,23 @@ namespace DiplomGames
         public async Task NextGame() 
         {
             SetActiveDragCardMove(false);
-            await anims.CardMoveOnStartPosition(cards, slots);
-            await anims.CardsMoveToSlot(cards, slots);
+            var card = GetChildrenFromIdWithMainSlot(1);
+            await anims.Awaittime(500);
+            await anims.CardMoveToSlot(card, GetFreeSlot());
             SetActiveDragCardMove(true);
             uiView.ClearAnswer();
 
             //return GeneratedNewLevel();
+        }
+
+        public Transform GetChildrenFromIdWithMainSlot(int id)
+        {
+            if (mainSlot.childCount - 1 < id)
+            {
+                Debug.Log("Столько детей нету у mainSlot");
+                return null;
+            }
+            return mainSlot.GetChild(id);
         }
 
         public (Sprite, Transform) GeneratedNewLevel()

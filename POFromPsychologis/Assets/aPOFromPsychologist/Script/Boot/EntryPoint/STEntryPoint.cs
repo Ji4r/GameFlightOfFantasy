@@ -26,10 +26,6 @@ namespace DiplomGames
             container.RegisterInstance<STBuilderGame>(builderGame);
             var gameSettingsManager = new STGameSettingsManager();
             container.RegisterInstance<STGameSettingsManager>(gameSettingsManager);
-
-            // Регистрируем создаваемые зависимости
-            container.RegistationTransient<STAnimsHistoryElement>(c =>
-                new STAnimsHistoryElement(0.3f));
         }
     }
 }

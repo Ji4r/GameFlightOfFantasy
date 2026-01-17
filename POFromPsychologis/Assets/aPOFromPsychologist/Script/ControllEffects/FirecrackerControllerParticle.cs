@@ -39,7 +39,7 @@ namespace DiplomGames
             if (!CheckRanOutCoroutine())
                 return;
 
-            for (int i = 0; i < particleSystems.Length; i++) 
+            for (int i = 0; i < particleSystems.Length; i++)
             {
                 particleSystems[i].Play();
                 particleCoroutine[i] = StartCoroutine(CheckerAliveParticle(particleSystems[i], i, autoDisable));
@@ -49,10 +49,7 @@ namespace DiplomGames
 
         private IEnumerator CheckerAliveParticle(ParticleSystem system, int indexCoroutine, bool autoDisable = false)
         {
-            while (system.IsAlive())
-            {
-                yield return null;
-            }
+            yield return new WaitForSeconds(system.main.startLifetime.constantMax);
 
             if (autoDisable)
             {
@@ -62,7 +59,6 @@ namespace DiplomGames
                     Disabled();
             }
         }
-
 
         private bool CheckRanOutCoroutine()
         {

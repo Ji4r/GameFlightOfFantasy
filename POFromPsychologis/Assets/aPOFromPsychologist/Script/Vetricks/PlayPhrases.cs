@@ -43,7 +43,7 @@ namespace DiplomGames
             if (phrase.audioClip != null)
             {
                 delayBetweenCharacters = phrase.audioClip.length / phrase.vetrikasPhrases.Length;
-                SoundPlayer.instance.PlayWithStop(phrase.audioClip);
+                SoundVetrickVoice.instance.PlayWithStop(phrase.audioClip);
             }
             else
                 delayBetweenCharacters = symbolAppearanceTime;
@@ -56,7 +56,6 @@ namespace DiplomGames
             }
 
             dialogue = null;
-            currentPhrase.vetrikasPhrases = "";
         }
 
         protected virtual void ClearText()
@@ -85,7 +84,7 @@ namespace DiplomGames
                 StopCoroutine(dialogue);
                 ClearText();
                 textVetrick.text = currentPhrase.vetrikasPhrases;
-                SoundPlayer.instance.StopCurrentSound();
+                SoundVetrickVoice.instance.StopCurrentSound();
                 dialogue = null;
                 return true;
             }

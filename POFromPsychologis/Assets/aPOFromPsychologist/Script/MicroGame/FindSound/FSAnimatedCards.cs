@@ -59,7 +59,7 @@ namespace DiplomGames
             await Task.WhenAll(tasks);
         }
 
-        public async Task CardMoveOnStartPosition(Transform[] cards, Transform[] slots)
+        public async Task CardsMoveOnStartPosition(Transform[] cards, Transform[] slots)
         {
             if (!ArrayIsValidate(cards, slots)) return;
 
@@ -81,29 +81,26 @@ namespace DiplomGames
             }
 
             await Task.WhenAll(tasks);
-            //bool[] allAinmsReady = new bool[cards.Length];
-            //int completedAnimations = 0;
-
-            //for (int i = 0; i < cards.Length; i++)
-            //{
-            //    var card = cards[i];
-            //    int currentIndex = i;
-
-            //    Vector3 currentWorldPos = card.position;
-            //    card.SetParent(pointStartCard);
-            //    card.position = currentWorldPos;
-
-            //    Tween tween = card.DOLocalMove(Vector3.zero, durationAnims).OnComplete(() => {
-            //        allAinmsReady[currentIndex] = true;
-            //        completedAnimations++;
-
-            //        if (completedAnimations == cards.Length)
-            //            callback?.Invoke();
-            //    });
-            //    tweens.Add(tween);
-            //}
         }
 
+        public async Task CardMoveOnStartPosition(Transform card, Transform slot)
+        {
+            if (card == null || slot == null) 
+                throw new System.Exception("card или slot равен null");
+
+            KillAllAnims();
+            card.SetParent(slot);
+
+            var task = card.DOLocalMove(Vector3.zero, durationAnims)
+                .AsyncWaitForCompletion();
+
+            await task;
+        }
+
+        public async Task Awaittime(int time)
+        {
+            await Task.Delay(time);
+        }
 
         private bool ArrayIsValidate(Transform[] cards, Transform[] slots)
         {

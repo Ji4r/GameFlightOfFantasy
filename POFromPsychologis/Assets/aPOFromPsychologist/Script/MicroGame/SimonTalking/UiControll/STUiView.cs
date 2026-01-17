@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -79,7 +80,6 @@ namespace DiplomGames
         private void OnRestartClick()
         {
             gameController.RestartGameEvent?.Invoke();
-            historyColor.ClearHistory();
             colorValidator.CleatInputList();
             windowRestratGame.SetActive(false);
             gameController.RestartGameEvent?.Invoke();
@@ -87,23 +87,23 @@ namespace DiplomGames
 
         private void OnNextClick()
         {
-            historyColor.ClearHistory();
             gameController.SetActivePianino(false);
             buttonPlaySequence.interactable = true;
             windowRestratGame.SetActive(false);
         }
 
-        private void ShowWindowRestartGame()
+        private async void ShowWindowRestartGame()
         {
+            await historyColor.ClearHistory();
             windowRestratGame.SetActive(true);
         }
 
-        private void EverythingIsCorrect()
+        private async void EverythingIsCorrect()
         {
-            buttonPlaySequence.interactable = true;
             windowRestratGame.SetActive(false);
-            historyColor.ClearHistory();
             gameController.SetActivePianino(false);
+            await historyColor.ClearHistory();
+            buttonPlaySequence.interactable = true;
         }
 
         private void InitializedGame()

@@ -334,6 +334,12 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 1
+  gameObjectVetrickVoiceManager:
+    m_AssetGUID: 73cef1d5af7d5b64bb4ca5e5271e1521
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
 --- !u!1 &1787207029
 GameObject:
   m_ObjectHideFlags: 0

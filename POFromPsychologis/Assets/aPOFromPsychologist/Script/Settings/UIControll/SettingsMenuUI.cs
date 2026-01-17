@@ -45,6 +45,7 @@ namespace DiplomGames
             ValueChangedMusic(dataSettings.MusicVolume);
             ValueChangedSound(dataSettings.SoundVolume);
             ValueChangedVetrickVoice(dataSettings.VoiceVetrickVolume);
+            UpdateToggleShowVetrick(dataSettings.DisplayVetrik);
 
             sliderMusic.onValueChanged.AddListener(ValueChangedMusic);
             sliderSound.onValueChanged.AddListener(ValueChangedSound);
@@ -80,7 +81,6 @@ namespace DiplomGames
 
         private void ValueChangedMusic(float volume)
         {
-            Debug.Log(" иньпинь т€уу");
             audioSettings.SetVolumeMusic(volume);
             volumeProcentMusic.text = $"{Mathf.RoundToInt(volume * 100)}%";
             UpdateSliderValue(sliderMusic, volume);
@@ -188,6 +188,11 @@ namespace DiplomGames
 
             SetActivityVetrick(dataSettings.DisplayVetrik);
             resolutionDropdown.SetValueWithoutNotify(data.ResolutionScreen.ResolutionIndex);
+        }
+
+        private void UpdateToggleShowVetrick(bool isEnabled)
+        {
+            showVetrick.isOn = isEnabled;
         }
     }
 }

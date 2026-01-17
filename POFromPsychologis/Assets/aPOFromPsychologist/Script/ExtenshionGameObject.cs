@@ -41,6 +41,5 @@ namespace DiplomGames
 
             return list;
         }
-
     }
 }

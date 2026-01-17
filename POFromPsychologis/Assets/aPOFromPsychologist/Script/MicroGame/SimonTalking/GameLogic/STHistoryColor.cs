@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace DiplomGames
@@ -23,22 +24,21 @@ namespace DiplomGames
             objectPool = new ObjectPoolMono<STElementHistory>(prefabHistoryElement, sizePool, containerElement, autoExpend);
             history = new List<STElementHistory>();
             anims = new STAnimsHistoryElement(durationAnims);
+            anims.Init(prefabHistoryElement.transform.localScale);
         }
 
-        public void AddColorInHistory(ref Color newColor)
+        public async Task AddColorInHistory(Color newColor)
         {
             history.Add(objectPool.GetFreeElement());
+            history[history.Count - 1].SetColor(newColor);
             anims.ShowCardElement(history[history.Count - 1].gameObject);
-            history[history.Count - 1].SetColor(ref newColor);
         }
 
-        public void ClearHistory()
+        public async Task ClearHistory()
         {
             var gameObjects = history.ConvertAll(x => x.gameObject);
-            anims.HideAllElement(gameObjects, () => 
-            {
-                Invoke(nameof(DisableAllElemnt), 0.1f);
-            });
+            await anims.HideAllElement(gameObjects);
+            Invoke(nameof(DisableAllElemnt), 0.1f);
         }
 
         private void DisableAllElemnt()
@@ -67,6 +67,11 @@ namespace DiplomGames
         {
             history[history.Count - 1].gameObject.SetActive(false);
             history.RemoveAt(history.Count - 1);
+        }
+
+        private void OnDisable()
+        {
+            anims.Dispose();
         }
     }
 }

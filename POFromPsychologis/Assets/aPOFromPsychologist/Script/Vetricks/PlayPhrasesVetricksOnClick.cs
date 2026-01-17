@@ -15,7 +15,7 @@ namespace DiplomGames
         private void OnDisable()
         {
             btn.onClick.RemoveListener(NextPhrase);
-            SoundPlayer.instance.StopCurrentSound();
+            SoundVetrickVoice.instance.StopCurrentSound();
         }
     }
 }

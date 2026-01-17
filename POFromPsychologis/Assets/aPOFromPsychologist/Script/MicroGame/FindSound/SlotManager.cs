@@ -40,7 +40,7 @@ namespace DiplomGames
         public async Task<FSSoundList> NextGame()
         {
             SetActiveDragCardMove(false);
-            await anims.CardMoveOnStartPosition(cards, slots);
+            await anims.CardsMoveOnStartPosition(cards, slots);
             await anims.CardsMoveToSlot(cards, slots);
             uiViewFS.ClearShowOtvet();
             SetActiveDragCardMove(true);
@@ -126,6 +126,16 @@ namespace DiplomGames
         private void OnDisable()
         {
             anims.Dispose();
+        }
+
+        public Transform GetChildrenFromIdWithMainSlot(int id)
+        {
+            if (mainSlot.childCount - 1 < id)
+            {
+                Debug.Log("Столько детей нету у mainSlot");
+                return null;
+            }
+            return mainSlot.GetChild(id);
         }
     }
 

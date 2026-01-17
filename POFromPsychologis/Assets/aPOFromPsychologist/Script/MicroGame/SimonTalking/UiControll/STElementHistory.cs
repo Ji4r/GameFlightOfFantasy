@@ -13,7 +13,7 @@ namespace DiplomGames
             image = GetComponent<Image>();
         }
 
-        public void SetColor(ref Color color)
+        public void SetColor(Color color)
         {
             image.color = color;
 

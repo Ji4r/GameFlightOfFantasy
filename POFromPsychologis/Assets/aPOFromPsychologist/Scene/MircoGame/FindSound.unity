@@ -1416,6 +1416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da970f3c92377144b2a4dad97017d2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  durationAnims: 0.2
   slotContainer: {fileID: 1178682772}
   controller: {fileID: 1091695633}
   countChildren: 2
@@ -1805,7 +1806,7 @@ MonoBehaviour:
     sprite: {fileID: 7661612891189365507, guid: cd42833299ff37444b0931cf93bc1dfc, type: 3}
   - clip: {fileID: 8300000, guid: 2446c9cfceee58349837fc6d7d7b205c, type: 3}
     sprite: {fileID: 6833772296951516227, guid: 187c043924b31144f844035f9f0ab1bc, type: 3}
-  - clip: {fileID: 8300000, guid: 4d4014ae560be9d40bf63a84ae0396a3, type: 3}
+  - clip: {fileID: 8300000, guid: fe44ec9539e28594f8625ea613f1fff1, type: 3}
     sprite: {fileID: -7236395038308300318, guid: 05944cd31c39ed746b155e449f865f2d, type: 3}
   - clip: {fileID: 8300000, guid: 0f838d8e323a173438e0183a5b183e32, type: 3}
     sprite: {fileID: -8197312149510643419, guid: d6b50dbcea8788f4881b500ff0108065, type: 3}
@@ -2465,6 +2466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 183d69ef95271334e9c4252fdefc8e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeMusic: 0
   vetrickControll: {fileID: 287151765}
   uiSettingsMenu: {fileID: 1646608994}
 --- !u!114 &1646608994 stripped
@@ -2885,54 +2887,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2541820054400765944, guid: d62961dbcd4316443ab244b0ce8629f4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1830291388}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d62961dbcd4316443ab244b0ce8629f4, type: 3}
---- !u!1 &1830291383 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2541820054400765944, guid: d62961dbcd4316443ab244b0ce8629f4, type: 3}
-  m_PrefabInstance: {fileID: 1830291382}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1830291384 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4160740883123927563, guid: d62961dbcd4316443ab244b0ce8629f4, type: 3}
-  m_PrefabInstance: {fileID: 1830291382}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1830291385 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4602925869514586361, guid: d62961dbcd4316443ab244b0ce8629f4, type: 3}
-  m_PrefabInstance: {fileID: 1830291382}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1830291386 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3743612072666320981, guid: d62961dbcd4316443ab244b0ce8629f4, type: 3}
-  m_PrefabInstance: {fileID: 1830291382}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1830291387 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6551247194743909083, guid: d62961dbcd4316443ab244b0ce8629f4, type: 3}
-  m_PrefabInstance: {fileID: 1830291382}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1830291388
+--- !u!114 &1830291388 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 24859047445889704, guid: d62961dbcd4316443ab244b0ce8629f4, type: 3}
+  m_PrefabInstance: {fileID: 1830291382}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1830291383}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df4474ea0ab7fa44eac646897d089b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleSystems:
-  - {fileID: 1830291387}
-  - {fileID: 1830291386}
-  objects:
-  - {fileID: 1830291385}
-  - {fileID: 1830291384}
 --- !u!1 &1996457877
 GameObject:
   m_ObjectHideFlags: 0

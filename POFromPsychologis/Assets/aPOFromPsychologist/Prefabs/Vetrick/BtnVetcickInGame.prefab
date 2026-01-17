@@ -167,7 +167,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 236401584491235882}
-  m_Father: {fileID: 8074205333896021314}
+  m_Father: {fileID: 5909633580216277463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &8664517772109559299
+--- !u!1 &6424412003499836462
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,57 +220,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8074205333896021314}
-  - component: {fileID: 7941265110252007264}
-  - component: {fileID: 1289721049339887837}
-  - component: {fileID: 5411271367341320591}
-  - component: {fileID: 5821853012372696020}
-  - component: {fileID: 3386716803162677187}
-  - component: {fileID: 3177557751718817836}
-  - component: {fileID: 4293484874092486792}
-  - component: {fileID: 3109537711517005066}
+  - component: {fileID: 5909633580216277463}
+  - component: {fileID: 2663390698257866622}
+  - component: {fileID: 6383537098589325199}
   m_Layer: 5
-  m_Name: BtnVetcickInGame
+  m_Name: VetcickInSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &8074205333896021314
+--- !u!224 &5909633580216277463
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8664517772109559299}
+  m_GameObject: {fileID: 6424412003499836462}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000799, y: 1.0000799, z: 1.0000799}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5552240260938868503}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 8074205333896021314}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.76151025, y: 0.055852093}
-  m_AnchorMax: {x: 1, y: 0.73846304}
-  m_AnchoredPosition: {x: -1445, y: 171.65}
-  m_SizeDelta: {x: -109.21637, y: -343.3026}
+  m_AnchorMin: {x: 0.025520831, y: 0.41788894}
+  m_AnchorMax: {x: 0.21281251, y: 0.7852963}
+  m_AnchoredPosition: {x: 132.67615, y: -39.97644}
+  m_SizeDelta: {x: 283.13434, y: 248.92352}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &7941265110252007264
+--- !u!222 &2663390698257866622
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8664517772109559299}
+  m_GameObject: {fileID: 6424412003499836462}
   m_CullTransparentMesh: 1
---- !u!114 &1289721049339887837
+--- !u!114 &6383537098589325199
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8664517772109559299}
+  m_GameObject: {fileID: 6424412003499836462}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -294,6 +288,58 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8664517772109559299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8074205333896021314}
+  - component: {fileID: 7941265110252007264}
+  - component: {fileID: 5411271367341320591}
+  - component: {fileID: 5821853012372696020}
+  - component: {fileID: 3386716803162677187}
+  - component: {fileID: 4119614734485395050}
+  - component: {fileID: 3177557751718817836}
+  - component: {fileID: 4293484874092486792}
+  - component: {fileID: 3109537711517005066}
+  m_Layer: 5
+  m_Name: BtnVetcickInGame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8074205333896021314
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8664517772109559299}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000799, y: 1.0000799, z: 1.0000799}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5909633580216277463}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.76151025, y: 0.055852093}
+  m_AnchorMax: {x: 1, y: 0.73846304}
+  m_AnchoredPosition: {x: -1445, y: 171.65}
+  m_SizeDelta: {x: -109.21637, y: -343.3026}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7941265110252007264
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8664517772109559299}
+  m_CullTransparentMesh: 1
 --- !u!114 &5411271367341320591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,7 +380,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1289721049339887837}
+  m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -350,7 +396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f55a2d2619059624e96217508350613b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vetrickObject: {fileID: 8664517772109559299}
+  vetrickObject: {fileID: 6424412003499836462}
   plyer: {fileID: 3177557751718817836}
 --- !u!114 &3386716803162677187
 MonoBehaviour:
@@ -369,8 +415,79 @@ MonoBehaviour:
     \u043F\u043E\u043C\u043D\u0438\u0448\u044C? \u0410 \u0435\u0441\u043B\u0438 \u0437\u0430\u0431\u044B\u043B,
     \u0442\u044B\u043A\u043D\u0438 \u043D\u0430 \u043C\u0435\u043D\u044F \u0438\u043B\u0438
     \u043D\u0430\u0436\u043C\u0438 \u043D\u0430 \u0448\u0435\u0441\u0442\u0435\u0440\u0451\u043D\u043A\u0443."
+  welcomeAudio: {fileID: 8300000, guid: eecb0c2beb744a84e8dd88e72ce2f3ca, type: 3}
+  phrases:
+  - vetrikasPhrases: "\u041E\u0433\u043E! \u0422\u044B \u043F\u0440\u043E\u0441\u0442\u043E
+      \u0437\u0432\u0451\u0437\u0434\u043E\u0447\u043A\u0430!"
+    audioClip: {fileID: 8300000, guid: 55f0a186f776783459dc5ced30381885, type: 3}
+  - vetrikasPhrases: "\u0423 \u0442\u0435\u0431\u044F \u043E\u0442\u043B\u0438\u0447\u043D\u043E
+      \u043F\u043E\u043B\u0443\u0447\u0430\u0435\u0442\u0441\u044F!"
+    audioClip: {fileID: 8300000, guid: a497b42b2a7a5294d88df1089fdf2589, type: 3}
+  - vetrikasPhrases: "\u0411\u0440\u0430\u0432\u043E! \u042D\u0442\u043E \u0431\u044B\u043B
+      \u0438\u0434\u0435\u0430\u043B\u044C\u043D\u044B\u0439 \u0445\u043E\u0434!"
+    audioClip: {fileID: 8300000, guid: 6f215c1930c565e498e2802221ac9aff, type: 3}
+  - vetrikasPhrases: "\u0422\u0432\u043E\u0439 \u043C\u043E\u0437\u0433 \u0441\u0435\u0433\u043E\u0434\u043D\u044F
+      \u0440\u0430\u0431\u043E\u0442\u0430\u0435\u0442 \u043D\u0430 \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0439
+      \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u0438!"
+    audioClip: {fileID: 8300000, guid: 1ce61574ebcac1e44974822e07498a1f, type: 3}
+  - vetrikasPhrases: "\u0424\u0430\u043D\u0442\u0430\u0441\u0442\u0438\u043A\u0430!
+      \u042F \u0442\u0430\u043A \u0438 \u0437\u043D\u0430\u043B, \u0447\u0442\u043E
+      \u0442\u044B \u0441\u043F\u0440\u0430\u0432\u0438\u0448\u044C\u0441\u044F!"
+    audioClip: {fileID: 8300000, guid: f2486dc6cabd08041ae8785a5dbcb3dd, type: 3}
+  - vetrikasPhrases: "\u0422\u044B \u0449\u0451\u043B\u043A\u0430\u0435\u0448\u044C
+      \u044D\u0442\u0438 \u0437\u0430\u0434\u0430\u0447\u043A\u0438 \u043A\u0430\u043A
+      \u043E\u0440\u0435\u0448\u043A\u0438!"
+    audioClip: {fileID: 8300000, guid: bc087af46d8f4644db046126029134ac, type: 3}
+  - vetrikasPhrases: "\u0414\u0430! \u0412\u043E\u0442 \u044D\u0442\u043E \u0441\u043E\u0441\u0440\u0435\u0434\u043E\u0442\u043E\u0447\u0435\u043D\u043D\u043E\u0441\u0442\u044C!"
+    audioClip: {fileID: 8300000, guid: b1e0b84d88279b64581f7dbae5fd289a, type: 3}
+  - vetrikasPhrases: "\u0422\u044B \u043C\u0435\u043D\u044F \u043F\u043E\u0440\u0430\u0436\u0430\u0435\u0448\u044C!
+      \u0422\u0430\u043A \u0434\u0435\u0440\u0436\u0430\u0442\u044C!"
+    audioClip: {fileID: 8300000, guid: 936494d6da4498548a0a2ebe1c07b402, type: 3}
+  - vetrikasPhrases: "\u0423\u0445 \u0442\u044B! \u0422\u0432\u043E\u0439 \u043F\u0440\u043E\u0433\u0440\u0435\u0441\u0441
+      \u0437\u0430\u0440\u044F\u0436\u0430\u0435\u0442 \u043C\u0435\u043D\u044F \u044D\u043D\u0435\u0440\u0433\u0438\u0435\u0439!"
+    audioClip: {fileID: 8300000, guid: 4f43f517f2ca67649958e20b15416a86, type: 3}
+  - vetrikasPhrases: "\u0422\u044B \u0434\u0435\u043B\u0430\u0435\u0448\u044C \u044D\u0442\u043E
+      \u043B\u0435\u0433\u043A\u043E \u0438 \u0438\u0437\u044F\u0449\u043D\u043E!"
+    audioClip: {fileID: 8300000, guid: 098ff916dd399ef4c99c4c2a2b630df2, type: 3}
+--- !u!114 &4119614734485395050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8664517772109559299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4e397e1cca190408723f0614919fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  welcomePhrase: 
   welcomeAudio: {fileID: 0}
-  phrases: []
+  phrases:
+  - vetrikasPhrases: "\u041D\u0435 \u0431\u043E\u0439\u0441\u044F \u043F\u0440\u043E\u0431\u043E\u0432\u0430\u0442\u044C!
+      \u0414\u0430\u0436\u0435 \u0435\u0441\u043B\u0438 \u043E\u0448\u0438\u0431\u0451\u0448\u044C\u0441\u044F
+      - \u044D\u0442\u043E \u0447\u0430\u0441\u0442\u044C \u0438\u0433\u0440\u044B!"
+    audioClip: {fileID: 8300000, guid: a63790ed9f80390428aae912e07abc7f, type: 3}
+  - vetrikasPhrases: "\u041F\u043E\u043C\u043D\u0438: \u0433\u043B\u0430\u0432\u043D\u043E\u0435
+      - \u043D\u0435 \u043F\u043E\u0431\u0435\u0434\u0430, \u0430 \u0443\u0434\u043E\u0432\u043E\u043B\u044C\u0441\u0442\u0432\u0438\u0435
+      \u043E\u0442 \u0438\u0433\u0440\u044B!"
+    audioClip: {fileID: 8300000, guid: 63c2a281483cc484b98dfd4e8061d3cc, type: 3}
+  - vetrikasPhrases: "\u0412\u0441\u0451 \u0432\u043D\u0438\u043C\u0430\u0442\u0435\u043B\u044C\u043D\u043E
+      \u0441\u043B\u0443\u0448\u0430\u0439 \u0438 \u0440\u0430\u0441\u0441\u043C\u0430\u0442\u0440\u0438\u0432\u0430\u0439
+      - \u043F\u043E\u0434\u0441\u043A\u0430\u0437\u043A\u0438 \u043C\u043E\u0433\u0443\u0442
+      \u0431\u044B\u0442\u044C \u0433\u0434\u0435 \u0443\u0433\u043E\u0434\u043D\u043E! "
+    audioClip: {fileID: 8300000, guid: cd1904c50b4c03e46802752e015d3a9d, type: 3}
+  - vetrikasPhrases: "\u0415\u0441\u043B\u0438 \u0437\u0430\u0441\u0442\u0440\u044F\u043B
+      - \u043E\u0442\u0434\u043E\u0445\u043D\u0438 \u0438 \u0432\u0435\u0440\u043D\u0438\u0441\u044C
+      \u0441\u043E \u0441\u0432\u0435\u0436\u0438\u043C\u0438 \u0441\u0438\u043B\u0430\u043C\u0438.
+      \u0423 \u0442\u0435\u0431\u044F \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u0441\u044F!"
+    audioClip: {fileID: 8300000, guid: 29496da6289288f4f99b5dd6a35914a6, type: 3}
+  - vetrikasPhrases: "\u041D\u0435 \u0442\u043E\u0440\u043E\u043F\u0438\u0441\u044C.
+      \u041B\u0443\u0447\u0448\u0435 \u0431\u044B\u0442\u044C \u0432\u043D\u0438\u043C\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0439
+      \u0447\u0435\u0440\u0435\u043F\u0430\u0448\u043A\u043E\u0439, \u0447\u0435\u043C
+      \u043D\u0435\u0432\u043D\u0438\u043C\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u043C
+      \u0437\u0430\u0439\u0447\u0438\u043A\u0430\u043C."
+    audioClip: {fileID: 8300000, guid: d5da643f742f6d447b92e0efac1933b3, type: 3}
 --- !u!114 &3177557751718817836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +503,9 @@ MonoBehaviour:
   phrases: {fileID: 3386716803162677187}
   textVetrick: {fileID: 5660694052840448286}
   symbolAppearanceTime: 0.06
+  vetrickController: {fileID: 5821853012372696020}
+  hideDelay: 2
+  MotivationalPhrase: {fileID: 4119614734485395050}
 --- !u!114 &4293484874092486792
 MonoBehaviour:
   m_ObjectHideFlags: 0

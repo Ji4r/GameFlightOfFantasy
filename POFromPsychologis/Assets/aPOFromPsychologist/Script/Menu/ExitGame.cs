@@ -14,7 +14,7 @@ namespace DiplomGames
 
         private void OnDisable()
         {
-            btnExit.onClick.RemoveAllListeners();
+            btnExit.onClick.RemoveListener(Exit);
         }
 
         private void Exit()

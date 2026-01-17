@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace DiplomGames
@@ -21,10 +22,10 @@ namespace DiplomGames
             originalListOfColors.AddRange(newSubsequnce);
         }
 
-        public void AddItemInListInput(ref Color color)
+        public async Task AddItemInListInput(Color color)
         {
             listFromInput.Add(color);
-            historyColor.AddColorInHistory(ref color);
+            await historyColor.AddColorInHistory(color);
             CheckingMatches();
         }
 
@@ -42,9 +43,9 @@ namespace DiplomGames
                 EverythingIsCorrect?.Invoke();
         }
 
-        private void CleatLists()
+        private async void CleatLists()
         {
-            historyColor.ClearHistory();
+            await historyColor.ClearHistory();
             originalListOfColors?.Clear();
             listFromInput?.Clear();
         }

@@ -14,23 +14,33 @@ namespace DiplomGames
 
         private void OnEnable()
         {
-            btnReplay.onClick.AddListener(() => { entryPoint.ReloadSceneClearInstance(SwitchScene.GetActiveSceneIndex()); });
+            btnReplay.onClick.AddListener(ReloadScene);
             //btnUndergoTraining.onClick.AddListener();
-            btnExitToMenu.onClick.AddListener(() => { entryPoint.LoadScene(1); });
+            btnExitToMenu.onClick.AddListener(LoadSceneMenu);
             btnExitGame.onClick.AddListener(Exit);
         }
 
         private void OnDisable()
         {
-            btnReplay.onClick.RemoveListener(SwitchScene.RestartScene);
+            btnReplay.onClick.RemoveListener(ReloadScene);
             //btnUndergoTraining.onClick.RemoveListener();
-            btnExitToMenu.onClick.RemoveListener(() => { entryPoint.LoadScene(1); });
+            btnExitToMenu.onClick.RemoveListener(LoadSceneMenu);
             btnExitGame.onClick.RemoveListener(Exit);
         }
 
         private void Exit()
         {
             Application.Quit();
+        }
+
+        private void ReloadScene() 
+        {
+            entryPoint.ReloadSceneClearInstance(SwitchScene.GetActiveSceneIndex());
+        }
+
+        private void LoadSceneMenu()
+        {
+            entryPoint.LoadScene(1);
         }
     }
 }

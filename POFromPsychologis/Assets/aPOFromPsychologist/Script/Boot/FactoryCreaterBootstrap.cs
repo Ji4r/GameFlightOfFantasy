@@ -8,6 +8,7 @@ namespace DiplomGames
     {
         [SerializeField] private AssetReferenceGameObject gameObjectSoundManager;
         [SerializeField] private AssetReferenceGameObject gameObjectMusicManager;
+        [SerializeField] private AssetReferenceGameObject gameObjectVetrickVoiceManager;
         private GlobalDI globalDi;
 
         public async Task InstantiateAsync()
@@ -23,6 +24,9 @@ namespace DiplomGames
 
             var prefabAssetMusic = await gameObjectMusicManager.InstantiateAsync(Vector3.zero, Quaternion.identity).Task;
             DontDestroyOnLoad(prefabAssetMusic);
+
+            var prefabAssetVoiceVetrick = await gameObjectVetrickVoiceManager.InstantiateAsync(Vector3.zero, Quaternion.identity).Task;
+            DontDestroyOnLoad(prefabAssetVoiceVetrick);
 
             await Task.Yield();
         }

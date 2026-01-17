@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1174081241476916142}
+  - component: {fileID: 24859047445889704}
   m_Layer: 0
   m_Name: Firecracker
   m_TagString: Untagged
@@ -34,6 +35,24 @@ Transform:
   - {fileID: 7342004633308037358}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &24859047445889704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2541820054400765944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df4474ea0ab7fa44eac646897d089b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystems:
+  - {fileID: 6551247194743909083}
+  - {fileID: 3743612072666320981}
+  objects:
+  - {fileID: 4602925869514586361}
+  - {fileID: 4160740883123927563}
 --- !u!1 &3902188925982142292
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,8 +169,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 5
-      minScalar: 3
+      scalar: 3
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5376,8 +5395,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 5
-      minScalar: 3
+      scalar: 3
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:

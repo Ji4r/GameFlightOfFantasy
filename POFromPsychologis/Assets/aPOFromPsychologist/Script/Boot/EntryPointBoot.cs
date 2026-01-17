@@ -73,11 +73,6 @@ namespace DiplomGames
 
             if (!container.Resolve<DataSettings>(out var data))
                 return;
-
-            MusicPlayer.instance?.ChangeValueMusic(data.MusicVolume);
-            MusicPlayer.instance?.StartPlay();
-            SoundPlayer.instance?.SetVolumeSong(data.SoundVolume);
-            // Ещё для ветрика нужно но пока нету)
         }
 
         protected override void RegisterDependencies()

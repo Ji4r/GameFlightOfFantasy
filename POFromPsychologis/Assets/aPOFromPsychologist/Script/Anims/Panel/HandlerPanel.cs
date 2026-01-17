@@ -44,11 +44,13 @@ namespace DiplomGames
 
         private void Show()
         {
+            SoundPlayer.instance.PlaySound(ListSound.OpeningAWindow);
             panelAnims.Show();
         }
 
         private void Hide() 
         {
+            SoundPlayer.instance.PlaySound(ListSound.OpeningAWindow);
             panelAnims.Hide();
         }
     }
