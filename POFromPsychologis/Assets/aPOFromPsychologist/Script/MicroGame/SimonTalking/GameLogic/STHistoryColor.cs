@@ -29,6 +29,7 @@ namespace DiplomGames
 
         public async Task AddColorInHistory(Color newColor)
         {
+            SoundPlayer.instance.PlaySound(ListSound.TheEmergenceHistoryElement);
             history.Add(objectPool.GetFreeElement());
             history[history.Count - 1].SetColor(newColor);
             anims.ShowCardElement(history[history.Count - 1].gameObject);

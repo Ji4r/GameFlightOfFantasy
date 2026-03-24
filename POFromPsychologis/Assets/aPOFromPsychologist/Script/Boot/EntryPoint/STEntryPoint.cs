@@ -13,6 +13,7 @@ namespace DiplomGames
         [SerializeField] private STSimonWheel simonWheel;
         [SerializeField] private STUiView uiView;
         [SerializeField] private VetrickControll vetrickControll;
+        [SerializeField] private PlayPhrasesVetricksOnCall playPhrase;
 
         protected override void RegisterDependencies()
         {
@@ -26,6 +27,11 @@ namespace DiplomGames
             container.RegisterInstance<STBuilderGame>(builderGame);
             var gameSettingsManager = new STGameSettingsManager();
             container.RegisterInstance<STGameSettingsManager>(gameSettingsManager);
+            container.RegisterInstance(playPhrase);
+        }
+        public override void InitializeSystem()
+        {
+            playPhrase.PlayWelcomePhrase();
         }
     }
 }

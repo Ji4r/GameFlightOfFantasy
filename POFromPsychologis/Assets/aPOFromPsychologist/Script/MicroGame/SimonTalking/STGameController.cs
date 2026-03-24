@@ -73,7 +73,8 @@ namespace DiplomGames
         {
             foreach (var btn in builderGame.GetButtonColor())
             {
-                btn.SetInteractible(isActive);
+                if (btn != null)
+                    btn.SetInteractible(isActive);
             }
         }
     }

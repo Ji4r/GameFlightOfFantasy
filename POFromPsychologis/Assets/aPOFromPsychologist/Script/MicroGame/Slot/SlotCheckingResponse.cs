@@ -15,6 +15,7 @@ namespace DiplomGames
         {
             if (eventData.pointerDrag != null)
             {
+                if (GetMouseButton(eventData)) return;
                 if (transform.childCount >= countChildren)
                 {
                     slotContainer.MoveSlot(slotContainer.GetFreeSlot(), transform.GetChild(1).transform);
@@ -26,6 +27,16 @@ namespace DiplomGames
                 //otherItemTransform.localPosition = Vector3.zero;
                 controller.CheckRightAnswer(otherItemTransform);
             }
+        }
+        
+        public bool GetMouseButton(PointerEventData eventData)
+        {
+            if (eventData.button != PointerEventData.InputButton.Left)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

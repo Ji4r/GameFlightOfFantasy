@@ -1,15 +1,26 @@
-using UnityEngine;
-using System.Collections;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using UnityEngine;
 
 namespace DiplomGames
 {
+    public enum TypePhrase
+    {
+        Base, MotivationalPhrase
+    }
+
     public class PlayPhrasesVetricksOnCall : PlayPhrases
     {
         [SerializeField] private VetrickControll vetrickController;
         [SerializeField] private float hideDelay = 2f;
+        [SerializeField] private float hideDelayForWelcome = 10f;
+        [SerializeField] private int baseChance;
 
         [SerializeField, Tooltip("Похвальные фразы")] private PhraseVetrick MotivationalPhrase;
+        protected Queue<PhrseAndClip> listOfMotivationalPhrase;
 
         private Coroutine currentShutdownVetrick;
 
@@ -21,7 +32,37 @@ namespace DiplomGames
         public void PlayWelcomePhrase()
         {
             if (dialogue == null)
-                dialogue = StartCoroutine(StartADialogue(phrases.GetWelcomePhrase()));
+            {
+                dialogue = StartCoroutine(StartADialogue(phrases.GetWelcomePhrase(), () =>
+                {
+                    currentShutdownVetrick = StartCoroutine(HideVetrick(hideDelayForWelcome));
+                }));
+            }           
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="chance">Передйте шанс до 100</param>
+        /// <returns></returns>
+        public bool ShouldPlayPhrase(int chance = -1)
+        {
+            if (chance == -1)
+            {
+                if (baseChance == 100) return true;
+                if (baseChance <= 0) return false;
+
+                int randomValue = UnityEngine.Random.Range(0, 100);
+                return randomValue < baseChance;
+            }
+            else
+            {
+                if (chance == 100) return true;
+                if (chance <= 0) return false;
+
+                int randomValue = UnityEngine.Random.Range(0, 100);
+                return randomValue < chance;
+            }
         }
 
         public void PlayPhrase()
@@ -30,7 +71,7 @@ namespace DiplomGames
                 NextPhrase();
         }
 
-        public void PlayPhraseAndHideVetrick()
+        public async Task PlayPhraseAndHideVetrick(TypePhrase type = TypePhrase.Base)
         {
             if (dialogue == null)
             {
@@ -40,36 +81,49 @@ namespace DiplomGames
                     currentShutdownVetrick = null;
                 }
 
-                NextPhrase(() =>
+                await NextPhrase(() =>
                 {
-                    currentShutdownVetrick = StartCoroutine(HideVetrick());
-                });
+                    currentShutdownVetrick = StartCoroutine(HideVetrick(hideDelay));
+                }, type);
             }
         }
 
-        private IEnumerator HideVetrick()
-        {
-            yield return new WaitForSeconds(hideDelay);
-
-            vetrickController.HideVetrick();
-            currentShutdownVetrick = null;
-        }
-
-        private void NextPhrase(Action callback)
+        private async Task NextPhrase(Action callback, TypePhrase type = TypePhrase.Base)
         {
             if (SkipDialogue())
                 return;
 
             if (!vetrickController.VetrickObject.activeInHierarchy)
-                vetrickController.ShowVetrick();
+            {
+                ClearText();
+                await vetrickController.ShowVetrick();
+            }
 
-            if (listOfPhrases == null || listOfPhrases.Count == 0)
-                GenerateListPhrase();
+            if (type == TypePhrase.Base)
+            {
+                if (listOfPhrases == null || listOfPhrases.Count == 0)
+                    GenerateListPhrase();
 
-            dialogue = StartCoroutine(StartADialogue(listOfPhrases.Dequeue(), callback));
+                dialogue = StartCoroutine(StartADialogue(listOfPhrases.Dequeue(), callback));
+            }
+            else if (type == TypePhrase.MotivationalPhrase)
+            {
+                if (listOfMotivationalPhrase == null || listOfMotivationalPhrase.Count == 0)
+                    GenerateListPhraseMotivation();
+
+                dialogue = StartCoroutine(StartADialogue(listOfMotivationalPhrase.Dequeue(), callback));
+            }
         }
 
-        protected IEnumerator StartADialogue(PhrseAndClip phrase, Action callback)
+
+        private IEnumerator HideVetrick(float time)
+        {
+            yield return new WaitForSeconds(time);
+
+            yield return vetrickController.HideVetrick();
+            currentShutdownVetrick = null;
+        }
+        private IEnumerator StartADialogue(PhrseAndClip phrase, Action callback)
         {
             ClearText();
             float delayBetweenCharacters;
@@ -91,6 +145,20 @@ namespace DiplomGames
 
             dialogue = null;
             callback?.Invoke();
+        }
+
+        private void GenerateListPhraseMotivation()
+        {
+            if (listOfMotivationalPhrase == null)
+                listOfMotivationalPhrase = new();
+
+            listOfPhrases.Clear();
+            var shuffledList = MotivationalPhrase.GetAllPhrase().OrderBy(x => random.Next()).ToList();
+
+            foreach (var shuffled in shuffledList)
+            {
+                listOfMotivationalPhrase.Enqueue(shuffled);
+            }
         }
     }
 }

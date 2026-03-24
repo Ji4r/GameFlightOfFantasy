@@ -10,28 +10,30 @@ namespace DiplomGames
         [SerializeField] private Button button4;
         [SerializeField] private Button button6;
         [SerializeField] private Button button8;
-        [SerializeField] private Button btnRestart;
+
+        [SerializeField] private Button btnNextRound;
+        [SerializeField] private Button btnNewDiffecalty;
         [SerializeField] private Button btnExitMenu;
-        [SerializeField] private GameObject panelWindow;
+        [SerializeField] private GameObject panelSelectDiffecalty;
         [SerializeField] private GameObject panelEndGame;
-        [SerializeField] private GameObject panelPlayingFields;
         [SerializeField] private MGeneratedLevel generatedLevel;
 
         public Action EndGameAction;
         [Inject] private EntryPoint entryPoint;
-        private int fieldGame;
+        private int diffecaltyGame;
 
         void Start()
         {
-            panelWindow.SetActive(true);            
+            panelSelectDiffecalty.SetActive(true);            
         }
 
         private void OnEnable()
         {
-            btnRestart.onClick.AddListener(RestartGame);
             button4.onClick.AddListener(() => { StartGenerate(8); });
             button6.onClick.AddListener(() => { StartGenerate(12); });
             button8.onClick.AddListener(() => { StartGenerate(16); });
+            btnNextRound.onClick.AddListener(NextRound);
+            btnNewDiffecalty.onClick.AddListener(NewDiffecalty);
             btnExitMenu.onClick.AddListener(() => { entryPoint.LoadScene(1); });
             btnHideAllCard.onClick.AddListener(HideAllCard);
             EndGameAction += EndGame;
@@ -39,10 +41,11 @@ namespace DiplomGames
 
         private void OnDisable()
         {
-            btnRestart.onClick.RemoveListener(RestartGame);
             button4.onClick.RemoveListener(() => { StartGenerate(8); });
             button6.onClick.RemoveListener(() => { StartGenerate(12); });
             button8.onClick.RemoveListener(() => { StartGenerate(16); });
+            btnNextRound.onClick.RemoveListener(NextRound);
+            btnNewDiffecalty.onClick.RemoveListener(NewDiffecalty);
             btnExitMenu.onClick.RemoveListener(() => { entryPoint.LoadScene(1); });
             btnHideAllCard.onClick.RemoveListener(HideAllCard);
             EndGameAction -= EndGame;
@@ -50,20 +53,29 @@ namespace DiplomGames
 
         private void StartGenerate(int size)
         {
-            panelWindow.SetActive(false);
+            diffecaltyGame = size;
+            panelSelectDiffecalty.SetActive(false);
             generatedLevel.GenerateLevel(size);
             MCardManager.Instance.ShowAllCardAndTurnOffInteractible();
+            btnHideAllCard.interactable = true;
+        }
+
+        protected override void NextRound()
+        {
+            panelEndGame.SetActive(false);
+            StartGenerate(diffecaltyGame);
+        }
+
+        private void NewDiffecalty()
+        {
+            panelEndGame.SetActive(false);
+            panelSelectDiffecalty.SetActive(true);
         }
 
         protected override void EndGame()
         {
-            panelPlayingFields.SetActive(false);
+            SoundPlayer.instance.PlaySound(ListSound.AllAnswerCorrectInMemory);
             panelEndGame.SetActive(true);
-        }
-
-        protected override void RestartGame()
-        {
-            entryPoint.ReloadSceneClearInstance(SwitchScene.GetActiveSceneIndex());
         }
 
         private void HideAllCard()

@@ -28,6 +28,8 @@ namespace DiplomGames
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            if (GetMouseButton(eventData)) return;
+            
             originalParent = transform.parent;
             startPosition = rectTransform.localPosition;
 
@@ -39,15 +41,20 @@ namespace DiplomGames
 
         public void OnDrag(PointerEventData eventData)
         {
+            if (GetMouseButton(eventData)) return;
+            
             rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            if (GetMouseButton(eventData)) return;
+            
             GameObject dropTarget = eventData.pointerCurrentRaycast.gameObject;
 
             if (dropTarget != null && dropTarget.TryGetComponent<IDropHandler>(out var dropHandler))
             {
+                Debug.Log("poo");
                 if (dropTarget == gameObject)
                 {
                     ReturnObj();
@@ -71,6 +78,16 @@ namespace DiplomGames
             SetRaycast(true);
         }
 
+        private bool GetMouseButton(PointerEventData eventData)
+        {
+            if (eventData.button != PointerEventData.InputButton.Left)
+            {
+                return true;
+            }
+
+            return false;
+        }
+        
         public void SetRaycast(bool isActive)
         {
             canvasGroup.blocksRaycasts = isActive;

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89146bb31ec575b448ce60a4791aa229, type: 3}
   m_Name: BaseScaler
   m_EditorClassIdentifier: 
-  durationAnims: 0.5
+  durationAnims: 0.3
   easeShake: 9

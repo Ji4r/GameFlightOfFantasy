@@ -27,6 +27,8 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (GetMouseButton(eventData)) return;
+        
         var slotTransform = rectTransform.parent;
         slotTransform.SetAsLastSibling();
         canvasGroup.blocksRaycasts = false;
@@ -34,13 +36,28 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (GetMouseButton(eventData)) return;
+        
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (GetMouseButton(eventData)) return;
+        
         rectTransform.DOLocalMove(startPosition, 0.3f);
         SetRaycast(true);
+        
+    }
+    
+    private bool GetMouseButton(PointerEventData eventData)
+    {
+        if (eventData.button != PointerEventData.InputButton.Left)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public void SetRaycast(bool value)

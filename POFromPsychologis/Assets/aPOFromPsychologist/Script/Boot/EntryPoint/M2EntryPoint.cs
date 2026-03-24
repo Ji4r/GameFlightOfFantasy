@@ -7,6 +7,7 @@ namespace DiplomGames
         [SerializeField] private VetrickControll vetrickControll;
         [SerializeField] private M2Resources resources;
         [SerializeField] private M2GameManager gameManager;
+        [SerializeField] private PlayPhrasesVetricksOnCall playPhrase;
 
         protected override void RegisterDependencies()
         {
@@ -14,6 +15,12 @@ namespace DiplomGames
             container.RegisterInstance<M2GameManager>(gameManager);
             container.RegisterInstance<VetrickControll>(vetrickControll);
             container.RegisterInstance<EntryPoint>(this);
+            container.RegisterInstance(playPhrase);
+        }
+
+        public override void InitializeSystem()
+        {
+            playPhrase.PlayWelcomePhrase();
         }
     }
 }

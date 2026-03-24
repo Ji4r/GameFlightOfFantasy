@@ -23,6 +23,11 @@ namespace DiplomGames
             audioSource = GetComponent<AudioSource>();
         }
 
+        public void PlaySound(AudioClip sound)
+        {
+            audioSource.PlayOneShot(sound, ValueSong);
+        }
+
         public void PlaySound(ListSound sound)
         {
             audioSource.PlayOneShot(GetAudioClip(sound), ValueSong);

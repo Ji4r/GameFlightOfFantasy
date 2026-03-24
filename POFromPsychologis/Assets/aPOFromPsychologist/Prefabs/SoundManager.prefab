@@ -64,13 +64,21 @@ MonoBehaviour:
   - sound: 1
     audioClip: {fileID: 8300000, guid: da67864941efd0347b3d1275174204f5, type: 3}
   - sound: 2
-    audioClip: {fileID: 8300000, guid: 926db313e889b2c46a608323a3d2a4e5, type: 3}
+    audioClip: {fileID: 8300000, guid: cf6c0e7fbef9449c98a0cdb5ea0c4d9f, type: 3}
   - sound: 3
     audioClip: {fileID: 8300000, guid: d6f214e54653bd64eaf7fb9354d6d3d2, type: 3}
   - sound: 4
     audioClip: {fileID: 8300000, guid: 41f2db5c8e0bfb946beb334a578e69b4, type: 3}
-  - sound: 5
-    audioClip: {fileID: 8300000, guid: 2309d92ad4277f1418e49b75cc92ea1b, type: 3}
+  - sound: 6
+    audioClip: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
+  - sound: 8
+    audioClip: {fileID: 8300000, guid: d8d04c6f80a1140db85ede568dab1f51, type: 3}
+  - sound: 9
+    audioClip: {fileID: 8300000, guid: cf6c0e7fbef9449c98a0cdb5ea0c4d9f, type: 3}
+  - sound: 10
+    audioClip: {fileID: 8300000, guid: 7bd6b897eb5ca4b7d88a205c4a51640c, type: 3}
+  - sound: 11
+    audioClip: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
 --- !u!82 &8199915625929438156
 AudioSource:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ namespace DiplomGames
 
         public void NewSubsequnce(List<Color> newSubsequnce)
         {
-            CleatLists();
+            ClearLists();
             originalListOfColors = new List<Color>();
             originalListOfColors.AddRange(newSubsequnce);
         }
@@ -43,7 +43,7 @@ namespace DiplomGames
                 EverythingIsCorrect?.Invoke();
         }
 
-        private async void CleatLists()
+        private async void ClearLists()
         {
             await historyColor.ClearHistory();
             originalListOfColors?.Clear();

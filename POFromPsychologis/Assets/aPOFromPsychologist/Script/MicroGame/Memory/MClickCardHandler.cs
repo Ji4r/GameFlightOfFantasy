@@ -26,6 +26,7 @@ namespace DiplomGames
                 return; 
             }
 
+            SoundPlayer.instance.PlaySound(ListSound.FlippingTheCard);
             mCardProperties.ShowFacialSide(() => {
                 MCardManager.Instance.CheckingTheNumberOpenCards(mCardProperties);
             });                  

@@ -21,7 +21,7 @@ namespace DiplomGames
 
             if (imageComponent.sprite == rightSprite)
             {
-                Debug.Log("Всё правильно!");
+                Debug.Log("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
 
                 if (GetComponentFromObj(objectTrans, out M2DragAndDrop dragSystem))
                     dragSystem.enabled = false;
@@ -30,12 +30,24 @@ namespace DiplomGames
             }
             else
             {
-                Debug.Log("Неа");
+                Debug.Log("пїЅпїЅпїЅ");
             }
+        }
+
+        public bool GetMouseButton(PointerEventData eventData)
+        {
+                if (eventData.button != PointerEventData.InputButton.Left)
+                {
+                    return true;
+                }
+
+                return false;
         }
 
         public void OnDrop(PointerEventData eventData)
         {
+            if (GetMouseButton(eventData)) return;
+            
             if (eventData.pointerDrag != null)
             {
                 if (transform.childCount >= howManyObjectsCanBeStored)

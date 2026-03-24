@@ -4,7 +4,7 @@ namespace DiplomGames
 {
     public class GlobalDI : MonoBehaviour
     {
-        private DIContainer container;
+        private DIContainer Container;
         private DataSettings dataSetings;
         private SaveSystem saveSystem;
 
@@ -15,21 +15,20 @@ namespace DiplomGames
 
         public DIContainer GetDIContainer()
         {
-            return container;
+            return Container;
         }
 
         public void InitializedContainer()
         {
-            if (container != null)
+            if (Container != null)
                 return;
 
-            this.container = new DIContainer();
+            this.Container = new DIContainer();
             
             saveSystem = new SaveSystem();
-
-            container.RegisterInstance<ISaveSystems>(saveSystem);
-            container.RegisterInstance<SaveDataSettings>(new SaveDataSettings("Perfomanse.fof", container.Resolve<ISaveSystems>()));
-            // тут дальше будет инициализация службы сохрания и т.д
+            Container.RegisterInstance<ISaveSystems>(saveSystem);
+            Container.RegisterInstance<SaveDataSettings>
+                (new SaveDataSettings("Perfomanse.fof", Container.Resolve<ISaveSystems>()));
         }
     }
 }

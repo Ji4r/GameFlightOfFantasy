@@ -397,6 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vetrickObject: {fileID: 6424412003499836462}
+  durationAnims: 0.35
   plyer: {fileID: 3177557751718817836}
 --- !u!114 &3386716803162677187
 MonoBehaviour:
@@ -505,6 +506,8 @@ MonoBehaviour:
   symbolAppearanceTime: 0.06
   vetrickController: {fileID: 5821853012372696020}
   hideDelay: 2
+  hideDelayForWelcome: 10
+  baseChance: 20
   MotivationalPhrase: {fileID: 4119614734485395050}
 --- !u!114 &4293484874092486792
 MonoBehaviour:

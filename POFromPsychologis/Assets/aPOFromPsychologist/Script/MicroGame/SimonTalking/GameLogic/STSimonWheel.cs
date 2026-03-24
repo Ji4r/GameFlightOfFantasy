@@ -7,10 +7,12 @@ namespace DiplomGames
 {
     public class STSimonWheel : MonoBehaviour
     {
-        [HideInInspector] public Transform parentColorSimon; // Родитель всех цветов
+        [HideInInspector] public Transform parentColorSimon;
 
+        [SerializeField] private AudioClip[] listSource;
         [SerializeField] private STPresetColorAnimsWheel presetColorAnimsWheel;
         [SerializeField] private float darkenFactor = 0.5f;
+        [SerializeField] private ScriptableShake shake;
 
         [Inject] private STColorValidator colorValidator;
 
@@ -18,10 +20,12 @@ namespace DiplomGames
         private STGenerateColorSubsequnce colorSubsequnce;
         private List<ImageColor> listImage = new();
         private STAnimsColorWheel animsColorWheel;
+        private ShakeAnims shakeAnims;
 
         private void Start()
         {
             animsColorWheel = new STAnimsColorWheel(presetColorAnimsWheel);
+            shakeAnims = new ShakeAnims(shake);
         }
 
         private void OnDisable()
@@ -48,76 +52,50 @@ namespace DiplomGames
         {
             listImage.Clear();
 
-            foreach (Transform t in parentColorSimon)
+            for (int i = 0; i < parentColorSimon.childCount; i++)
             {
-                if (t.TryGetComponent<Image>(out var image))
+                if (parentColorSimon.GetChild(i).TryGetComponent<Image>(out var image))
                 {
-                    listImage.Add(new ImageColor(image, image.color));
+                    listImage.Add(new ImageColor(image, image.color, listSource[i]));
                 }
             }
         }
 
         public async Task StartSimon(Range range)
         {
-            var listColor = GetAllColorWheel();
             colorSubsequnce = new();
-            currentColorSequnce.Clear();
-            currentColorSequnce = colorSubsequnce.GenerateSubsequnceColor(listColor, range);
-            colorValidator.NewSubsequnce(currentColorSequnce);
-            DarkenColorSimon();
+            CreateSequnce(range);
 
-
-            List<ImageColor> sebsequnceImage = new List<ImageColor>();
-
-            foreach (var color in currentColorSequnce) 
-            {
-                for (int i = 0; i < listImage.Count; i++)
-                {
-                    if (color == listImage[i].originalColors)
-                        sebsequnceImage.Add(listImage[i]);
-                }
-            }
-
-            for (int i = 0; i < sebsequnceImage.Count; i++)
-            {
-                await animsColorWheel.WaitInterval();
-                await animsColorWheel.StartFullAnims(sebsequnceImage[i].ImageSource, sebsequnceImage[i].originalColors, sebsequnceImage[i].darkenedColor);
-            }
+            await AnimateSequenceColor(InitializedSequnce());
         }
 
         public async Task NextSimon(Range range)
         {
             RestoreColorSimon();
-            var listColor = GetAllColorWheel();
-            currentColorSequnce.Clear();
-            currentColorSequnce = colorSubsequnce.GenerateSubsequnceColor(listColor, range);
-            colorValidator.NewSubsequnce(currentColorSequnce);
-            DarkenColorSimon();
+            CreateSequnce(range);
 
-            List<ImageColor> sebsequnceImage = new List<ImageColor>();
-
-            foreach (var color in currentColorSequnce)
-            {
-                for (int i = 0; i < listImage.Count; i++)
-                {
-                    if (color == listImage[i].originalColors)
-                        sebsequnceImage.Add(listImage[i]);
-                }
-            }
-
-            for (int i = 0; i < sebsequnceImage.Count; i++)
-            {
-                await animsColorWheel.WaitInterval();
-                await animsColorWheel.StartFullAnims(sebsequnceImage[i].ImageSource, sebsequnceImage[i].originalColors, sebsequnceImage[i].darkenedColor);
-            }
+            await AnimateSequenceColor(InitializedSequnce());
         }
 
         public async Task ReplaySimon()
         {
             RestoreColorSimon();
-            //colorValidator.NewSubsequnce(currentColorSequnce);
             DarkenColorSimon();
 
+            await AnimateSequenceColor(InitializedSequnce());
+        }
+
+        private void CreateSequnce(Range range)
+        {
+            var listColor = GetAllColorWheel();
+            currentColorSequnce.Clear();
+            currentColorSequnce = colorSubsequnce.GenerateSubsequnceColor(listColor, range);
+            colorValidator.NewSubsequnce(currentColorSequnce);
+            DarkenColorSimon();
+        }
+
+        private List<ImageColor> InitializedSequnce()
+        {
             List<ImageColor> sebsequnceImage = new List<ImageColor>();
 
             foreach (var color in currentColorSequnce)
@@ -129,9 +107,17 @@ namespace DiplomGames
                 }
             }
 
+            return sebsequnceImage;
+        }
+
+        private async Task AnimateSequenceColor(List<ImageColor> sebsequnceImage)
+        {
             for (int i = 0; i < sebsequnceImage.Count; i++)
             {
+                if (sebsequnceImage[i].ImageSource == null)
+                    continue;
                 await animsColorWheel.WaitInterval();
+                SoundPlayer.instance.PlaySound(sebsequnceImage[i].Sound);
                 await animsColorWheel.StartFullAnims(sebsequnceImage[i].ImageSource, sebsequnceImage[i].originalColors, sebsequnceImage[i].darkenedColor);
             }
         }
@@ -156,9 +142,9 @@ namespace DiplomGames
             }
         }
 
-        public void Initialized(DIContainer parentContainer = null)
+        public async Task StartShakeWheel()
         {
-            throw new System.NotImplementedException();
+            await shakeAnims.StartShake(parentColorSimon.parent);
         }
     }
 
@@ -167,11 +153,19 @@ namespace DiplomGames
         public Image ImageSource;
         public Color originalColors;
         public Color darkenedColor;
+        public AudioClip Sound;
 
         public ImageColor(Image image, Color color)
         {
             ImageSource = image;
             originalColors = color;
+        }
+
+        public ImageColor(Image image, Color color, AudioClip sound)
+        {
+            ImageSource = image;
+            originalColors = color;
+            Sound = sound;
         }
 
         public ImageColor(ImageColor imageColor)

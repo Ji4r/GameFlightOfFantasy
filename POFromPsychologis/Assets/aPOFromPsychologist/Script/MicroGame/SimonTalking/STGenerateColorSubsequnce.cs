@@ -5,8 +5,6 @@ namespace DiplomGames
 {
     public class STGenerateColorSubsequnce 
     {
-        private int currentComplexity;
-
         public List<Color> GenerateSubsequnceColor(List<Color> colors, Range range)
         {
             int sebsequnceSize = Random.Range(range.minValue, range.maxValue);

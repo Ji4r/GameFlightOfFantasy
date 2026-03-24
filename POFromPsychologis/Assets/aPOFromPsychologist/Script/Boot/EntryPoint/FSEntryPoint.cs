@@ -5,6 +5,7 @@ namespace DiplomGames
     public class FSEntryPoint : EntryPoint<FSEntryPoint>
     {
         [SerializeField] private float volumeMusic = 0f;
+        [SerializeField] private PlayPhrasesVetricksOnCall playPhrase;
         [SerializeField] private VetrickControll vetrickControll;
         [SerializeField] private SettingsMenuUI uiSettingsMenu;
 
@@ -29,6 +30,12 @@ namespace DiplomGames
             container.RegisterInstance<VetrickControll>(vetrickControll);
             container.RegisterInstance<EntryPoint>((EntryPoint)this);
             container.RegisterInstance<SettingsMenuUI>(uiSettingsMenu);
+            container.RegisterInstance(playPhrase);
+        }
+
+        public override void InitializeSystem()
+        {
+            playPhrase.PlayWelcomePhrase();
         }
     }
 }

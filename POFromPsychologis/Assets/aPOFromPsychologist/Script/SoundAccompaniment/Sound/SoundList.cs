@@ -9,7 +9,13 @@ namespace DiplomGames
         answerSuccesful,
         answerNotSuccesful,
         Firecracker,
-        OpeningAWindow
+        OpeningAWindow,
+        FlippingTheCard,
+        FlippingTheCards,
+        NotTheRightAnswerMemory,
+        CorrectAnswerInMemory,
+        AllAnswerCorrectInMemory,
+        TheEmergenceHistoryElement
     }
 
     public class SoundList : MonoBehaviour

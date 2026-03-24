@@ -36,6 +36,7 @@ namespace DiplomGames
             {
                 if (openCards.Count == numberCardsOpenAtOneTime && openCards[0].UniqueId == openCards[1].UniqueId)
                 {
+                    SoundPlayer.instance.PlaySound(ListSound.CorrectAnswerInMemory);
                     openCards[0].FindCard();
                     openCards[1].FindCard();
 
@@ -69,6 +70,7 @@ namespace DiplomGames
                     for (int i = 0; i < openCards.Count; i++)
                     {
                         openCards[i].HideFacialSide();
+                        SoundPlayer.instance.PlaySound(ListSound.NotTheRightAnswerMemory);
                     }
                 }
             }

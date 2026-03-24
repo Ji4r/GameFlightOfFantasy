@@ -9,7 +9,10 @@ namespace DiplomGames
     {
         [Header("Ссылки на элементы")]
         [SerializeField] private GameObject windowRestratGame;
-        [SerializeField] private TextMeshProUGUI txtIsWin;
+        [SerializeField] private TextMeshProUGUI textEventGame;
+        [SerializeField] private TextPreset textIsWin = new TextPreset("Правильно!", Color.green);
+        [SerializeField] private TextPreset textIsLose = new TextPreset("Ошибка!", Color.red);
+
 
         [Header("Ссылки на кнопки")]
         [SerializeField] private Button buttonReplay;
@@ -22,6 +25,7 @@ namespace DiplomGames
         [Inject] private STGameController gameController;
         [Inject] private STGameSettingsManager gameSettingsManager;
         [Inject] private STHistoryColor historyColor;
+        [Inject] private STSimonWheel simonWheel;
 
         private bool isInitialized;
 
@@ -87,6 +91,8 @@ namespace DiplomGames
 
         private void OnNextClick()
         {
+            if (!buttonPlaySequence.gameObject.activeInHierarchy)
+                buttonPlaySequence.gameObject.SetActive(true);
             gameController.SetActivePianino(false);
             buttonPlaySequence.interactable = true;
             windowRestratGame.SetActive(false);
@@ -94,16 +100,30 @@ namespace DiplomGames
 
         private async void ShowWindowRestartGame()
         {
-            await historyColor.ClearHistory();
+            textEventGame.color = textIsLose.Color;
+            textEventGame.text = textIsLose.Text;
+            SoundPlayer.instance.PlaySound(ListSound.answerNotSuccesful);
+            Task shakeAnims = simonWheel.StartShakeWheel();
+            Task clearHistoryAnims = historyColor.ClearHistory();
+            await shakeAnims;
+            await clearHistoryAnims;
             windowRestratGame.SetActive(true);
+            textEventGame.text = string.Empty;
         }
 
         private async void EverythingIsCorrect()
         {
+            if (!buttonPlaySequence.gameObject.activeInHierarchy)
+                buttonPlaySequence.gameObject.SetActive(true);
+
+            textEventGame.color = textIsWin.Color;
+            textEventGame.text = textIsWin.Text;
             windowRestratGame.SetActive(false);
             gameController.SetActivePianino(false);
+            SoundPlayer.instance.PlaySound(ListSound.AllAnswerCorrectInMemory);
             await historyColor.ClearHistory();
             buttonPlaySequence.interactable = true;
+            textEventGame.text = string.Empty;
         }
 
         private void InitializedGame()
@@ -122,6 +142,20 @@ namespace DiplomGames
         {
             buttonPlaySequence.interactable = false;
             gameController.NextGameEvent?.Invoke();
+        }
+    }
+
+    [System.Serializable]
+    public struct TextPreset
+    {
+        public string Text;
+        public Color Color;
+
+
+        public TextPreset(string text, Color color)
+        {
+            Text = text;
+            Color = color;
         }
     }
 }
