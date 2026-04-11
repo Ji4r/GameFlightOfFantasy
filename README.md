@@ -1,12 +1,12 @@
 # 🎮 Полёт фантазии
 
-> **Издатель:** ColdLabs Studio  
+> **Издатель:** Henji Studio  
 > **Разработчики:**  
 > • **Программист:** @WeiTersCL  
 > • **UI/UX Дизайнер:** @DOMAHNIY52  
 > • **SFX UI:** JDSherbert  
 
-**[Скачать актуальную версию](https://github.com/Ji4r/GameFlightOfFantasy/releases/tag/1.1_ob)**
+**[Скачать актуальную версию](https://github.com/Ji4r/GameFlightOfFantasy/releases/tag/Ob)**
 
 ---
 
