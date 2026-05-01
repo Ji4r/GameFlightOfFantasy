@@ -6,7 +6,7 @@
 > • **UI/UX Дизайнер:** @DOMAHNIY52  
 > • **SFX UI:** JDSherbert  
 
-**[Скачать актуальную версию](https://github.com/Ji4r/GameFlightOfFantasy/releases/tag/Ob)**
+**[Скачать актуальную версию](https://github.com/Ji4r/GameFlightOfFantasy/releases/tag/1.3Ob)**
 
 ---
 
