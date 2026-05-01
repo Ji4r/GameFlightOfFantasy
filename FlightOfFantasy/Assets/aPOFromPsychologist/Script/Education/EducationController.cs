@@ -23,10 +23,7 @@ namespace DiplomGames
         {
             nextStep.onClick.AddListener(NextStep);
             prevStep.onClick.AddListener(PrevStep);
-        }
 
-        protected void Start()
-        {
             if (preset == null || preset.Tutor == null || preset.Tutor.Length == 0)
             {
                 Debug.LogError("Не найден экземпляр типа - ScriptableEducation для поля preset");
@@ -90,6 +87,7 @@ namespace DiplomGames
                 return;
             }
 
+            
             dialogue = StartCoroutine(StartADialogue(preset.Tutor[currentStepTutor]));
         }
 
@@ -135,6 +133,34 @@ namespace DiplomGames
             }
             else
                 return false;
+        }
+
+        public void StopAllDialogue()
+        {
+            // Остановить печать текста (Coroutine)
+            if (dialogue != null)
+            {
+                StopCoroutine(dialogue);
+                dialogue = null;
+            }
+
+            // Очистить текст
+            ClearText();
+
+            // Остановить звук
+            if (SoundVetrickVoice.instance != null)
+            {
+                SoundVetrickVoice.instance.StopCurrentSound();
+            }
+
+            // Остановить видео
+            if (player != null && player.isPlaying)
+            {
+                player.Stop();
+            }
+
+            // Сброс текущей фразы (по желанию)
+            currentPhrase = null;
         }
     }
 }

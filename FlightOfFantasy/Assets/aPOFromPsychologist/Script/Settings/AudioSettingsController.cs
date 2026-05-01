@@ -37,5 +37,10 @@ namespace DiplomGames
             dataSettings.VoiceVetrickVolume = volume;
             SoundVetrickVoice.instance.SetVolumeSong(volume);
         }
+
+        public void SetVolumeSoundOnGame(float volume)
+        {
+            dataSettings.SoundVolumeOnGame = volume;
+        }
     }
 }

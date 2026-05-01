@@ -13,7 +13,7 @@ namespace DiplomGames
     [System.Serializable]
     public class TutorPreset
     {
-        public string Text;
+        [TextArea(1, 10)] public string Text;
         public AudioClip AudioClip;
         public VideoClip VideoClip;
     }

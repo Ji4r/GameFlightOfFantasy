@@ -1,4 +1,3 @@
-using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 namespace DiplomGames
@@ -13,8 +12,7 @@ namespace DiplomGames
 
         public AudioSettingsController AudioSettingsController => audioSettingsController;
         public DisplaySettingsController DisplaySettingsController => displaySettingsController;
-
-        
+       
 
         public void Initialized(SaveDataSettings saver, DataSettings data)
         {
@@ -33,12 +31,14 @@ namespace DiplomGames
         }
     }
 
+
     [System.Serializable]
     public class DataSettings
     {
         public float MusicVolume;
         public float SoundVolume;
         public float VoiceVetrickVolume;
+        public float SoundVolumeOnGame;
 
         public bool DisplayVetrik;
 
@@ -55,6 +55,7 @@ namespace DiplomGames
             whoAreCopyingTo.DisplayVetrik = this.DisplayVetrik;
             whoAreCopyingTo.ScreenMode = this.ScreenMode;
             whoAreCopyingTo.ResolutionScreen = this.ResolutionScreen;
+            whoAreCopyingTo.SoundVolumeOnGame = this.SoundVolumeOnGame;
         }
     }
 }

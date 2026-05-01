@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+п»їusing System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,11 +13,11 @@ namespace DiplomGames
         [SerializeField] ScriptableShake shakeAnims;
         [SerializeField] ScriptableScaler scalerPreset;
 
-        [Header("Настройки карточки")]
+        [Header("РќР°СЃС‚СЂРѕР№РєРё РєР°СЂС‚РѕС‡РєРё")]
         [SerializeField] private Transform pointStartCard;
         [SerializeField] private Transform[] cards;
 
-        [Header("Настройки слотов")]
+        [Header("РќР°СЃС‚СЂРѕР№РєРё СЃР»РѕС‚РѕРІ")]
         [SerializeField] private Transform mainSlot;
         [SerializeField] private Transform[] slots;
 
@@ -26,14 +26,23 @@ namespace DiplomGames
         private AnimsScale animsScale;
         private Vector3[] baseScaleCards;
 
+
+        private CanvasGroup canvasGroup;
+
         private void Awake()
+        {
+            BaseProperty();
+            canvasGroup = GetComponent<CanvasGroup>();
+        }
+
+        private void BaseProperty()
         {
             anims = new(pointStartCard, durationAnims);
             shakeAnim = new ShakeAnims(shakeAnims);
             animsScale = new AnimsScale(scalerPreset);
             baseScaleCards = new Vector3[cards.Length];
 
-            for (int i = 0; i < cards.Length; i++) 
+            for (int i = 0; i < cards.Length; i++)
             {
                 baseScaleCards[i] = cards[i].localScale;
             }
@@ -52,15 +61,13 @@ namespace DiplomGames
             await anims.CardMoveToSlot(card, GetFreeSlot());
             SetActiveDragCardMove(true);
             uiView.ClearAnswer();
-
-            //return GeneratedNewLevel();
         }
 
         public Transform GetChildrenFromIdWithMainSlot(int id)
         {
             if (mainSlot.childCount - 1 < id)
             {
-                Debug.Log("Столько детей нету у mainSlot");
+                Debug.Log("РЎС‚РѕР»СЊРєРѕ РґРµС‚РµР№ РЅРµС‚Сѓ Сѓ mainSlot");
                 return null;
             }
             return mainSlot.GetChild(id);
@@ -135,7 +142,7 @@ namespace DiplomGames
                     return slots[i];
                 }
             }
-            throw new System.Exception("Error все слоты полные");
+            throw new System.Exception("Error РІСЃРµ СЃР»РѕС‚С‹ РїРѕР»РЅС‹Рµ");
         }
 
         public async Task SetScaleToZero()
@@ -165,6 +172,45 @@ namespace DiplomGames
         private void OnDisable()
         {
            anims.Dispose();
+        }
+
+        public void ResetCardsToStart()
+        {
+            for (int i = 0; i < cards.Length; i++)
+            {
+                var card = cards[i];
+
+                // вќ— РќР• РўР РћР“РђР•Рњ parent
+
+                // СЃР±СЂР°СЃС‹РІР°РµРј С‚РѕР»СЊРєРѕ С‚СЂР°РЅСЃС„РѕСЂРј
+                card.localScale = baseScaleCards[i];
+                card.localRotation = Quaternion.identity;
+
+                // рџ‘‰ РЎР‘Р РћРЎ Drag
+                if (card.TryGetComponent<DragAndDrop>(out var drag))
+                {
+                    drag.enabled = true;
+                    drag.SetRaycast(true);
+                }
+
+                // рџ‘‰ РЎР‘Р РћРЎ Handler
+                if (card.TryGetComponent<HandlerButton>(out var handler))
+                {
+                    handler.Reset();
+                    handler.enabled = true;
+                }
+            }
+        }
+
+        public void SetDragState(bool isEnabled)
+        {
+            SetActiveDragCardMove(isEnabled);
+        }
+
+        public void SetRaycast(bool value)
+        {
+            if (canvasGroup != null)
+                canvasGroup.blocksRaycasts = value;
         }
     }
 }

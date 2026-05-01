@@ -8,8 +8,7 @@ namespace DiplomGames
     {
         public static M2GameManager instance;
         [SerializeField] private ScriptableMover presetMoverAnim;
-        [SerializeField] private Button startGame5;
-        [SerializeField] private Button startGame10;
+        [SerializeField] private SliderLevelComplexity sliderLevelComplexity;
         [SerializeField] private Button startMove;
         [SerializeField] private Button btnNextRound;
         [SerializeField] private Button btnNewDiffecalty;
@@ -21,7 +20,9 @@ namespace DiplomGames
         [Inject] private M2Resources resources;
         [Inject] private EntryPoint entryPoint;
         [Inject] private M2UiView uiView;
+        [Inject] private PlayPhrasesVetricksOnCall playPhrase;
 
+        private bool isDontFirstGame;
         private M2Generator ganerator;
         private int sizeField;
 
@@ -35,8 +36,7 @@ namespace DiplomGames
 
         private void OnEnable()
         {
-            startGame5.onClick.AddListener(() => { StartGames(5); });
-            startGame10.onClick.AddListener(() => { StartGames(10); });
+            sliderLevelComplexity.AcceptComplexityChanged += StartGames;
             startMove.onClick.AddListener(StartMoveAnimToSlot);
 
             btnNextRound.onClick.AddListener(NextRound);
@@ -46,8 +46,7 @@ namespace DiplomGames
 
         private void OnDisable()
         {
-            startGame5.onClick.RemoveListener(() => { StartGames(5); });
-            startGame10.onClick.RemoveListener(() => { StartGames(10); });
+            sliderLevelComplexity.AcceptComplexityChanged -= StartGames;
             startMove.onClick.RemoveListener(StartMoveAnimToSlot);
 
             btnNextRound.onClick.RemoveListener(NextRound);
@@ -55,16 +54,22 @@ namespace DiplomGames
             btnExitMenu.onClick.RemoveListener(() => { entryPoint.LoadScene(1); });
         }
 
-        private void StartGames(int size)
+        private void StartGames(LevelComplexity size)
         {
-            sizeField = size;
-            fabricSlots.Initialized(size);
+            sizeField = size.CurrentLevelComplexity;
+            fabricSlots.Initialized(size.CurrentLevelComplexity);
             ganerator = new M2Generator();
-            var listSprite = ganerator.Generate(resources.listSprite, size);
+            var listSprite = ganerator.Generate(resources.listSprite, size.CurrentLevelComplexity);
             initializedSlot.Initialized(fabricSlots.GameFieldTransform, listSprite);
             
 
             panelStart.SetActive(false);
+
+            if (isDontFirstGame == false)
+            {
+                playPhrase.PlayWelcomePhrase();
+                isDontFirstGame = true;
+            }
 
             foreach (var slot in resources.listPropDragAndDrop)
             {
@@ -107,6 +112,7 @@ namespace DiplomGames
 
         private void StartMoveAnimToSlot()
         {
+            startMove.interactable = false;
             var anim = new MoveToSlotAnims(presetMoverAnim);
 
             if (fabricSlots == null)
@@ -167,7 +173,7 @@ namespace DiplomGames
 
             Debug.Log("»√–¿ œ–Œ…ƒ≈Õ¿!");
             uiView.SetEnabledPanelEndGame(true);
-            //NextRound();
+            startMove.interactable = true;
         }
     }
 }

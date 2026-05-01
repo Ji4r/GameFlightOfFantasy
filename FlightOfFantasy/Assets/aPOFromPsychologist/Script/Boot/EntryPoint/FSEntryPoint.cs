@@ -9,6 +9,9 @@ namespace DiplomGames
         [SerializeField] private VetrickControll vetrickControll;
         [SerializeField] private SettingsMenuUI uiSettingsMenu;
 
+        [Header("UI")]
+        [SerializeField] private AudioSource soundPlayer;
+
         public override void Initialized(DIContainer parentContainer = null)
         {
             container = new DIContainer(parentContainer);
@@ -22,7 +25,14 @@ namespace DiplomGames
 
             StartInjectDependencies();
             uiSettingsMenu.ValueChangedMusicNoSaving(volumeMusic);
+            soundPlayer.volume = container.Resolve<DataSettings>().SoundVolumeOnGame;
+            uiSettingsMenu.ChangeVolumeOnGame += UpdateSoundOnGame;
             manager.HideLoadScreenAndShowAnims();
+        }
+
+        private void OnDisable()
+        {
+            uiSettingsMenu.ChangeVolumeOnGame -= UpdateSoundOnGame;
         }
 
         protected override void RegisterDependencies()
@@ -33,9 +43,9 @@ namespace DiplomGames
             container.RegisterInstance(playPhrase);
         }
 
-        public override void InitializeSystem()
+        private void UpdateSoundOnGame(float volume)
         {
-            playPhrase.PlayWelcomePhrase();
+            soundPlayer.volume = volume;
         }
     }
 }

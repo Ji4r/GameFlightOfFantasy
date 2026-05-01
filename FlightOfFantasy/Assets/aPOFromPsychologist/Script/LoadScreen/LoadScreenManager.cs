@@ -17,7 +17,6 @@ namespace DiplomGames
         [SerializeField] private GameObject loadScreen;
         [SerializeField] private Image image;
         [SerializeField] private TextMeshProUGUI textProcess;
-        [SerializeField] private GameObject textLoad;
 
         private LoadScreenAnimation screenAnimation;
 
@@ -28,33 +27,33 @@ namespace DiplomGames
 
         public void ShowLoadScreen(Action callbock = null)
         {
-            textLoad.SetActive(true);
+            //textLoad.SetActive(true);
             screenAnimation.ShowLoadScreen(callbock);
         }
 
         public void HideLoadScreen(Action callbock = null)
         {
-            textLoad.SetActive(false);
+            //textLoad.SetActive(false);
             screenAnimation.HideLoadScreen(callbock);
         }
 
         public void ActiveLoadScreen()
         {
-            textLoad.SetActive(true);
+            //textLoad.SetActive(true);
             loadScreen.SetActive(true);
             screenAnimation.ResetMaterialValue();
         }
 
         public async Task ActiveLoadScreenAndShowAnims()
         {
-            textLoad.SetActive(true);
+            //textLoad.SetActive(true);
             loadScreen.SetActive(true);
             await screenAnimation.ShowLoadScreenAsync();
         }
 
         public void HideLoadScreenAndShowAnims()
         {
-            textLoad.SetActive(false);
+            //textLoad.SetActive(false);
             screenAnimation.HideLoadScreen(() =>
             {
                 loadScreen.SetActive(false);

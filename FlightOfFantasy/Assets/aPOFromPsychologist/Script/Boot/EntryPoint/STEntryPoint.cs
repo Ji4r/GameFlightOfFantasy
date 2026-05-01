@@ -1,4 +1,3 @@
-using DG.Tweening;
 using UnityEngine;
 
 namespace DiplomGames
@@ -28,10 +27,6 @@ namespace DiplomGames
             var gameSettingsManager = new STGameSettingsManager();
             container.RegisterInstance<STGameSettingsManager>(gameSettingsManager);
             container.RegisterInstance(playPhrase);
-        }
-        public override void InitializeSystem()
-        {
-            playPhrase.PlayWelcomePhrase();
         }
     }
 }

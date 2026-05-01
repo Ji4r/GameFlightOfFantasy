@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
-using System.Threading.Tasks;
 
 namespace DiplomGames
 {
@@ -11,6 +10,7 @@ namespace DiplomGames
         [SerializeField] private SlotContainer slotContainer;
         [SerializeField] private CheckerSlot controller;
         [SerializeField] private byte countChildren = 2;
+
         public async void OnDrop(PointerEventData eventData)
         {
             if (eventData.pointerDrag != null)

@@ -146,6 +146,12 @@ namespace DiplomGames
         {
             await shakeAnims.StartShake(parentColorSimon.parent);
         }
+
+        public void ClearWheelData()
+{
+    listImage.Clear();
+    currentColorSequnce.Clear();
+}
     }
 
     public class ImageColor

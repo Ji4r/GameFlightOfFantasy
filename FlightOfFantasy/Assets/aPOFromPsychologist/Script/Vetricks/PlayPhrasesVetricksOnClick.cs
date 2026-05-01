@@ -17,5 +17,17 @@ namespace DiplomGames
             btn.onClick.RemoveListener(NextPhrase);
             SoundVetrickVoice.instance.StopCurrentSound();
         }
+
+        protected override void NextPhrase()
+        {
+            if (SkipDialogue())
+                return;
+
+            if (listOfPhrases == null || listOfPhrases.Count == 0)
+                GenerateListPhrase();
+
+            var _ = vetrickController.ShowVetrick(TypePhrase.Base);
+            dialogue = StartCoroutine(StartADialogue(listOfPhrases.Dequeue()));
+        }
     }
 }

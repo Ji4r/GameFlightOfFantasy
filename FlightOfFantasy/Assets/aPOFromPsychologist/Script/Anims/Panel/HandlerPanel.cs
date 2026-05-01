@@ -19,12 +19,14 @@ namespace DiplomGames
         {
             foreach (var button in buttonsShow)
             {
-                button.onClick.AddListener(Show);
+                if (button != null)
+                    button.onClick.AddListener(Show);
             }
 
             foreach (var button in buttonsHide)
             {
-                button.onClick.AddListener(Hide);
+                if (button != null)
+                    button.onClick.AddListener(Hide);
             }
         }
 
@@ -32,12 +34,14 @@ namespace DiplomGames
         {
             foreach (var button in buttonsShow)
             {
-                button.onClick.RemoveListener(Show);
+                if (button != null)
+                    button.onClick.RemoveListener(Show);
             }
 
             foreach (var button in buttonsHide)
             {
-                button.onClick.RemoveListener(Hide);
+                if (button != null)
+                    button.onClick.RemoveListener(Hide);
             }
         }
 

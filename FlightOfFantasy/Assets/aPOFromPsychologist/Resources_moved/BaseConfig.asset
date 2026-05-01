@@ -16,6 +16,7 @@ MonoBehaviour:
     MusicVolume: 0.3
     SoundVolume: 0.8
     VoiceVetrickVolume: 1
+    SoundVolumeOnGame: 1
     DisplayVetrik: 1
     ScreenMode: 1
     ResolutionScreen:

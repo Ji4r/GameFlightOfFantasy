@@ -7,9 +7,15 @@ namespace DiplomGames
     public class FSAShuffleSprite : MonoBehaviour
     {
         [SerializeField] private Sprite[] listSprites;
+        [SerializeField] private SliderLevelComplexity sliderLevelComplexity;
 
         private Queue<Sprite> shuffleAllSprites;
         private Queue<Sprite> shuffleAllOtherSprites;
+
+        private void Start()
+        {
+            sliderLevelComplexity.SetMaxLevelComplexity(listSprites.Length);
+        }
 
         private void FillQueueWithShuffle()
         {

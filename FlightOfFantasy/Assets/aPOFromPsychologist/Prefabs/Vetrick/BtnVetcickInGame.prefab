@@ -398,6 +398,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vetrickObject: {fileID: 6424412003499836462}
   durationAnims: 0.35
+  imageVetrick: {fileID: 6383537098589325199}
+  welcomePosVetrick: {fileID: -128450721330156950, guid: 4b5fc9c8b34aa9e44895b3df652eb65f, type: 3}
+  posVetrick:
+  - {fileID: 7293205156266669444, guid: 05927c90e5a5c27478a5f9571b32837d, type: 3}
+  - {fileID: -7560242052590516480, guid: 36c1cb5db76434d49a9e22fdda963f92, type: 3}
   plyer: {fileID: 3177557751718817836}
 --- !u!114 &3386716803162677187
 MonoBehaviour:

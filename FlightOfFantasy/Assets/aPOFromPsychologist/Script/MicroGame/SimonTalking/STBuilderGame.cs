@@ -106,5 +106,24 @@ namespace DiplomGames
                 Debug.LogWarning("listButtonColor равен null");
             return listButtonColor;
         }
+
+        public void ClearPianino()
+        {
+            // удалить кнопки
+            for (int i = parentButtonColor.childCount - 1; i >= 0; i--)
+            {
+                Destroy(parentButtonColor.GetChild(i).gameObject);
+            }
+
+            // очистить список
+            listButtonColor?.Clear();
+
+            // удалить колесо
+            if (Wheel != null)
+            {
+                Destroy(Wheel);
+                Wheel = null;
+            }
+        }
     }
 }

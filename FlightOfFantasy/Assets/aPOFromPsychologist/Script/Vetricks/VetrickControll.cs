@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 using System.Threading.Tasks;
 
 namespace DiplomGames
@@ -8,10 +9,13 @@ namespace DiplomGames
     {
         [SerializeField] private GameObject vetrickObject;
         [SerializeField] private float durationAnims = 0.3f;
+        [SerializeField] private Image imageVetrick;
+        [SerializeField] private Sprite welcomePosVetrick;
+        [SerializeField] private Sprite[] posVetrick;
 
         public PlayPhrases plyer; 
         
-        private bool isActive = false;
+        public bool IsActive { get; private set; }
         private Vector3 baseScale;
         private Transform vetrickTrans;
 
@@ -23,9 +27,10 @@ namespace DiplomGames
             baseScale = vetrickObject.transform.localScale;
         }
 
+
         public void SetActivity(bool isActive)
         {
-            this.isActive = isActive;
+            this.IsActive = isActive;
             this.gameObject.SetActive(isActive);
             plyer.enabled = isActive;
         }
@@ -36,8 +41,17 @@ namespace DiplomGames
             vetrickObject.SetActive(false);
         }
 
-        public async Task ShowVetrick()
+        public async Task ShowVetrick(TypePhrase typePhrase)
         {
+            if (typePhrase == TypePhrase.Welcome)
+            {
+                imageVetrick.sprite = welcomePosVetrick;
+            }
+            if (typePhrase == TypePhrase.Base)
+            {
+                imageVetrick.sprite = posVetrick[Random.Range(0, posVetrick.Length)];
+            }
+
             vetrickObject.SetActive(true);
             await vetrickTrans.DOScale(baseScale, durationAnims).AsyncWaitForCompletion();
         }

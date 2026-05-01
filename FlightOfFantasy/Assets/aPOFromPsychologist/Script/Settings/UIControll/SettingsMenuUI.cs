@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
 
 namespace DiplomGames
 {
@@ -11,10 +12,12 @@ namespace DiplomGames
         [SerializeField] private Slider sliderMusic;
         [SerializeField] private Slider sliderSound;
         [SerializeField] private Slider sliderVetrickVoice;
+        [SerializeField] private Slider sliderSoundOnGame;
 
         [SerializeField] private TextMeshProUGUI volumeProcentMusic;
         [SerializeField] private TextMeshProUGUI volumeProcentSound;
         [SerializeField] private TextMeshProUGUI volumeProcentVetrickVoice;
+        [SerializeField] private TextMeshProUGUI volumeProcentSoundOnGame;
         [SerializeField] private Button btnCloseAndSave; 
 
         [Header("Окно настроек экрана")]
@@ -32,6 +35,8 @@ namespace DiplomGames
         [SerializeField] private AudioSettingsController audioSettings;
         [SerializeField] private DisplaySettingsController displaySettings;
 
+        public event Action<float> ChangeVolumeOnGame;
+
         private void Init()
         {
             settingsGame.Initialized(saver, dataSettings);
@@ -44,12 +49,14 @@ namespace DiplomGames
             displaySettings = settingsGame.DisplaySettingsController;
             ValueChangedMusic(dataSettings.MusicVolume);
             ValueChangedSound(dataSettings.SoundVolume);
+            ValueChangedSoundOnGame(dataSettings.SoundVolumeOnGame);
             ValueChangedVetrickVoice(dataSettings.VoiceVetrickVolume);
             UpdateToggleShowVetrick(dataSettings.DisplayVetrik);
 
             sliderMusic.onValueChanged.AddListener(ValueChangedMusic);
             sliderSound.onValueChanged.AddListener(ValueChangedSound);
             sliderVetrickVoice.onValueChanged.AddListener(ValueChangedVetrickVoice);
+            sliderSoundOnGame.onValueChanged.AddListener(ValueChangedSoundOnGame);
 
             InitializedResolution();
             InitializeScreenParameters(dataSettings);
@@ -67,7 +74,7 @@ namespace DiplomGames
             sliderMusic.onValueChanged.RemoveListener(ValueChangedMusic);
             sliderSound.onValueChanged.RemoveListener(ValueChangedSound);
             sliderVetrickVoice.onValueChanged.RemoveListener(ValueChangedVetrickVoice);
-                
+            sliderSoundOnGame.onValueChanged.RemoveListener(ValueChangedSoundOnGame);
 
             if (displaySettings == null)
                 Debug.LogError("AudioSettingsController в SettingsGame равен null");
@@ -111,11 +118,18 @@ namespace DiplomGames
             UpdateSliderValue(sliderVetrickVoice, dataSettings.VoiceVetrickVolume);
         }
 
+        private void ValueChangedSoundOnGame(float volume)
+        {
+            audioSettings.SetVolumeSoundOnGame(volume);
+            volumeProcentSoundOnGame.text = $"{Mathf.RoundToInt(volume * 100)}%";
+            UpdateSliderValue(sliderSoundOnGame, volume);
+            ChangeVolumeOnGame?.Invoke(volume);
+        }
+
         private void UpdateSliderValue(Slider slider, float value)
         {
             slider.value = value;
         }
-
 
         private void SetActivityVetrick(bool isActivity)
         {

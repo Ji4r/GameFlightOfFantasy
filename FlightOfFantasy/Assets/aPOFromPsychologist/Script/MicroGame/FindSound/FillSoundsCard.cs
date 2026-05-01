@@ -7,9 +7,16 @@ namespace DiplomGames
     public class FillSoundsCard : MonoBehaviour
     {
         [SerializeField] private SoundAndImage[] allUseAudioClips;
+        [SerializeField] private SliderLevelComplexity sliderLevelComplexity;
 
         private Queue<SoundAndImage> shuffleAllClips;
         private Queue<SoundAndImage> shuffleAllOtherClips;
+
+        private void Start()
+        {
+            sliderLevelComplexity.SetMaxLevelComplexity(allUseAudioClips.Length);
+        }
+
 
         private void FillQueueWithShuffle()
         {

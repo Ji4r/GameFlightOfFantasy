@@ -9,23 +9,23 @@ namespace FactoryYard
     [InitializeOnLoad]
     public static class PlayModeBootstrapper
     {
-        static PlayModeBootstrapper()
-        {
-            EditorApplication.playModeStateChanged += OnPlayModeChanged;
-        }
-
-        private static void OnPlayModeChanged(PlayModeStateChange state)
-        {
-            if (state == PlayModeStateChange.ExitingEditMode)
+            static PlayModeBootstrapper()
             {
-                if (SceneManager.GetActiveScene().name != "Boot")
+                EditorApplication.playModeStateChanged += OnPlayModeChanged;
+            }
+
+            private static void OnPlayModeChanged(PlayModeStateChange state)
+            {
+                if (state == PlayModeStateChange.ExitingEditMode)
                 {
-                    EditorSceneManager.playModeStartScene =
-                        AssetDatabase.LoadAssetAtPath<SceneAsset>(
-                            "Assets/aPOFromPsychologist/Scene/Boot.unity");
+                    if (SceneManager.GetActiveScene().name != "Boot")
+                    {
+                        EditorSceneManager.playModeStartScene =
+                            AssetDatabase.LoadAssetAtPath<SceneAsset>(
+                                "Assets/aPOFromPsychologist/Scene/Boot.unity");
+                    }
                 }
             }
-        }
     }
 }
 #endif

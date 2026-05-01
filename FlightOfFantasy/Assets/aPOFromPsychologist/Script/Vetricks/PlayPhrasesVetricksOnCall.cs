@@ -9,17 +9,19 @@ namespace DiplomGames
 {
     public enum TypePhrase
     {
-        Base, MotivationalPhrase
+        Base, MotivationalPhrase, Welcome
     }
 
     public class PlayPhrasesVetricksOnCall : PlayPhrases
     {
-        [SerializeField] private VetrickControll vetrickController;
         [SerializeField] private float hideDelay = 2f;
         [SerializeField] private float hideDelayForWelcome = 10f;
         [SerializeField] private int baseChance;
 
         [SerializeField, Tooltip("Похвальные фразы")] private PhraseVetrick MotivationalPhrase;
+
+        [Inject] private VetrickControll vetrickControll;
+
         protected Queue<PhrseAndClip> listOfMotivationalPhrase;
 
         private Coroutine currentShutdownVetrick;
@@ -31,7 +33,7 @@ namespace DiplomGames
 
         public void PlayWelcomePhrase()
         {
-            if (dialogue == null)
+            if (dialogue == null && vetrickControll.IsActive)
             {
                 dialogue = StartCoroutine(StartADialogue(phrases.GetWelcomePhrase(), () =>
                 {
@@ -96,7 +98,7 @@ namespace DiplomGames
             if (!vetrickController.VetrickObject.activeInHierarchy)
             {
                 ClearText();
-                await vetrickController.ShowVetrick();
+                await vetrickController.ShowVetrick(type);
             }
 
             if (type == TypePhrase.Base)

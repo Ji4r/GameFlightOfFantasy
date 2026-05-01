@@ -13,10 +13,5 @@ namespace DiplomGames
             container.RegisterInstance<EntryPoint>(this);
             container.RegisterInstance(playPhrasesVetricksOnCall);
         }
-
-        public override void InitializeSystem()
-        {
-            playPhrasesVetricksOnCall.PlayWelcomePhrase();
-        }
     }
 }

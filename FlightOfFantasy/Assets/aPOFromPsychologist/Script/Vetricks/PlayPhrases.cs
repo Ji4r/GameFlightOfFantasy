@@ -8,6 +8,7 @@ namespace DiplomGames
 {
     public class PlayPhrases : MonoBehaviour
     {
+        [SerializeField] protected VetrickControll vetrickController;
         [SerializeField] protected PhraseVetrick phrases;
         [SerializeField] protected TextMeshProUGUI textVetrick;
         [SerializeField] protected float symbolAppearanceTime = 0.6f;

@@ -12,9 +12,5 @@ namespace DiplomGames
             container.RegisterInstance<EntryPoint>(this);
             container.RegisterInstance(playPhrase);
         }
-        public override void InitializeSystem()
-        {
-            playPhrase.PlayWelcomePhrase();
-        }
     }
 }

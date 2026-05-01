@@ -19,10 +19,5 @@ namespace DiplomGames
             container.RegisterInstance<M2UiView>(uiView);
             container.RegisterInstance(playPhrase);
         }
-
-        public override void InitializeSystem()
-        {
-            playPhrase.PlayWelcomePhrase();
-        }
     }
 }

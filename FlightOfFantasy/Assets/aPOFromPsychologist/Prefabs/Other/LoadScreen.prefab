@@ -55,7 +55,6 @@ MonoBehaviour:
   loadScreen: {fileID: 4260495607612683364}
   image: {fileID: 624243211100479804}
   textProcess: {fileID: 7045676362234494943}
-  textLoad: {fileID: 5790730957081789945}
 --- !u!1 &3473813335244048932
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +122,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1257864148392291152, guid: dd68a7a0fcaab484799f77cd74a774fb, type: 3}
+  m_Sprite: {fileID: -6265136392211227296, guid: 261c35c943b49b947bbff8b7092bbb79, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

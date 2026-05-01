@@ -1,7 +1,5 @@
-using NUnit.Framework;
-using System;
+п»їusing System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace DiplomGames
@@ -47,7 +45,7 @@ namespace DiplomGames
         {
             if (gameSettings.gamePreset.WhatCreateColor == 0)
             {
-                Debug.LogError("Ошибка старта игры нельзя создать 0 цветов");
+                Debug.LogError("РћС€РёР±РєР° СЃС‚Р°СЂС‚Р° РёРіСЂС‹ РЅРµР»СЊР·СЏ СЃРѕР·РґР°С‚СЊ 0 С†РІРµС‚РѕРІ");
                 return;
             }
 
@@ -60,7 +58,7 @@ namespace DiplomGames
         {
             if (gameSettings.gamePreset.WhatCreateColor == 0)
             {
-                Debug.LogError("Ошибка старта игры нельзя создать 0 цветов");
+                Debug.LogError("РћС€РёР±РєР° СЃС‚Р°СЂС‚Р° РёРіСЂС‹ РЅРµР»СЊР·СЏ СЃРѕР·РґР°С‚СЊ 0 С†РІРµС‚РѕРІ");
                 return;
             }
 

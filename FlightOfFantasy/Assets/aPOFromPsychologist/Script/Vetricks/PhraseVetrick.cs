@@ -9,6 +9,7 @@ namespace DiplomGames
 
         [SerializeField] private PhrseAndClip[] phrases;
 
+
         public PhrseAndClip[] GetAllPhrase()
         {
             return phrases;

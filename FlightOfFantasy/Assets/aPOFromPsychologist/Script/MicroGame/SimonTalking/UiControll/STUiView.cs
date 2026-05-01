@@ -13,20 +13,35 @@ namespace DiplomGames
         [SerializeField] private TextPreset textIsWin = new TextPreset("Правильно!", Color.green);
         [SerializeField] private TextPreset textIsLose = new TextPreset("Ошибка!", Color.red);
 
-
         [Header("Ссылки на кнопки")]
         [SerializeField] private Button buttonReplay;
         [SerializeField] private Button buttonNextRoundOnWindow;
         [SerializeField] private Button buttonStartGame;
         [SerializeField] private Button buttonPlaySequence;
+        [SerializeField] private Button prevStep;
 
+        [Header("Ссылки на панели")]
+        [SerializeField] private GameObject panelStart;
+        [SerializeField] private GameObject panelEnd;
+        [SerializeField] private GameObject PhirstStepSelectionDiffecalty;
+        [SerializeField] private GameObject NextStepSelectionDiffecalty;
+
+        [Header("Кнопки")]
+        [SerializeField] private Button btnNextGame;
+        [SerializeField] private Button btnChangeDiffecalty;
+        [SerializeField] private Button btnGoToMenu;
+
+
+        [Inject] private EntryPoint entryPoint;
         [Inject] private STBuilderGame builderGame;
         [Inject] private STColorValidator colorValidator;
         [Inject] private STGameController gameController;
         [Inject] private STGameSettingsManager gameSettingsManager;
         [Inject] private STHistoryColor historyColor;
         [Inject] private STSimonWheel simonWheel;
+        [Inject] private PlayPhrasesVetricksOnCall playPhrase;
 
+        private bool isDontFirstGame;
         private bool isInitialized;
 
         private void OnEnable()
@@ -44,6 +59,11 @@ namespace DiplomGames
             colorValidator.EverythingIsCorrect += EverythingIsCorrect;
             buttonStartGame.onClick.AddListener(StartGame);
             buttonPlaySequence.onClick.AddListener(NextRound);
+            prevStep.onClick.AddListener(PrevStep);
+
+            btnNextGame.onClick.AddListener(NextRound);
+            btnChangeDiffecalty.onClick.AddListener(NewDiffecalty);
+            btnGoToMenu.onClick.AddListener(() => { entryPoint.LoadScene(1); });
         }
 
         private void OnDisable()
@@ -56,17 +76,32 @@ namespace DiplomGames
             colorValidator.EverythingIsCorrect -= EverythingIsCorrect;
             buttonStartGame.onClick.RemoveListener(StartGame);
             buttonPlaySequence.onClick.RemoveListener(NextRound);
+            prevStep.onClick.RemoveListener(PrevStep);
+
+            btnNextGame.onClick.RemoveListener(NextRound);
+            btnChangeDiffecalty.onClick.RemoveListener(NewDiffecalty);
+            btnGoToMenu.onClick.AddListener(() => { entryPoint.LoadScene(1); });
         }
 
         public void InitRangeDifficulties(STDifficultiesPreset difficultiesPreset)
         {
             gameSettingsManager.difficultiesPreset = difficultiesPreset;
+
+            PhirstStepSelectionDiffecalty.SetActive(false);
+            NextStepSelectionDiffecalty.SetActive(true);
         }
 
         public void InitWheel(STGamePreset wheelPreset)
         {
             gameSettingsManager.gamePreset = wheelPreset;
             InitializedGame();
+
+
+            if (isDontFirstGame == false)
+            {
+                playPhrase.PlayWelcomePhrase();
+                isDontFirstGame = true;
+            }
         }
 
         private void Init()
@@ -124,6 +159,7 @@ namespace DiplomGames
             await historyColor.ClearHistory();
             buttonPlaySequence.interactable = true;
             textEventGame.text = string.Empty;
+            panelEnd.SetActive(true);
         }
 
         private void InitializedGame()
@@ -142,6 +178,24 @@ namespace DiplomGames
         {
             buttonPlaySequence.interactable = false;
             gameController.NextGameEvent?.Invoke();
+            panelEnd.SetActive(false);
+        }
+
+        private void PrevStep()
+        {
+            PhirstStepSelectionDiffecalty.SetActive(true);
+            NextStepSelectionDiffecalty.SetActive(false);
+        }
+
+        public void NewDiffecalty()
+        {
+            simonWheel.ClearWheelData();
+            builderGame.ClearPianino();
+
+            panelStart.SetActive(true);
+            panelEnd.SetActive(false);
+
+            PrevStep();
         }
     }
 
