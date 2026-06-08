@@ -171,7 +171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 56.46997, y: 51.04004}
+  m_AnchoredPosition: {x: 56.233692, y: 50.949898}
   m_SizeDelta: {x: 363.96, y: 263.03}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2626479380163371443
@@ -506,10 +506,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed63f39137f5c3b418e487eae4a652c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vetrickController: {fileID: 5821853012372696020}
   phrases: {fileID: 3386716803162677187}
   textVetrick: {fileID: 5660694052840448286}
   symbolAppearanceTime: 0.06
-  vetrickController: {fileID: 5821853012372696020}
   hideDelay: 2
   hideDelayForWelcome: 10
   baseChance: 20
